@@ -48,6 +48,23 @@
 
 \input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
 
+%----------------------------------------------------------------------------------------
+
+% Extra packages
+\usepackage{setspace}
+\usepackage{nicematrix}
+% Colors
+\definecolor{LightBlue}{rgb}{0.0, 0.64, 1.0}
+\definecolor{DarkGreen}{rgb}{0.31, 0.54, 0.30}
+% Font types
+\DeclareTextFontCommand{\bred}{\color{red}\bfseries} % Bold and red
+\DeclareTextFontCommand{\itblue}{\color{LightBlue}\itshape} % Italic and blue
+\DeclareTextFontCommand{\term}{\color{orange}\itshape} % Italic and blue
+% Math settings
+\everymath{\displaystyle}
+
+%----------------------------------------------------------------------------------------
+
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -73,20 +90,19 @@
 %	COPYRIGHT PAGE
 %----------------------------------------------------------------------------------------
 
-% TODO: change copyright info
 \newpage
 ~\vfill
 \thispagestyle{empty}
 
-\noindent Copyright \copyright\ 2013 John Smith\\ % Copyright notice
+\noindent Copyright \copyright\ 2022 Sinan Li\\ % Copyright notice
 
-\noindent \textsc{Published by Publisher}\\ % Publisher
+\noindent \textsc{Published by Sinan Li}\\ % Publisher
 
-\noindent \textsc{book-website.com}\\ % URL
+\noindent \textsc{artsci.calendar.utoronto.ca/course/mat235y1}\\ % URL
 
 \noindent Licensed under the Creative Commons Attribution-NonCommercial 3.0 Unported License (the ``License''). You may not use this file except in compliance with the License. You may obtain a copy of the License at \url{http://creativecommons.org/licenses/by-nc/3.0}. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \textsc{``as is'' basis, without warranties or conditions of any kind}, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\ % License information
 
-\noindent \textit{First printing, March 2013} % Printing/edition date
+\noindent \textit{First digital, May 2022} % Printing/edition date
 
 %----------------------------------------------------------------------------------------
 %	TABLE OF CONTENTS
@@ -104,247 +120,422 @@
 
 \pagestyle{fancy} % Print headers again
 
-% %----------------------------------------------------------------------------------------
-% %	PART
-% %----------------------------------------------------------------------------------------
 
-% \part{Part One}
+\part{Lecture Notes}
 
-% %----------------------------------------------------------------------------------------
-% %	CHAPTER 1
-% %----------------------------------------------------------------------------------------
+\chapterimage{chapter_head_2.pdf}
 
-% \chapterimage{chapter_head_2.pdf} % Chapter heading image
+\chapter*{Introduction}
 
-% \chapter{Text Chapter}
+Parametric equations and polar coordinates. Vectors, vector functions and space curves. Differential and integral calculus of functions of several variables. Line integrals and surface integrals and classic vector calculus theorems. Examples from life sciences and physical science applications.
 
-% \section{Paragraphs of Text}\index{Paragraphs of Text}
+% TODO: find the title for Chapter 1
+\chapter{Chapter 1}
 
-% \lipsum[1-7] % Dummy text
+\section{Curved Lines and Surfaces}
 
-% %------------------------------------------------
+\subsection{Curved Lines}
 
-% \section{Citation}\index{Citation}
+An equation involving $x$ and $y$ gives a \term{curve} in the plane. 
 
-% This statement requires citation \cite{book_key}; this one is more specific \cite[122]{article_key}.
+By replacing $x$ with $x - a$, the graph is shifted to the right by $a$. By replacing $y$ with $y - b$, the graph is shifted upward by $b$.
 
-% %------------------------------------------------
+\begin{center}
+\begin{tikzpicture}
+    % \draw[very thin,color=gray] (-4.1,-1.1) grid (4.1,7.1);
 
-% \section{Lists}\index{Lists}
+    \draw[->] (-2.2,0) -- (2.2,0) node[right] {$x$}; 
+    
+    \draw[->] (0,-1.2) -- (0,3.2) node[above] {$y$};
 
-% Lists are useful to present information in a concise and/or ordered way\footnote{Footnote example...}.
+    \draw[thick,blue,domain=-1.5:1.5,smooth] plot (\x,{(\x)^2}) node [above right] {$y = x^2$};
 
-% \subsection{Numbered List}\index{Lists!Numbered List}
+    \draw[thick,red,domain=-0.5:2.5,smooth] plot (\x,{(\x - 1)^2}) node [right] {$y = (x - a)^2$};
 
-% \begin{enumerate}
-%     \item The first item
-%     \item The second item
-%     \item The third item
-% \end{enumerate}
+    \draw[thick,DarkGreen,domain=-1.5:1.5,smooth] plot (\x,{(\x)^2 + 1}) node [above] {$y - b = x^2$};
+\end{tikzpicture}
+\end{center}
 
-% \subsection{Bullet Points}\index{Lists!Bullet Points}
+\begin{definition}[Parabola]
+    The \term{parabola} (with vertex) at the origin is defined by $$y = ax^2 \qquad x = by^2$$ 
 
-% \begin{itemize}
-%     \item The first item
-%     \item The second item
-%     \item The third item
-% \end{itemize}
+    \begin{itemize}
+        \item $y = ax^2$ opens up for $a > 0$,and opens down for $a < 0$.
+        \item $x = by^2$ opens to the right for $b > 0$, and opens to the left for $b < 0$.
+    \end{itemize}
+\end{definition}
 
-% \subsection{Descriptions and Definitions}\index{Lists!Descriptions and Definitions}
+\begin{definition}[Ellipse]
+    The \term{ellipse} (with center) at the origin is defined by $$\left(\frac{x}{a}\right)^2 + \left(\frac{y}{b}\right)^2 = 1$$ with $(a, 0)$ being the right-most point on the $x$-axis, and $(0, b)$ as the top-most point on the $y$-axis. 
 
-% \begin{description}
-%     \item[Name] Description
-%     \item[Word] Definition
-%     \item[Comment] Elaboration
-% \end{description}
+    When $a = b$, an ellipse becomes a \term{circle}, with $a = b = R$ as the radius of the circle.
+\end{definition}
 
-% %----------------------------------------------------------------------------------------
-% %	CHAPTER 2
-% %----------------------------------------------------------------------------------------
+\begin{definition}[Hyperbola]
+    The \term{hyperbola} (with center) at the origin is defined by $$\left(\frac{x}{2}\right)^2 - \left(\frac{y}{b}\right)^2 = 1 \qquad \left(\frac{y}{a}\right)^2 - \left(\frac{x}{b}\right)^2 = 1$$
 
-% \chapter{In-text Elements}
+    A hyperbola has 2 curves, and a center line that is not crossed. The 2 curves goes in the opposite direction of the center.
+\end{definition}
 
-% \section{Theorems}\index{Theorems}
+Since the right side is positive, and a square is positive, the position of the negative sign determines the direction of the curves.
 
-% This is an example of theorems.
+To determine the direction, we can either set $x = 0$ or $y = 0$. For example, in the case of $x^2 - y^2 = 1$, by setting $x = 0$, we attain $-y^2 = 1$ is impossible, so the vertical line $x = 0$ is the center is never crossed. Thus the 2 curves open towards left and right.
 
-% \subsection{Several equations}\index{Theorems!Several Equations}
-% This is a theorem consisting of several equations.
+To find the \bred{slant asymptotes} when $x$ and $y$ are both large, change the number $1$ on the right side of the equation to $0$.
 
-% \begin{theorem}[Name of the theorem]
-%     In $E=\mathbb{R}^n$ all norms are equivalent. It has the properties:
-%     \begin{align}
-%          & \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||                            \\
-%          & ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-%     \end{align}
-% \end{theorem}
+{~~~}
 
-% \subsection{Single Line}\index{Theorems!Single Line}
-% This is a theorem consisting of just one line.
+The above 3 curves together are sometimes called: \term{Conic Sections}.
 
-% \begin{theorem}
-%     A set $\mathcal{D}(G)$ in dense in $L^2(G)$, $|\cdot|_0$.
-% \end{theorem}
+\subsection{Curved Surfaces}
 
-% %------------------------------------------------
+An equation involving $x$, $y$, and $z$ gives a \term{curved surface} in 3D space. In general, this surface is difficult to imagine and sketch in 3D.
 
-% \section{Definitions}\index{Definitions}
+\begin{definition}[3D Sphere]
+    The \term{3D Sphere} (with center) at the origin with radius $R$ is given by $$x^2 + y^2 + z^2 = R^2$$
+\end{definition}
 
-% This is an example of a definition. A definition could be mathematical or it could define a concept.
+\begin{definition}[Ellipsoid]
+    The 3D \term{ellipsoid} (with center) at the origin is given by $$\left(\frac{x}{a}\right)^2 + \left(\frac{y}{b}\right)^2 + \left(\frac{z}{c}\right)^2 = 1$$
 
-% \begin{definition}[Definition name]
-%     Given a vector space $E$, a norm on $E$ is an application, denoted $||\cdot||$, $E$ in $\mathbb{R}^+=[0,+\infty[$ such that:
-%     \begin{align}
-%          & ||\mathbf{x}||=0\ \Rightarrow\ \mathbf{x}=\mathbf{0}        \\
-%          & ||\lambda \mathbf{x}||=|\lambda|\cdot ||\mathbf{x}||        \\
-%          & ||\mathbf{x}+\mathbf{y}||\leq ||\mathbf{x}||+||\mathbf{y}||
-%     \end{align}
-% \end{definition}
+    $(a, 0, 0)$, $(0, b, 0)$, $(0, 0, c)$ are the 3 points on the ellipsoid, similar to the ellipse.
 
-% %------------------------------------------------
+    When $a = b = c$, an ellipsoid becomes a \term{sphere}, with $a = b = c = R$ as the radius.
+\end{definition}
 
-% \section{Notations}\index{Notations}
+\subsubsection*{Surfaces Attained Through Rotation: $r^2 = x^2 + y^2$}
 
-% \begin{notation}
-%     Given an open subset $G$ of $\mathbb{R}^n$, the set of functions $\varphi$ are:
-%     \begin{enumerate}
-%         \item Bounded support $G$;
-%         \item Infinitely differentiable;
-%     \end{enumerate}
-%     a vector space is denoted by $\mathcal{D}(G)$.
-% \end{notation}
+When the variables $x$ and $y$ appear together as $x^2 + y^2$, this signals that the surface is attained through rotation. Set a new variable $r$, with $r^2 = x^2 + y^2$. We graph the equation involving $z$ and $r$ in the $rz$-plane, with $r > 0$ only. We then revolve the curve around the $z$-axis to attain the surface in 3D: the $r$-axis stands for both $x$-axis and $y$-axis.
 
-% %------------------------------------------------
+\begin{exercise}
+    Sketch the following curves. 
 
-% \section{Remarks}\index{Remarks}
+    \begin{minipage}[t]{0.45\linewidth}
+    \setstretch{2.25}
+        \begin{enumerate}
+            \item $x = 2y^2$
+            \item $\frac{x^2}{2} + \frac{y^2}{9} = 1$
+            \item $x^2 + 2y^2 = 4$
+        \end{enumerate}
+    \end{minipage}
+    \begin{minipage}[t]{0.45\linewidth}
+    \setstretch{2.25}
+        \begin{enumerate}
+        \setcounter{enumi}{3}
+            \item $x^2 + 3y^2 + 2x - 12y + 10 = 0$
+            \item $y^2 - x^2 = 1$
+            \item $\frac{(x - 2)^2}{4} - \frac{(y + 2)^2}{9} = 1$
+        \end{enumerate}
+    \end{minipage}
+\end{exercise}
 
-% This is an example of a remark.
+\begin{exercise}
+    Sketch the following surfaces. 
 
-% \begin{remark}
-%     The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
-% \end{remark}
+    \begin{minipage}[t]{0.45\linewidth}
+    \setstretch{2.25}
+        \begin{enumerate}
+            \item $x^2 + y^2 = 1$
+            
+            \item $z = x^2 + y^2$
+            
+            \item $z^2 = x^2 + y^2$
+        \end{enumerate}
+    \end{minipage}
+    \begin{minipage}[t]{0.45\linewidth} \setstretch{2.25}
+        \begin{enumerate}
+        \setcounter{enumi}{3}
+            \item $x^2 + y^2 + \frac{z^2}{4} = 1$
+            \item $z = \left( \sqrt{x^2 + y^2} - 1 \right)^2$
+            \item $x^2 + y^2 + z^2 = 2z$
+        \end{enumerate}
+    \end{minipage}
+\end{exercise}
 
-% %------------------------------------------------
+\section{Vector and Matrix}
 
-% \section{Corollaries}\index{Corollaries}
+A point in 2D needs 2 coordinates. It is typically written as, for example: $$\vec{a} = 1 \quad\text{or}\quad \vec{a} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$$ This is the point $x = 1$ and $y = 2$ on the 2D $xy$-plane. 
 
-% This is an example of a corollary.
+A point in 3D needs 3 coordinates. It is typically written as, for example: $$\vec{b} = (0, 2, 1) \quad\text{or}\quad \vec{b} = \begin{bmatrix} 0 \\ 2 \\ 1 \end{bmatrix}$$ This is the point $x = 0$, $y = 2$, and $z = 1$ in 3D space.
 
-% \begin{corollary}[Corollary name]
-%     The concepts presented here are now in conventional employment in mathematics. Vector spaces are taken over the field $\mathbb{K}=\mathbb{R}$, however, established properties are easily extended to $\mathbb{K}=\mathbb{C}$.
-% \end{corollary}
+The point can also be interpreted as a \term{vector}, written in the same way. We can also think of a vector as an \itblue{arrow} from the origin to the point.
 
-% %------------------------------------------------
 
-% \section{Propositions}\index{Propositions}
+Typically, it doesn't matter if we write the vector horizontally or vertically.
 
-% This is an example of propositions.
+\begin{definition}[Matrix]
+    A \term{matrix} is a block of numbers written in a rectangle (or square) in a specific order.
+\end{definition}
 
-% \subsection{Several equations}\index{Propositions!Several Equations}
+For example, A is a $2 \times 3$ (2 by 3) matrix, with 2 rows and 3 columns: $$A = \begin{bmatrix} a & b & c \\ d & e & f \end{bmatrix}$$
 
-% \begin{proposition}[Proposition name]
-%     It has the properties:
-%     \begin{align}
-%          & \big| ||\mathbf{x}|| - ||\mathbf{y}|| \big|\leq || \mathbf{x}- \mathbf{y}||                            \\
-%          & ||\sum_{i=1}^n\mathbf{x}_i||\leq \sum_{i=1}^n||\mathbf{x}_i||\quad\text{where $n$ is a finite integer}
-%     \end{align}
-% \end{proposition}
+We may think of vectors as $1 \times n$ or $n \times 1$ matrix (for $n = 2$ or $3$). We can add matrices, and multiply matrices by a scalar (number).
 
-% \subsection{Single Line}\index{Propositions!Single Line}
+{~~~}
 
-% \begin{proposition}
-%     Let $f,g\in L^2(G)$; if $\forall \varphi\in\mathcal{D}(G)$, $(f,\varphi)_0=(g,\varphi)_0$ then $f = g$.
-% \end{proposition}
+\begin{itemize}
+    \item $\begin{bmatrix} a & b \\ c & d \end{bmatrix} + \begin{bmatrix} e & f \\ g & h \end{bmatrix} = \begin{bmatrix} a + e & b + f \\ c + g & d + h \end{bmatrix}$
+    \item $r\begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} ra & rb & rc & rd \end{bmatrix}$
+\end{itemize}
 
-% %------------------------------------------------
+{~~~}
 
-% \section{Examples}\index{Examples}
+Standard arithmetic rules apply. For matrices $A$, $B$, and scalar $c$:
 
-% This is an example of examples.
+\begin{itemize}
+    \item $A + B = B + A$
+    \item $cA = Ac$
+    \item $c(A + B) = cA + cB$
+\end{itemize}
 
-% \subsection{Equation and Text}\index{Examples!Equation and Text}
+\subsection{Determinant}
 
-% \begin{example}
-%     Let $G=\{x\in\mathbb{R}^2:|x|<3\}$ and denoted by: $x^0=(1,1)$; consider the function:
-%     \begin{equation}
-%         f(x)=\left\{\begin{aligned}  & \mathrm{e}^{|x|} &  & \text{si $|x-x^0|\leq 1/2$} \\
-%                  & 0                &  & \text{si $|x-x^0|> 1/2$}\end{aligned}\right.
-%     \end{equation}
-%     The function $f$ has bounded support, we can take $A=\{x\in\mathbb{R}^2:|x-x^0|\leq 1/2+\epsilon\}$ for all $\epsilon\in\intoo{0}{5/2-\sqrt{2}}$.
-% \end{example}
+The determinant of a \bred{square} matrix is a number.
 
-% \subsection{Paragraph of Text}\index{Examples!Paragraph of Text}
+Start at the first row, first position, write down this value, and remove this row and this column from the original matrix. Multiply this value to the determinant of the remaining matrix.
 
-% \begin{example}[Example name]
-%     \lipsum[2]
-% \end{example}
+$$\det \begin{bNiceMatrix} a & b & c \\ d & e & f \\ g & h & i \CodeAfter \tikz \draw (1-1) circle (1.8mm); \end{bNiceMatrix} = a \cdot \det \begin{bmatrix} e & f \\ h & i \end{bmatrix} \dots$$
 
-% %------------------------------------------------
+Now move right, write down this value, and remove this row and this column from the original matrix. Multiply this value to the determinant of the remaining matrix with a \bred{minus sign}.
 
-% \section{Exercises}\index{Exercises}
+$$\det \begin{bNiceMatrix} a & b & c \\ d & e & f \\ g & h & i \CodeAfter \tikz \draw (1-2) circle (1.8mm); \end{bNiceMatrix} = a \cdot \det \begin{bmatrix} e & f \\ h & i \end{bmatrix} {\color{red}-}~ b \cdot \det \begin{bmatrix} d & f \\ g & i \end{bmatrix}$$
 
-% This is an example of an exercise.
+Now move right again and repeat until we reached the last column. The positive and negative sign need to \bred{alternate}.
 
-% \begin{exercise}
-%     This is a good place to ask a question to test learning progress or further cement ideas into students' minds.
-% \end{exercise}
+$$\det \begin{bNiceMatrix} a & b & c \\ d & e & f \\ g & h & i \CodeAfter \tikz \draw (1-3) circle (1.8mm); \end{bNiceMatrix} = a \cdot \det \begin{bmatrix} e & f \\ h & i \end{bmatrix} - b \cdot \det \begin{bmatrix} d & f \\ g & i \end{bmatrix} {\color{red}+}~ c \cdot \begin{bmatrix} d & e \\ g & h \end{bmatrix}$$
 
-% %------------------------------------------------
+Each time we apply the algorithm, we end up with several new determinants to calculate, but with matrices of \itblue{smaller sizes}. 
 
-% \section{Problems}\index{Problems}
+$$\det \begin{bmatrix} a & b \\ c & d \end{bmatrix} = ad = bc$$
 
-% \begin{problem}
-% What is the average airspeed velocity of an unladen swallow?
-% \end{problem}
+Determinant does not behave well with addition and scalar multiplication:
+$$\det(A + B) \neq \det(A) + \det(B) \qquad \det(cA) \neq c \cdot \det(A)$$
 
-% %------------------------------------------------
+\begin{exercise}
+    Find the determinant.
 
-% \section{Vocabulary}\index{Vocabulary}
+    {~~~}
 
-% Define a word to improve a students' vocabulary.
+    \begin{enumerate}
+        \item $\begin{bmatrix} 3 & -1 \\ 2 & 5 \end{bmatrix}$
 
-% \begin{vocabulary}[Word]
-%     Definition of word.
-% \end{vocabulary}
+        {~~~}
 
-% %----------------------------------------------------------------------------------------
-% %	PART
-% %----------------------------------------------------------------------------------------
+        \item $\begin{bmatrix} 3 & 3 & -3 \\ -3 & -5 & 2 \\ -4 & 4 & -6 \end{bmatrix}$
 
-% \part{Part Two}
+        {~~~}
 
-% %----------------------------------------------------------------------------------------
-% %	CHAPTER 3
-% %----------------------------------------------------------------------------------------
+        \item $\begin{bmatrix} 3 & 1 & 0 \\ 1 & 3 & 4 \\ 0 & 0 & 4 \end{bmatrix}$
+    \end{enumerate}
+\end{exercise}
 
-% \chapterimage{chapter_head_1.pdf} % Chapter heading image
+\section{Dot product}
 
-% \chapter{Presenting Information}
+2 vectors can form a \term{dot product}, and the result is a scalar (number).
 
-% \section{Table}\index{Table}
+$$\vec{x} \cdot \vec{y} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \end{bmatrix} \cdot \begin{bmatrix}
+    y_1 \\ y_2 \\ \vdots \end{bmatrix} = x_1y_1 + x_2y_2 + \cdots$$
 
-% \begin{table}[h]
-%     \centering
-%     \begin{tabular}{l l l}
-%         \toprule
-%         \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2} \\
-%         \midrule
-%         Treatment 1         & 0.0003262           & 0.562               \\
-%         Treatment 2         & 0.0015681           & 0.910               \\
-%         Treatment 3         & 0.0009271           & 0.296               \\
-%         \bottomrule
-%     \end{tabular}
-%     \caption{Table caption}
-% \end{table}
+Note that this dot product is different from scalar multiplication, as we are multiplying 2 vectors together, not a scalar with a vector.
 
-% %------------------------------------------------
+The \term{length} (absolute value) of a vector using the Pythagoras Theorem: $$| \vec{x} | = \sqrt{\vec{x} \cdot \vec{x}} = \sqrt{(x_1)^2 + (x_2)^2 + \cdots}$$
 
-% \section{Figure}\index{Figure}
+Similarly, define the distance between two points using pythagoras Theorem: $$d(\vec{x}, \vec{y}) = | \vec{x} - \vec{y} | = \sqrt{(y_1 - x_1)^2 + (y_2 - x_2)^2 + \cdots}$$
 
-% \begin{figure}[h]
-%     \centering\includegraphics[scale=0.5]{placeholder}
-%     \caption{Figure caption}
-% \end{figure}
+Going from a point a to point c, is always shorter than going to some other point b first and then back to c. This is called the \term{Triangle Inequality}: $$d(\vec{a},\vec{c}) \le d(\vec{a},\vec{b}) + d(\vec{b},\vec{c})$$ $$| \vec{x} + \vec{y} | \le | \vec{x} | + | \vec{y} |$$
+
+Let $\theta$ be the angle between $\vec{x}$ and $\vec{y}$, the dot product is also given by $$\vec{x} \cdot \vec{y} = | \vec{x} | | \vec{y} | \cos \theta$$
+
+Thus, 2 vectors are \term{orthogonal} (perpendicular) if the dot product is zero.
+
+The dot product have the usual properties of multiplication:
+
+\begin{itemize}
+    \item $\vec{a} \cdot \vec{b} = \vec{b} \cdot \vec{a}$
+    \item $\vec{a} \cdot (\vec{b} + \vec{c}) = \vec{a} \cdot \vec{b} + \vec{a} \cdot \vec{c}$
+    \item $c(\vec{a} \cdot \vec{b}) = (c\vec{a}) \cdot \vec{b} = a \cdot (c\vec{b})$
+\end{itemize}
+
+Note that since the dot product needs two vectors and produce a number, a quantity such as $\vec{a} \cdot \vec{b} \cdot \vec{c}$ is not well defined.
+
+\begin{exercise}
+    Find the length of the vectors. Find $\vec{a} \cdot \vec{b}$ and the angle between them.
+
+    {~~~}
+
+    \begin{enumerate}
+        \item $\vec{a} = (4, 3)$, $\vec{b} = (2, -1)$
+        \item $\vec{a} = (4, 0, 2)$, $\vec{b} = (2, -1, 0)$
+    \end{enumerate}
+\end{exercise}
+
+\section{Cross product}
+
+2 vectors (in 3D) can form a \term{cross product}, and the result is a \itblue{vector} (in 3D).
+
+Let $\vec{x} = (x_1, x_2, x_3)$, $\vec{y} = (y_1, y_2, y_3)$ in 3D. 
+
+We typically write the cross product using determinant: 
+
+$$\vec{x} \times \vec{y} = \det \begin{bmatrix} i & i & k \\ x_1 & x_2 & x_3 \\ y_1 & y_2 & y_3 \end{bmatrix}$$ $$\vec{x} \times \vec{y} = i(x_2y_3 - x_3y_2) - j(x_1y_3 - x_3y_1) + k(x_1y_2 - x_2y_1)$$ $$\vec{x} \times \vec{y} = (x_2y_3 - x_3y_2, x_1y_3 - x_3y_1, x_1y_2 - x_2y_1)$$
+
+The notations $i = (1, 0, 0)$, $j = (0, 1, 0)$, $k = (0, 0, 1)$ are very easy to use, where the quantity attached to $i$ is the first component of the vector, and the quantity attached to $j$ would be the second, and $k$ would be the third.
+
+The vector produced by the cross product, $\vec{x} \times \vec{y}$, would be orthogonal to both vectors $\vec{x}$ and $\vec{y}$. Notice that in most cases, there would be 2 such vectors with this property. They are exactly $$\vec{x} \times \vec{y} \qquad\text{and}\qquad -\vec{x} \times \vec{y}$$
+
+In fact, we have $$\vec{x} \times \vec{y} = - \vec{y} \times \vec{x}$$
+
+Notice that the order of a dot product does not matter, but the order of cross product matters up to a negative sign.
+
+The other usual properties of multiplication hold:
+
+\begin{itemize}
+    \item $(a\vec{a} \times \vec{b}) = c(\vec{a} \times \vec{b}) = a \times (c\vec{b})$
+    \item $\vec{a} \times (\vec{b} + \vec{c}) = \vec{a} \times \vec{b} + \vec{a} \times \vec{c}$
+\end{itemize}
+
+Similar to the dot product, we can also relate the angle between the 2 vectors, $$| \vec{x} \times \vec{y} | = | \vec{x} | | \vec{y} | \sin \theta$$
+
+Note that since $\vec{x} \times \vec{y}$ is a vector, we need to take its absolute value. So 2 vectors are \itblue{parallel} if the cross product is zero.
+
+\begin{exercise}
+    Let $\vec{x} = (3, -2, 1)$, $\vec{y} = (1, -1, 1)$. Find $\vec{x} \times \vec{y}$. 
+\end{exercise}
+
+\section{Lines and Planes}
+
+For a \term{line} to be defined, we need a direction $\vec{v}$ and a point on the line $\vec{r}_0$. $$\begin{bmatrix} x \\ y \\ z \end{bmatrix} := \vec{r} = t\vec{v} + \vec{r}_0$$
+
+The vector $\vec{r}$ and the value $t$ do not need to be determined \footnote{$\vec{v}$ and $\vec{r}_0$ are not unique, and any correct pair would give the right equation. }.
+
+For a \term{plane} to be defined, we need a \bred{normal vector} $\vec{n} = (a, b, c)$ and a point on the plane $\vec{r}_0$. $$\vec{n} \cdot \vec{r} = \vec{n} \cdot \vec{r}_0$$ $$ax + by + cz = \vec{n} \cdot \vec{r}_0$$ where $\vec{r}$ is the same as above and does not need to be determined. The \term{normal vector} $\vec{n}$ is orthogonal to the plane \footnote{Similar to lines, $\vec{v}$ and $\vec{r}_0$ are not unique. }.
+
+\subsubsection*{Plane Defined by 3 Points}
+
+Consider 3 points $\vec{u}$, $\vec{v}$, and $\vec{w}$. We can connect any 2 pairs of points together to create 2 direction vectors which are inside the plane. For example, we may take $\vec{x} = \vec{u} - \vec{v}$, and$ \vec{y} = \vec{w} - \vec{v}$. From there we can form the cross product to attain a vector that is orthogonal to both vectors inside the plane, so the cross product would be the normal vector, which is orthogonal to the plane.
+
+\begin{exercise}
+    Find the equation of the line or plane.
+
+    {~~~}
+
+    \begin{enumerate}
+        \item The line through $(-8, 0, 4)$ and $(3, -2, 4)$.
+        \item The plane through the origin and perpendicular to the vector $(1, 5, 2)$.
+        \item The plane through $(2, 4, 6)$ parallel to the plane $x + y - z = 5$.
+        \item The plane through $(0, 1, 1)$, $(1, 0, 1)$, and $(1, 1, 0)$.
+        \item The plane equidistant from point $(3, 1, 5)$ and $(-2, 0, 0)$.
+    \end{enumerate}
+\end{exercise}
+
+\section{Multivariable Function}
+
+In first year, we study 1D functions: \term{functions of one variable}, as $f(x)$. This can be plotted in 2D plane, with $y = f(x)$.
+Now, we can study functions of multiple variables.
+
+\begin{definition}[2D Function]
+    A \term{2D function}, $f(x, y)$, has 2 inputs being $x$, $y$, and 1 output.
+\end{definition}
+
+Sometimes, we can label the output as $z = f(x, y)$.
+
+We can plot this 2D function in 3D space, where the height $z$ above the point $(x, y)$ on the $xy$-plane is equal to $f(x, y)$. 
+
+This would give a graph, which is a surface.
+
+Alternatively, $z = f(x, y)$ can be thought of as an equation which involves $x$, $y$, and $z$, which would also give a surface in 3D space.
+
+However, similar to 1D functions, given an equation involving $x$, $y$, and $z$, it is not always possible to isolate $z$ into $z = f(x, y)$. 
+
+Examples of 2D functions include: $$f(x, y) = x^2 + 2y \qquad f(x, y) = xe^{xy} \qquad f(x, y) = \sin(xy^2)$$
+
+\begin{definition}[3D Function]
+    A \term{3D function}, $f(x, y, z)$, has 3 inputs being $x$, $y$, and $z$, and 1 output.
+\end{definition}
+
+It is possible to label the output as $w = f(x, y, z)$, but this is typically not useful as this introduces a 4th variable. The ``plot'' of this function would be in 4D space, which does not exist.
+
+Examples of 3D functions include: $$f(x, y, z = x^2 + 2z - 1) \qquad f(x, y, z) = ye^{xz}$$
+
+\begin{definition}[Level Set]
+    The \term{level set} of $f$ at $k$ is given by setting $f$ to be equal to the constant $k$. This will reduce the dimension of $f$ by 1.
+\end{definition}
+
+\begin{exercise}
+$\text{ }$
+
+    \begin{itemize}
+        \item Draw the level set of $f(x, y) = 4x^2 + y^2 + 1$ for $k = 2$ and $k = 5$.
+        \item Draw the level set of $f(x, y, z) = x^2 + y^2 - z$ for $k = 0$ and $k = 2$.
+    \end{itemize}
+\end{exercise}
+
+\subsection{Limits and Continuity}
+
+$f(x, y)$ is continuous at the 2D point $\vec{a}$ if $$\lim_{(x, y) \to \vec{a}} f(x, y) = f(\vec{a})$$
+
+Every standard function we know are continuous in their domains. Any function transformations (such as $+$, $-$, $\times$, $/$, composition) of continuous functions, are also continuous (except division by $0$).
+
+As most functions are continuous, most limits can be obtained by putting $(x, y) = \vec{a}$ in the formula of $f(x,y)$.
+
+Different from 1D functions, computing limits in 2D is much more difficult. Most limit evaluation techniques from 1D functions does not work for 2D functions. In particular, there is no L'Hôpital's rule Rule for 2D functions.
+
+Fortunately, since most functions are continuous except when dividing by $0$, we typically only need to focus on the point where the function is dividing by $0$ (and state the function is continuous everywhere else). 
+
+It turns out that it is much easier to show a limit does not exist.
+
+\subsubsection{Test for limit that does not exist in $\mathbb{R}^2$}
+
+Given $f(x, y)$, compute the limit as $(x, y)$ approaches $\vec{a} = (0, 0)$.
+
+\begin{enumerate}
+    \item Replace $y$ with a easy curve $y = g(x)$, passing through $\vec{a} = (0, 0)$, (such as $y = 0$, $y = x$, $y = x^2$), then let $x$ approach $0$ to attain a (1D) limit.
+    \item Replace $x$ with a easy curve $x = h(y)$, passing through $\vec{a} = (0, 0)$, (such as $x = 0$, $x = y^2$), then let $y$ approach $0$ to attain a (1D) limit.
+    \item Try with several different $g(x)$ and $h(y)$ to attain many (1D) limits.
+    \item If you find 2 \bred{different} (1D) limits generated by 2 different curves, then
+    the (2D) limit of $(x, y)$ approaches $\vec{a} = (0, 0)$ of $f(x, y)$ does not exist.
+\end{enumerate}
+
+Note that if all the 1D limits are the same, that is \bred{not} enough for you to conclude the 2D limit exists. To show the limit exists, we typically must use \itblue{Squeeze Theorem}.
+
+Since most limit evaluation techniques does not work for 2D functions, it is a very fortunate fact that Squeeze Theorem does work for 2D functions. The formulation is almost the same as the 1D version.
+
+\begin{theorem}[Squeeze Theorem]
+    {~~~}
+
+    To attain $\lim_{(x, y) \to \vec{a}} f(x, y)$, we can try to find $g(x, y)$ and $h(x, y)$ such that
+
+    \begin{enumerate}
+        \item $g(x, y) \le f(x, y) \le h(x, y)$ near the point $\vec{a}$
+        \item $\lim_{(x, y) \to \vec{a}} g(x, y) = L = \lim_{(x, y) \to \vec{a}} h(x,y)$
+    \end{enumerate}
+    
+    Then we conclude $\lim_{(x, y) \to \vec{a}} f(x, y) = L$.
+\end{theorem}
+
+\subsubsection{Use Squeeze Theorem to show limit exist}
+
+In practice, we typically want to show $\lim_{(x, y) \to \vec{a}} f(x, y) = 0$.
+
+Start at $| f(x, y) |$, create a \itblue{chain of inequalities}, and simplify $| f(x, y) |$ to attain $| g(x, y) |$, which has limit $0$ as $(x, y)$ approaches $\vec{a}$: $$|f(x, y)| \le \cdots \le | g(x, y) | \to 0 \quad\text{i.e.}\quad \lim_{(x, y) \to \vec{a}} | g(x, y) | = 0$$ Then we conclude $\lim_{(x, y) \to \vec{a}} f(x, y) = 0$.
+
+The typical strategy in constructing the above inequality is to remove positive quantities from the denominator of $f(x, y)$.
+
+\begin{exercise}
+    $$f(x, y) = \frac{x^2y}{x^4 + y^2} \quad\text{and}\quad f(0, 0) = 0$$
+
+    Show the limit at $(x, y) = (0, 0)$ does not exist.
+\end{exercise}
+
+\begin{exercise}
+    $$f(x, y) = \frac{xy}{\sqrt{x^4 + y^2}} \quad\text{and}\quad f(0, 0) = 0$$
+
+    Show the function \textbf{continuous} at $(0, 0)$. 
+\end{exercise}
+
+\begin{exercise}
+    Find $\lim_{(x, y) \to (0, 0)} \frac{x^2 \sin^2{y}}{2x^4 + y^2}$
+\end{exercise}
 
 % %----------------------------------------------------------------------------------------
 % %	BIBLIOGRAPHY
