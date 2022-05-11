@@ -610,7 +610,11 @@ We can describe the direction of movement by a \term{unit vector}, similar to th
 
 This is also the \term{rate of change}\index{Rate of Change} of the function in the direction $\vec{u}$ at the point $\vec{a}$. 
 
-Given a vector $\vec{v}$, we can turn it into a \term{unit vector}\index{Unit Vector} $\vec{u} = \frac{\vec{v}}{| \vec{v} |}$. 
+Given a vector $\vec{v}$, we can turn it into a \term{unit vector} $\vec{u} = \frac{\vec{v}}{| \vec{v} |}$. 
+
+\begin{definition}[Unit Vector]\index{Unit Vector}
+    A \term{unit vector} is a vector whose length (norm) is exactly $1$. 
+\end{definition}
 
 {~~~}
 
@@ -1297,8 +1301,253 @@ $\begin{aligned}[t]
 
     {~~~}
 
-    \item
+    \item 
+    $\begin{aligned}[t]
+        \vec{r}_0 & = \frac{(3, 1, 5) + (-2, 0, 0)}{2} \\
+                  & = \frac{1}{2} (1, 1, 5)
+        \\ \\
+        \vec{n}   & = (-2, 0, 0) - (3, 1, 5)           \\
+                  & = (-5, -1, -5)
+    \end{aligned}$
+
+    {~~~}
+
+    {~~~}
+
+    $\begin{aligned}[t]
+        \vec{n} \cdot \vec{r}     & = \vec{n} \cdot \vec{r}_0                \\
+        (-5, 1, -5) \cdot \vec{r} & = (-5, 1, -5) \cdot \frac{1}{2}(1, 1, 5) \\
+        -5x - y - 5z              & = \frac{1}{2}(-5 + 1 - 25)               \\
+                                  & = \frac{-31}{2}
+    \end{aligned}$
 \end{enumerate}
+
+\subsection*{Exercise 1.7}
+
+\begin{enumerate}
+    \item 
+    \begin{minipage}[t]{0.45\linewidth}
+        At $k = 2$, 
+        $\begin{aligned}[t]
+            4x^2 + y^2 + 1 &= 2 \\
+            4x^2 + y^2     &= 1 \\
+            \left(\frac{x}{\frac{1}{2}}\right)^2 + \left(\frac{y}{1}\right)^2 &= 1
+        \end{aligned}$
+    \end{minipage}
+    \begin{minipage}[t]{0.45\linewidth}
+        At $k = 5$, 
+        $\begin{aligned}[t]
+            4x^2 + y^2 + 1      &= 5 \\
+            4x^2 + y^2          &= 4 \\
+            x^2 + \frac{y^2}{4} &= 1 \\
+            \left(\frac{x}{1}\right)^2 + \left(\frac{y}{2}\right)^2 &= 1
+        \end{aligned}$
+    \end{minipage}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[->] (-2.2,0) -- (2.2,0) node[right] {$x$};
+            \draw[->] (0,-2.7) -- (0,2.7) node[above] {$y$};
+            
+            \draw[thick,blue] (0,0) ellipse (0.5cm and 1cm);
+            \draw[thick,DarkGreen] (0,0) ellipse (1cm and 2cm);
+
+            \draw[thick,red] (0.5,0.25) -- (0.5,0) node[below left] {$\frac{1}{2}$};
+            \draw[thick,red] (1,0.25) -- (1,0) node[below left] {$1$};
+
+            \draw[thick,red] (0.25,1) -- (0,1) node[left] {$1$};
+            \draw[thick,red] (0.25,2) -- (0,2) node[left] {$2$};
+
+            \node[blue] at (1.5,3) {Level set at $k = 2$};
+            \node[DarkGreen] at (1.5,2.5) {Level set at $k = 5$};
+        \end{tikzpicture}
+    \end{center}
+
+    \item 
+    \begin{minipage}[t]{0.45\linewidth}
+        At $k = 0$, 
+        $\begin{aligned}[t]
+            x^2 + y^2 - z &= 0 \\
+            x^2 + y^2     &= z \\
+            r^2           &= z
+        \end{aligned}$
+        
+        \begin{center} \includegraphics[width=\linewidth]{Plots/e_1_7/1.png} \end{center}
+    \end{minipage}
+    \begin{minipage}[t]{0.45\linewidth}
+        At $k = 2$, 
+        $\begin{aligned}[t]
+            x^2 + y^2 - z &= 2 \\
+            x^2 + y^2 - 2 &= z \\
+            r^2 - 2       &= z
+        \end{aligned}$
+
+        \begin{center} \includegraphics[width=\linewidth]{Plots/e_1_7/2.png} \end{center}
+    \end{minipage}
+\end{enumerate}
+
+\subsection*{Exercise 1.8}
+
+\begin{itemize}
+    \item 
+    $\begin{aligned}[t]
+        \text{If } y = 0: f & = \frac{0}{x^4 + 0}      \\
+                            & = 0                      \\
+                            & \text{Since } x^4 \neq 0
+    \end{aligned}$
+
+    \item 
+    $\begin{aligned}[t]
+        \text{If } x = 0: f & = \frac{0}{0 + y^2}      \\
+                            & = 0                      \\
+                            & \text{Since } y^2 \neq 0
+    \end{aligned}$
+
+    \item 
+    $\begin{aligned}[t]
+        \text{If } y = x: f & = \frac{x^2x}{x^4 + x^2} \\
+                            & = \frac{x}{x+1} \to 0
+    \end{aligned}$
+
+    \item 
+    $\begin{aligned}[t]
+        \text{If } y = x^2: f & = \frac{x^2x^2}{x^4 + (x^2)^2} \\
+                              & = \frac{x^4}{2x^4}             \\
+                              & = \frac{1}{2}                  
+                              & \text{Since } x^4 \neq 0
+    \end{aligned}$
+\end{itemize}
+
+\subsection*{Exercise 1.9}
+
+\begin{align*}
+    |f(x, y)| & = \left| \frac{xy}{\sqrt{x^4 + y^2}} \right|
+              & \le \left| \frac{xy}{\sqrt{y^2}} \right|
+              & = \left| \frac{xy}{y} \right|                \\
+              & & & = |x| \to 0
+\end{align*}
+
+Thus, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{xy}{\sqrt{x^4 + y^2}} = 0 = f(0, 0)$. 
+
+Thus, the function is continuous at $(0, 0)$. 
+
+\subsection*{Exercise 1.10}
+
+By removing $2x^4$ from the denominator, we obtain $\left| \frac{x^2 \sin^2{y}}{2x^4 + y^2} \right| \le \left| \frac{x^2 \sin^2{y}}{y^2} \right|$. 
+
+{~~~}
+
+Note that $| \sin{\theta} | \le | \theta |$, and that as $\theta \to 0$, $\sin \theta \approx \theta$. This is the \term{small angle approximation}. 
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (-5.2, 0) -- (5.2, 0) node[right] {$x$};
+        \draw[->] (0, -2.2) -- (0, 2.2) node[above] {$y$};
+
+        \draw[thick,blue,domain=-5:5,smooth] plot (\x, {sin(\x r)}) node[above] {$y = \sin{x}$};
+        \draw[thick,DarkGreen,domain=-2:2] plot (\x, \x) node[right] {$y = x$};
+    \end{tikzpicture}
+\end{center}
+
+So $\left| \frac{x^2 \sin^2{y}}{y^2} \right| \approx \left| \frac{x^2 \cdot y^2}{y^2} \right| = \left| x^2 \right| \to 0$. 
+
+{~~~}
+
+Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 + y^2} = 0$. 
+
+\subsection*{Exercise 1.11}
+
+\begin{enumerate}
+    \item 
+    $\frac{\partial f}{\partial x} = 2x(y + 1)$ and 
+    $\frac{\partial f}{\partial y} = x^2 - 1$. 
+    
+    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = (2x(y + 1), x^2 - 1)$. 
+
+    {~~~}
+
+    \item 
+    $\frac{\partial f}{\partial x} = 2{\color{red}y}(xy - 2)$ and 
+    $\frac{\partial f}{\partial y} = 2{\color{red}x}(xy - 2)$. 
+    
+    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = (2y(xy - 2), 2x(xy - 2))$. 
+
+    {~~~}
+
+    \item 
+    $\frac{\partial f}{\partial x} = \frac{-2}{(x + 3y)^2}$ and 
+    $\frac{\partial f}{\partial y} = \frac{-6}{(x + 3y)^2}$. 
+    
+    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = \left( \frac{-2}{(x + 3y)^2}, \frac{-6}{(x + 3y)^2} \right)$. 
+
+    {~~~}
+
+    \item 
+    $\frac{\partial f}{\partial x} = e^{x + 4y}$ and 
+    $\frac{\partial f}{\partial y} = 4e^{x + 4y}$. 
+    
+    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = (e^{x + 4y}, 4e^{x + 4y})$. 
+
+    {~~~}
+
+    \item 
+    $\frac{\partial f}{\partial x} = 2x$, 
+    $\frac{\partial f}{\partial y} = 0$, and
+    $\frac{\partial f}{\partial z} = 2$. 
+    
+    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = (2x, 0, 2)$. 
+
+    {~~~}
+
+    \item 
+    $\frac{\partial f}{\partial x} = y{\color{red}z}e^{xz}$, 
+    $\frac{\partial f}{\partial y} = e^{xy}$, and
+    $\frac{\partial f}{\partial z} = {\color{red}x}ye^{xz}$. 
+    
+    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = (yze^{xz}, e^{xz}, xye^{xz})$. 
+\end{enumerate}
+
+\section*{Exercise 1.12}
+
+\begin{minipage}[t]{0.3\linewidth}
+    $\begin{aligned}[t]
+        \vec{u} & = \frac{\vec{v}}{| \vec{v} |}                             \\
+                & = \frac{(1, 3)}{\sqrt{1^2 + 3^2}}                         \\
+                & = \frac{1}{\sqrt{10}}\begin{bmatrix} 1 \\ 3 \end{bmatrix}
+    \end{aligned}$
+\end{minipage}
+\begin{minipage}[t]{0.3\linewidth}
+    $\begin{aligned}[t]
+        \Delta f 
+        & = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) \\
+        & = \begin{bmatrix} 2ye^{2x} \\ e^{2x} + 2y \end{bmatrix} \\
+        \Delta f(0, 0) 
+        & = \begin{bmatrix}
+            2 \cdot 0 \cdot e^{2 \cdot 0} \\
+            e^{2 \cdot 0} + 2 \cdot 0
+        \end{bmatrix} \\
+        &= \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+    \end{aligned}$
+
+\end{minipage}
+\begin{minipage}[t]{0.3\linewidth}
+    So $\begin{aligned}[t]
+        D_{\vec{u}} f 
+        & = \Delta f \cdot \vec{u} \\
+        & = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \cdot \frac{1}{\sqrt{10}} \begin{bmatrix} 1 \\ 3 \end{bmatrix} \\
+        & = \frac{3}{\sqrt{10}}
+    \end{aligned}$
+\end{minipage}
+
+\section*{Exercise 1.13}
+
+$\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = \begin{bmatrix} 2xy \\ x^2 \\ 1 \end{bmatrix}$. 
+
+The directional vector, $\Delta f(2, 2, 1) = \begin{bmatrix} 2 \cdot 2 \cdot 2 \\ 2^2 \\ 1 \end{bmatrix} = \begin{bmatrix} 8 \\ 4 \\ 1 \end{bmatrix}$. 
+
+The maximum rate of change is $| \Delta f(2, 2, 1) | = \sqrt{8^2 + 4^2 + 1} = 9$. 
+
+Thus, the maximum rate of change at $(2, 2, 1)$ is $9$ in the $\begin{bmatrix} 8 \\ 4 \\ 1 \end{bmatrix}$ direction. 
 
 % %----------------------------------------------------------------------------------------
 % %	INDEX
