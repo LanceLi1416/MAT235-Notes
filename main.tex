@@ -1388,35 +1388,40 @@ $\begin{aligned}[t]
 
 \subsection*{Exercise 1.8}
 
-\begin{itemize}
-    \item 
-    $\begin{aligned}[t]
-        \text{If } y = 0: f & = \frac{0}{x^4 + 0}      \\
-                            & = 0                      \\
-                            & \text{Since } x^4 \neq 0
-    \end{aligned}$
+\begin{minipage}[t]{0.45\linewidth}
+    \begin{itemize}
+        \item 
+        $\begin{aligned}[t]
+            \text{If } y = 0: f & = \frac{0}{x^4 + 0}      \\
+                                & = 0                      \\
+                                & \text{Since } x^4 \neq 0
+        \end{aligned}$
 
-    \item 
-    $\begin{aligned}[t]
-        \text{If } x = 0: f & = \frac{0}{0 + y^2}      \\
-                            & = 0                      \\
-                            & \text{Since } y^2 \neq 0
-    \end{aligned}$
+        \item 
+        $\begin{aligned}[t]
+            \text{If } x = 0: f & = \frac{0}{0 + y^2}      \\
+                                & = 0                      \\
+                                & \text{Since } y^2 \neq 0
+        \end{aligned}$
+    \end{itemize}
+\end{minipage}   
+\begin{minipage}[t]{0.45\linewidth}
+    \begin{itemize}
+        \item 
+        $\begin{aligned}[t]
+            \text{If } y = x: f & = \frac{x^2x}{x^4 + x^2} \\
+                                & = \frac{x}{x+1} \to 0
+        \end{aligned}$
 
-    \item 
-    $\begin{aligned}[t]
-        \text{If } y = x: f & = \frac{x^2x}{x^4 + x^2} \\
-                            & = \frac{x}{x+1} \to 0
-    \end{aligned}$
-
-    \item 
-    $\begin{aligned}[t]
-        \text{If } y = x^2: f & = \frac{x^2x^2}{x^4 + (x^2)^2} \\
-                              & = \frac{x^4}{2x^4}             \\
-                              & = \frac{1}{2}                  
-                              & \text{Since } x^4 \neq 0
-    \end{aligned}$
-\end{itemize}
+        \item 
+        $\begin{aligned}[t]
+            \text{If } y = x^2: f & = \frac{x^2x^2}{x^4 + (x^2)^2} \\
+                                  & = \frac{x^4}{2x^4}             \\
+                                  & = \frac{1}{2}                  
+                                  & \text{Since } x^4 \neq 0
+        \end{aligned}$
+    \end{itemize}
+\end{minipage}   
 
 \subsection*{Exercise 1.9}
 
@@ -1441,11 +1446,11 @@ Note that $| \sin{\theta} | \le | \theta |$, and that as $\theta \to 0$, $\sin \
 
 \begin{center}
     \begin{tikzpicture}
-        \draw[->] (-5.2, 0) -- (5.2, 0) node[right] {$x$};
-        \draw[->] (0, -2.2) -- (0, 2.2) node[above] {$y$};
+        \draw[->] (-2.6, 0) -- (2.6, 0) node[right] {$x$};
+        \draw[->] (0, -2.2) -- (0, 1.7) node[above] {$y$};
 
-        \draw[thick,blue,domain=-5:5,smooth] plot (\x, {sin(\x r)}) node[above] {$y = \sin{x}$};
-        \draw[thick,DarkGreen,domain=-2:2] plot (\x, \x) node[right] {$y = x$};
+        \draw[thick,blue,domain=-2.5:2.5,smooth] plot (\x, {sin(2*\x r)}) node[below left] {$y = \sin{x}$};
+        \draw[thick,DarkGreen,domain=-1:1] plot (\x, {2*\x}) node[right] {$y = x$};
     \end{tikzpicture}
 \end{center}
 
