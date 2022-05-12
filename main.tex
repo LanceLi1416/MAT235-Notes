@@ -98,10 +98,36 @@
 
 Parametric equations and polar coordinates. Vectors, vector functions and space curves. Differential and integral calculus of functions of several variables. Line integrals and surface integrals and classic vector calculus theorems. Examples from life sciences and physical science applications.
 
-% TODO: find the title for Chapter 1
-\chapter{Chapter 1}
+{~~~}
 
-\section{Curved Lines and Surfaces}
+This is a second-year \bred{Multivariable Calculus} course. The depth of mathematics will be taught at the standard level accessibly to all second-year undergraduate students who has fully finished any first year Introduction to Calculus course. The course will have significant emphasis on computation. In general, theorems will be stated without proofs, but with an indication of the mathematical ideas involved. No emphasis will be put on rigorous mathematic proofs.
+
+\textbf{Requirements}
+
+Any full first-year Introduction to Calculus course is acceptable, preferably with depth taught at the standard level for first-year undergraduate students. Some examples of the courses include, but are not limited to: MAT135/136; MAT137; MAT157; MAT133; There will be a review of key concepts that we need from Linear Algebra at the beginning of the course, so it is not necessary to have any background in linear algebra.
+
+\textbf{Textbook}
+
+\begin{itemize}
+    \item Single Variable Calculus: Early Transcendentals, Stewart (8th/9th Edition) \cite{Stewart}
+    \item Advanced Calculus, Folland
+\end{itemize}
+
+\textbf{The textbooks are optional}, and are not necessary to the course. 
+
+\chapterimage{c1.png}
+
+\chapter{Parametric Equations and Polar Coordinates}
+
+\section{Curves Defined by Parametric Equations}
+
+\section{Calculus with Parametric Curves}
+
+\section{Polar Coordinates}
+
+\section{Calculus in Polar Coordinates}
+
+\section{Conic Sections}
 
 \subsection{Curved Lines}
 
@@ -263,6 +289,10 @@ When the variables $x$ and $y$ appear together as $x^2 + y^2$, this signals that
         \end{enumerate}
     \end{minipage}
 \end{exercise}
+
+\chapterimage{c2.png}
+
+\chapter{Vectors and the Geometry of Space}
 
 \section{Vector and Matrix}
 
@@ -437,6 +467,10 @@ Consider 3 points $\vec{u}$, $\vec{v}$, and $\vec{w}$. We can connect any 2 pair
         \item The plane equidistant from point $(3, 1, 5)$ and $(-2, 0, 0)$.
     \end{enumerate}
 \end{exercise}
+
+\chapterimage{c3.png}
+
+\chapter{Partial Derivatives}
 
 \section{Multivariable Function}
 
@@ -806,8 +840,10 @@ We can also construct the Hessian for $f(x, y, z)$, which will be a $3 \times 3$
 
 \part{Appendices}
 
+\chapterimage{sol.png}
+
 \chapter*{Solutions to Exercise Questions}
-\addcontentsline{toc}{chapter}{\textcolor{ocre}{Solutions to Exercise Questions}}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{A Solutions to Exercise Questions}}
 
 \section*{Chapter 1}
 
@@ -1128,7 +1164,9 @@ We can also construct the Hessian for $f(x, y, z)$, which will be a $3 \times 3$
     \end{minipage}
 \end{enumerate}
 
-\subsection*{Exercise 1.3}
+\section*{Chapter 2}
+
+\subsection*{Exercise 2.1}
 
 \begin{enumerate}
     \item 
@@ -1161,7 +1199,7 @@ We can also construct the Hessian for $f(x, y, z)$, which will be a $3 \times 3$
     \end{aligned}$
 \end{enumerate}
 
-\subsection*{Exercise 1.4}
+\subsection*{Exercise 2.2}
 
 \begin{minipage}[t]{0.45\linewidth}
     \begin{enumerate}
@@ -1209,7 +1247,7 @@ We can also construct the Hessian for $f(x, y, z)$, which will be a $3 \times 3$
 \end{minipage}
 
 \vfill
-\subsection*{Exercise 1.5}
+\subsection*{Exercise 2.3}
 
 $\begin{aligned}[t]
     \vec{x} \times \vec{y} 
@@ -1218,7 +1256,7 @@ $\begin{aligned}[t]
     & = (-1, -2, -1)
 \end{aligned}$
 
-\subsection*{Exercise 1.6}
+\subsection*{Exercise 2.4}
 
 \begin{enumerate}
     \item
@@ -1322,7 +1360,9 @@ $\begin{aligned}[t]
     \end{aligned}$
 \end{enumerate}
 
-\subsection*{Exercise 1.7}
+\section*{Chapter 3}
+
+\subsection*{Exercise 3.1}
 
 \begin{enumerate}
     \item 
@@ -1386,7 +1426,7 @@ $\begin{aligned}[t]
     \end{minipage}
 \end{enumerate}
 
-\subsection*{Exercise 1.8}
+\subsection*{Exercise 3.2}
 
 \begin{minipage}[t]{0.45\linewidth}
     \begin{itemize}
@@ -1423,7 +1463,7 @@ $\begin{aligned}[t]
     \end{itemize}
 \end{minipage}   
 
-\subsection*{Exercise 1.9}
+\subsection*{Exercise 3.3}
 
 \begin{align*}
     |f(x, y)| & = \left| \frac{xy}{\sqrt{x^4 + y^2}} \right|
@@ -1436,7 +1476,7 @@ Thus, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{xy}{\sqrt{x^4 + y^2}
 
 Thus, the function is continuous at $(0, 0)$. 
 
-\subsection*{Exercise 1.10}
+\subsection*{Exercise 3.4}
 
 By removing $2x^4$ from the denominator, we obtain $\left| \frac{x^2 \sin^2{y}}{2x^4 + y^2} \right| \le \left| \frac{x^2 \sin^2{y}}{y^2} \right|$. 
 
@@ -1460,7 +1500,7 @@ So $\left| \frac{x^2 \sin^2{y}}{y^2} \right| \approx \left| \frac{x^2 \cdot y^2}
 
 Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 + y^2} = 0$. 
 
-\subsection*{Exercise 1.11}
+\subsection*{Exercise 3.5}
 
 \begin{enumerate}
     \item 
@@ -1512,7 +1552,7 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
     So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = (yze^{xz}, e^{xz}, xye^{xz})$. 
 \end{enumerate}
 
-\section*{Exercise 1.12}
+\section*{Exercise 3.6}
 
 \begin{minipage}[t]{0.3\linewidth}
     $\begin{aligned}[t]
@@ -1544,7 +1584,7 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
     \end{aligned}$
 \end{minipage}
 
-\section*{Exercise 1.13}
+\section*{Exercise 3.7}
 
 $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = \begin{bmatrix} 2xy \\ x^2 \\ 1 \end{bmatrix}$. 
 
@@ -1554,14 +1594,24 @@ The maximum rate of change is $| \Delta f(2, 2, 1) | = \sqrt{8^2 + 4^2 + 1} = 9$
 
 Thus, the maximum rate of change at $(2, 2, 1)$ is $9$ in the $\begin{bmatrix} 8 \\ 4 \\ 1 \end{bmatrix}$ direction. 
 
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\chapterimage{bib.png}
+
+\chapter*{Bibliography}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{B Bibliography}}
+\printbibliography[heading=bibempty,type=book]
+
 % %----------------------------------------------------------------------------------------
 % %	INDEX
 % %----------------------------------------------------------------------------------------
 
-\cleardoublepage
+\usechapterimagefalse
 \phantomsection
 \setlength{\columnsep}{0.75cm}
-\addcontentsline{toc}{chapter}{\textcolor{ocre}{Index}}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{C Index}}
 \printindex
 
 % %----------------------------------------------------------------------------------------
