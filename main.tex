@@ -94,7 +94,8 @@
 
 \chapterimage{chapter_head_2.pdf}
 
-\chapter{Introduction}
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{\textcolor{ocre}{Introduction}}
 
 Parametric equations and polar coordinates. Vectors, vector functions and space curves. Differential and integral calculus of functions of several variables. Line integrals and surface integrals and classic vector calculus theorems. Examples from life sciences and physical science applications.
 
@@ -121,7 +122,7 @@ Any full first-year Introduction to Calculus course is acceptable, preferably wi
 
 \section{Curves Defined by Parametric Equations}
 
-\subsection*{Parametric Equations}
+\subsection{Parametric Equations}
 
 \begin{definition}[Parametric Equations]\index{Parametric Equations}
     Suppose that $x$ and $y$ are both given as functions of a third variable $t$, called a \term{parameter}, by the equations $$x = f(t) \qquad y = g(t)$$ which are called \term{parametric equations}. 
@@ -295,7 +296,9 @@ The curve has a horizontal tangent when $\frac{dy}{dt}$, provided that $\frac{dx
 
 $\frac{d^2y}{dx^2}$ can also be found by $$\frac{d^2y}{dx^2} = \frac{d}{dx}\left( \frac{dy}{dx} \right) = \frac{\frac{d}{dt}\left(\frac{dy}{dx}\right)}{\frac{dx}{dt}}$$
 
+\subsection{Areas}
 
+We know that the area under a curve $y = F(x)$ from $a$ to $b$ is $A = \int_a^b F(x)\,dx$, where $F(x) \ge 0$. If the curve is traced out once by the parametric equations $x = f(t)$ and $y = g(t)$, $\alpha \le t \le \beta$, them we can calculate an area formula by using the Substitution Rule for Definite Integrals as follows: $$A = \int_a^b y\,dx = \int_\alpha^\beta g(t) f'(t)\,dt$$
 
 \section{Polar Coordinates}
 
