@@ -671,6 +671,28 @@ Some useful facts:
     \item Recall equation of plane: $\vec{n} \cdot \vec{r} = \vec{n} \cdot \vec{r}_0$
     
     For $f(x, y, z) = k$ for some constant $k$, gives a \term{level set} surface. Define the \term{tangent plane} at some fixed point $\vec{r}_0 = (x_0, y_0, z_0)$ by the \bred{normal vector} $\vec{n} = \Delta f(x_0, y_0, z_0)$.
+
+    {~~~}
+
+    For example, consider $f(x,y) = x^2 + y^2$. 
+
+    $\Delta f = (2x, 2y)$. At $(1,0)$, $\Delta f = (2,0)$. 
+
+    \begin{center}
+        \begin{tikzpicture}
+                \draw[->] (-3.7,0) -- (3.7,0) node[right] {$x$};
+                \draw[->] (0,-2.7) -- (0,2.7) node[above] {$y$};
+                
+                \draw[thick,orange] (0,0) circle (1cm);
+                \draw[thick,DarkGreen] (0,0) circle(2cm); 
+                
+                \draw[thick,pink,->] (1,0) -- (1,1) node[above] {Tangent to the level set};
+                \draw[thick,blue,->] (1,0) -- (3,0) node[below] {$\Delta f$, orthogonal to the level set};
+                
+                \node[orange] at (-1,1) {$k=1$};
+                \node[DarkGreen] at (-1.5,2) {$k=2$};
+            \end{tikzpicture}
+    \end{center}
 \end{enumerate}
 
 \begin{exercise}
@@ -707,6 +729,76 @@ Some useful facts:
 \end{exercise}
 
 \section{Differentiation}
+
+% TODO: reformat this section
+In first year, we used the equation $y - f(a) = f'(a) (x-a)$ to estimate the function $y = f(x)$ at the point $a$. We want the error to decrease the fastest when we approach $x = a$. 
+
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[->] (-2.7,0) -- (2.7,0) node[right] {$x$};
+            \draw[->] (0,-2.7) -- (0,2.7) node[above] {$y$};
+                
+            \draw[thick,blue,domain=1.6:-1.6] plot (\x, {(\x)*(\x)}) node[below left] {$f(x)$};
+            
+            \draw[thick,red,domain=-1:2.2] plot (\x,{1.5*(\x)-0.5625}) node[below right] {$L(x)$};
+            \draw[thick,DarkGreen,domain=-0.25:1.5] plot(\x,{3*\x-1.6875}) node[below left] {$g(x)$};
+            
+            \draw[thick,dashed] (0.75,0.5625) -- (0.75,0) node[below] {$a$};
+        \end{tikzpicture}
+    \end{center}
+    
+    Here the equation to the tangent line, $L(x) = f(a) + f'(a) \cdot (x-a)$. We want the error ($f(x) - L(x)$ at $x$) for the tangent line to approache $0$ the fastest. In particular, it is faster than $x$. That is, $\lim_{x\to{a}} \frac{f(x) - L(x)}{x - a} = 0$. 
+    
+    Take $x = a + h$, we obtain 
+    $\begin{aligned}[t]
+        \lim_{h\to0} \frac{f(a+h) - \left[ f(a) + f'(a) \cdot \cancelto{h}{(a - x)} ~~~ \right]}{h} 
+        &= 0 \\
+        \lim_{h\to0} \frac{f(a+h) - f(a) - f'(a) \cdot h}{h} 
+        &= 0 \\
+        \lim_{h\to0} \frac{f(a+h) - f(a)}{h} - \frac{f'(a) \cdot \cancel{h}}{\cancel{h}} 
+        &= 0 \\ 
+        \lim_{h\to0} \frac{f(a+h) - f(a)}{h}
+        &= f'(a)
+    \end{aligned}$
+    
+    This is the equation we are familiar with. 
+    
+    Applying the same idea to 2D functions, we want the error for the tangent plane $L(x,y)$, $f(x,y) - L(x,y)$, to approach $0$ the fastest. In particular, we want $\lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} = 0$. 
+    
+    {~~~}
+
+    The tangent plane, $L(x,y)$ at $\vec{a} = (x_0, y_0)$. $L(x,y)$ intersects $f(\vec{a})$ at $(x_0, y_0, f(\vec{a}))$. 
+        
+    We have the curve $z = f(x,y)$, which can be thought of as the level set of $D(x,y,z) = f(x,y) - z$ at $k = 0$. At any given point $\vec{a}$, the normal vector of the tangent plane $\vec{n} = \Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right)$. 
+    
+    $\begin{aligned}[t]
+        \text{For the tangent plane}, \vec{n} \cdot \vec{r}
+        &= \vec{n} \cdot \vec{r}_0 \\
+        \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right) \cdot \vec{r} 
+        &= \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right) \cdot \left( x_0, y_0, f(\vec{a}) \right) \\
+        \frac{\partial f}{\partial x} x + \frac{\partial f}{\partial y} y - z 
+        &= \frac{\partial f}{\partial x} x_0 + \frac{\partial f}{\partial y} - f(\vec{a}) \\
+        z
+        &= \frac{\partial f}{\partial x} (x - x_0) + \frac{\partial f}{\partial y} (y - y_0) + f(\vec{a}) \\
+        &= f(\vec{a}) + \Delta f(\vec{a}) \cdot (x-x_0, y-y_0)
+    \end{aligned}$
+    
+    This gives the equation of the tangent plane, $L(x,y)$. 
+    
+    {~~~}
+    
+    Take $(x,y) = \vec{x} = \vec{a} + \vec{h}$. Then, $\vec{h} = \vec{x} - \vec{a} = (x - x_0, y - y_0)$. 
+    
+    Then, we have $L(x,y) = f(\vec{a}) + \Delta f(\vec{a}) \cdot \vec{h}$. 
+    
+    $\begin{aligned}[t]
+    \text{Thus, we obtain the equation}
+        \lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} &= 0 \\
+        \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \left[ f(\vec{a}) + \Delta f(\vec{a}) \cdot \vec{h} \right]}{| \vec{h} |} &= 0 \\
+        \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \Delta f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} &= 0
+    \end{aligned}$
+
+%TODO: end of reformatting section
 
 \begin{definition}[Differentiable]\index{Differentiable}
     $f$ is \term{differentiable} if the gradient vector $\Delta f(\vec{a})$ satisfies $$\lim_{\vec{h} \to \vec{0}} = \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \Delta f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} = 0$$
