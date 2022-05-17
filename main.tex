@@ -17,6 +17,7 @@
 \pgfplotsset{compat=1.18}
 \usepackage{mathrsfs}
 \usepackage{tikz-3dplot}
+\usepackage{cancel}
 \tdplotsetmaincoords{60}{115}
 % Colors
 \definecolor{LightBlue}{rgb}{0.0, 0.64, 1.0}
@@ -1021,6 +1022,7 @@ We can also construct the Hessian for $f(x, y, z)$, which will be a $3 \times 3$
 
 \chapter*{Solutions to Exercise Questions}
 \addcontentsline{toc}{chapter}{\textcolor{ocre}{A Solutions to Exercise Questions}}
+\setlength{\parindent}{0pt} % No indentation
 
 \section*{Chapter 1}
 
@@ -1605,49 +1607,27 @@ $\begin{aligned}[t]
 
 \subsection*{Exercise 3.2}
 
-\begin{minipage}[t]{0.45\linewidth}
-    \begin{itemize}
-        \item 
-        $\begin{aligned}[t]
-            \text{If } y = 0: f & = \frac{0}{x^4 + 0}      \\
-                                & = 0                      \\
-                                & \text{Since } x^4 \neq 0
-        \end{aligned}$
+\begin{itemize}
+        \item For $x = 0$, $\lim_{(x,y)\to(0,0)}f(x,y) = \lim_{y\to0}\frac{0}{0 + y^2} = 0$. 
 
-        \item 
-        $\begin{aligned}[t]
-            \text{If } x = 0: f & = \frac{0}{0 + y^2}      \\
-                                & = 0                      \\
-                                & \text{Since } y^2 \neq 0
-        \end{aligned}$
-    \end{itemize}
-\end{minipage}   
-\begin{minipage}[t]{0.45\linewidth}
-    \begin{itemize}
-        \item 
-        $\begin{aligned}[t]
-            \text{If } y = x: f & = \frac{x^2x}{x^4 + x^2} \\
-                                & = \frac{x}{x+1} \to 0
-        \end{aligned}$
+        {~~~}
 
-        \item 
-        $\begin{aligned}[t]
-            \text{If } y = x^2: f & = \frac{x^2x^2}{x^4 + (x^2)^2} \\
-                                  & = \frac{x^4}{2x^4}             \\
-                                  & = \frac{1}{2}                  
-                                  & \text{Since } x^4 \neq 0
-        \end{aligned}$
-    \end{itemize}
-\end{minipage}   
+        \item For $y = x$, $\lim_{(x,y)\to(0,0)}f(x,y) = \lim_{x\to0} \frac{x^2x}{x^4 + x^2} = \lim_{x\to0} \frac{x}{x+1} = 0$. 
+
+        {~~~}
+
+        \item For $y = 0$, $\lim_{(x,y)\to(0,0)}f(x,y) = \lim_{x\to0}\frac{0}{x^4 + 0} = 0$. 
+
+        {~~~}
+
+        \item For $y = x^2$, $\lim_{(x,y)\to(0,0)}f(x,y) = \lim_{x\to0} \frac{x^2x^2}{x^4 + (x^2)^2} = \lim_{x\to0} \frac{x^4}{2x^4} = \frac{1}{2}$. 
+\end{itemize} 
+
+Thus, the limit at $(a,y) = (0,0)$ does not exist. 
 
 \subsection*{Exercise 3.3}
 
-\begin{align*}
-    |f(x, y)| & = \left| \frac{xy}{\sqrt{x^4 + y^2}} \right|
-              & \le \left| \frac{xy}{\sqrt{y^2}} \right|
-              & = \left| \frac{xy}{y} \right|                \\
-              & & & = |x| \to 0
-\end{align*}
+$$|f(x, y)| = \left| \frac{xy}{\sqrt{x^4 + y^2}} \right| \le \left| \frac{xy}{\sqrt{y^2}} \right| = \left| \frac{xy}{y} \right| = |x| \to 0$$
 
 Thus, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{xy}{\sqrt{x^4 + y^2}} = 0 = f(0, 0)$. 
 
@@ -1773,67 +1753,136 @@ Thus, the maximum rate of change at $(2, 2, 1)$ is $9$ in the $\begin{bmatrix} 8
 
 \section*{Exercise 3.8}
 
-$\Delta f = \begin{bmatrix} y^2e^z \\ 2xye^z \\ xy^2e^z \end{bmatrix}$
+$\Delta f  = \left( \frac{\partial f}{\partial x} \\ \frac{\partial f}{\partial y} \\ \frac{\partial f}{\partial z} \right) = \left( y^2e^z, 2xye^z, xy^2e^z \right)$
 
-So $\Delta f(1,1,1) = \begin{bmatrix} e \\ 2e \\ e \end{bmatrix}$
-
-The tangent plane:
+So $\vec{n} = \Delta f(1,1,1) = \begin{bmatrix} 1^2 \cdot e^1 \\ 2 \cdot 1 \cdot 1 \cdot e^1 \\ 1 \cdot 1^2 \cdot e^1 \end{bmatrix} = \begin{bmatrix} e \\ 2e \\ e \end{bmatrix}$.
 
 $\begin{aligned}[t]
-    \vec{n} \cdot \vec{r} &= \vec{n} \cdot \vec{r}_0 \\
-    \begin{bmatrix} e \\ 2e \\ e \end{bmatrix} \cdot \vec{r} &= \begin{bmatrix} e \\ 2e \\ e \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \\
-    ex + 2ey + ez &= e + 2e + e \\
-    &= 4e \\
-    x + 2y + z &= 4
+    \text{For the equation of the tangent plane, }
+    \vec{n} \cdot \vec{r}
+     & = \vec{n} \cdot \vec{r}_0                                                                    \\
+    \begin{bmatrix} e \\ 2e \\ e \end{bmatrix} \cdot \vec{r}
+     & = \begin{bmatrix} e \\ 2e \\ e \end{bmatrix} \cdot \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \\
+    ex + 2ey + ez
+     & = e + 2e + e                                                                                 \\
+     & = 4e                                                                                         \\
+    x + 2y + z
+     & = 4
 \end{aligned}$
 
 \section*{Exercise 3.9}
 
 \begin{enumerate}[label=\alph*)]
-    \item Let $\vec{u} = (a,b)$ where $a^2 + b^2 = 0$. 
+    \item Let $\vec{u} = (a,b)$ such that $a^2 + b^2 = 0$ (that is, $\vec{u}$ is a unit vector). 
+    
+    We focus on $\vec{a} = (0,0)$. 
 
-    $\begin{aligned}[t]
+    {~~~}
+
+    Now, $\begin{aligned}[t]
         D_{\vec{u}} f(\vec{a}) & = \lim_{h\to0} \frac{f(\vec{a} + h\vec{u}) - f(\vec{a})}{h}          \\
                                & = \lim_{h\to0} \frac{f(ha,hb) - f(0,0)}{h}                           \\
                                & = \lim_{h\to0} \frac{1}{h} \cdot \frac{ha \cdot hb}{(ha)^2 + (hb)^2} \\
-                               & = \lim_{h\to0} \frac{1}{h} \frac{h^2ab}{h^2(a^2 + b^2)}              \\
+                               & = \lim_{h\to0} \frac{1}{h} \cdot \frac{h^2ab}{h^2(a^2 + b^2)}        \\
                                & = \lim_{h\to0} \frac{ab}{h}                                          \\
                                & = \begin{cases}
-                                        0          & y = 0 ~ (\vec{u} = (1,0))\\
-                                        0          & x = 0 ~ (\vec{u} = (0,1))\\
+                                        0          & b = 0 ~ (\vec{u} = (1,0))\\
+                                        0          & a = 0 ~ (\vec{u} = (0,1))\\
                                         \text{DNE} & \text{otherwise}
                                    \end{cases}
     \end{aligned}$
 
-    For continuity, $\begin{aligned}[t]
-        \lim_{(x,y) \to (0,0)} f(x,y) &= f(0,0) = 0 \\
-        x = 0: f &= \frac{0 \cdot y}{0^2 + y^2} = 0 \\
-        y = 0: f &= \frac{x \cdot 0}{x^2 + 0^2} = 0 \\
-        y = x: f &= \frac{x \cdot x}{x^2 + x^2} = \frac{1}{2} \neq 0
-    \end{aligned}$ 
+    {~~~}
 
-    Thus, this function is NOT continuous. 
+    To check for continuity, we want $\lim_{(x,y)\to(0,0)} f(x,y) = f(0,0) = 0$. 
+
+    \begin{itemize}
+        \item For $x = 0$, $\lim_{(x,y)\to(0,0)} f(x,y) = \lim_{x\to0} \frac{0 \cdot y}{0^2 + y^2} = 0$.
+        \item For $y = 0$, $\lim_{(x,y)\to(0,0)} f(x,y) = \lim_{y\to0} \frac{x \cdot 0}{x^2 + 0^2} = 0$.
+        \item For $y = x$, $\lim_{(x,y)\to(0,0)} f(x,y) = \lim_{x\to0} \frac{x \cdot x}{x^2 + x^2} = \frac{1}{2} \neq 0$. 
+    \end{itemize}
+
+    {~~~}
+    
+    Thus, this function is not continuous. 
 
     {~~~}
 
-    \item 
-    $\begin{aligned}[t]
+    \item Let $\vec{u} = (a,b)$ such that $a^2 + b^2 = 0$ (that is, $\vec{u}$ is a unit vector). 
+    
+    We focus on $\vec{a} = (0,0)$. 
+
+    {~~~}
+
+    Now, $\begin{aligned}[t]
         D_{\vec{u}} f(\vec{a}) & = \lim_{h\to0} \frac{f(\vec{a} + h\vec{u}) - f(\vec{a})}{h} \\
                                & = \lim_{h\to0} \frac{f(ha,hb) - f(0,0)}{h}                  \\
                                & = \lim_{h\to0} \frac{1}{h} \cdot \sqrt{| ha \cdot hb |}     \\
                                & = \lim_{h\to0} \frac{1}{h} \cdot \sqrt{h^2 | a \cdot b |}   \\
                                & = \frac{|h|}{h} \sqrt{| a \cdot b |}                        \\
                                & = \begin{cases}
-                                       0          & y = 0 ~ (\vec{u} = (1,0)) \\
-                                       0          & x = 0 ~ (\vec{u} = (0,1)) \\
+                                       0          & b = 0 ~ (\vec{u} = (1,0)) \\
+                                       0          & a = 0 ~ (\vec{u} = (0,1)) \\
                                        \text{DNE} & \text{otherwise}
                                    \end{cases}
         \end{aligned}$
+
+        {~~~}
 
         Since there is no division by $0$, this function is continuous. 
 \end{enumerate}
 
 \section*{Exercise 3.10}
+
+Let $\vec{u} = (a,b)$. 
+
+We focus on $\vec{a} = (0,0)$. 
+
+Now, 
+$\begin{aligned}[t]
+    D_{\vec{u}} f(\vec{a}) & = \lim_{h\to0} \frac{f(\vec{a} + h\vec{u}) - \cancelto{0}{f(\vec{a}})}{h} \\
+                           & = \lim_{h\to0} \frac{f(ha, hb)}{h}                                        \\
+                           & = \lim_{h\to0} \frac{1}{h} \cdot \frac{(ha)^2 \cdot hb}{(ha)^4 + (hb)^2}  \\
+                           & = \lim_{h\to0} \frac{1}{h} \cdot \frac{h^3 \cdot ab}{h^2(h^2a^4 + b^2)}   \\
+                           & = \lim_{h\to0} \frac{a^2b}{h^2a^4 + b^2}                                  \\
+                           & = \begin{cases}
+                                   0             & b = 0 (\vec{u} = (1,0)) \\
+                                   \frac{a^2}{b} & \text{otherwise}
+                               \end{cases}
+\end{aligned}$
+
+Thus, the directional derivatives exist at $(0,0)$. 
+
+{~~~}
+
+For $f$ to be differentiable, we need $\lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \Delta f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} = 0$. 
+
+Note that $\Delta f(\vec{a}) = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = \begin{bmatrix} D_{(1,0)} f(\vec{a}) \\ D_{(0,1)} f(\vec{a}) \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}$.
+
+Let $(x,y) = \vec{x} = \vec{a} + \vec{h} = \vec{h}$ since $\vec{a} = (0,0)$. 
+
+Thus, 
+$\begin{aligned}[t]
+    \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \cancelto{0}{f(\vec{a})} - \cancelto{0}{\Delta f(\vec{a})} \cdot \vec{h}}{| \vec{h} |}
+     & = \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h})}{| \vec{h} |}          \\
+     & = \lim_{(x,y)\to(0,0)} \frac{f(x,y)}{\sqrt{x^2 + y^2}}                       \\
+     & = \lim_{(x,y)\to(0,0)} \frac{1}{\sqrt{x^2+y^2}} \cdot \frac{x^2y}{x^4 + y^2} 
+\end{aligned}$
+
+\begin{itemize}
+    \item For $x = 0$, $\lim_{(x,y)\to(0,0)} \frac{1}{\sqrt{x^2+y^2}} \cdot \frac{x^2y}{x^4 + y^2} = \lim_{y\to0} \frac{1}{\sqrt{0^2+y^2}} \cdot \frac{0^2 \cdot y}{0^4 + y^2} = 0$. 
+    \item For $y = 0$, $\lim_{(x,y)\to(0,0)} \frac{1}{\sqrt{x^2+y^2}} \cdot \frac{x^2y}{x^4 + y^2} = \lim_{x\to0} \frac{1}{\sqrt{x^2+0^2}} \cdot \frac{x^2 \cdot 0}{x^4 + 0^2} = 0$. 
+    \item For $y = x$, $\begin{aligned}[t]
+        \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \cancelto{0}{f(\vec{a})} - \cancelto{0}{\Delta f(\vec{a})} \cdot \vec{h}}{| \vec{h} |}
+         & = \lim_{(x,y)\to(0,0)} \frac{1}{\sqrt{x^2+y^2}} \cdot \frac{x^2y}{x^4 + y^2}                   \\
+         & = \lim_{x\to0} \frac{1}{\sqrt{x^2 + x^2}} \cdot \frac{x^2 \cdot x}{x^4 + x^2}                  \\
+         & = \lim_{x\to0} \frac{1}{\sqrt{2x^2}} \cdot \frac{\cancel{x^2} \cdot x}{\cancel{x^2} (x^2 + 1)} \\
+         & = \lim_{x\to0} \frac{x}{\sqrt{2}|x|} \cdot \frac{1}{x^2 + 1}                                   \\
+         & = \pm \frac{1}{\sqrt{2}}
+    \end{aligned}$
+\end{itemize}
+
+Thus, $\lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \Delta f(\vec{a}) \cdot \vec{h}}{| \vec{h} |}$ does not exist. $f$ is not differentiable. 
 
 \section*{Exercise 3.11}
 
