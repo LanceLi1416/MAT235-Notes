@@ -918,6 +918,100 @@ We can also construct the Hessian for $f(x, y, z)$, which will be a $3 \times 3$
     Is $f$ $C^2$ at $(0, 0)$ (and have we reacher a contradiction)?
 \end{exercise}
 
+\section{Critical Points}
+
+In first year, we found critical points of functions by setting the derivative to zero. Then we check their second derivative to conclude whether critical points are max or min. In higher dimensions, it is very similar.
+
+Let $f(x, y)$ be a 2D function (which is $C^2$).
+
+We set $\Delta f(\vec{x}) = \vec{0}$. Solve $\vec{x}$, these are the \term{critical points}\index{Crtitial Point}.
+
+Then we check second derivatives: \bred{the Hessian Matrix}.
+$$H = \begin{bmatrix}
+    \frac{\partial^2 f}{\partial x^2} & \frac{\partial^2 f}{\partial xy}  \\
+    \frac{\partial^2 f}{\partial yx}  & \frac{\partial^2 f}{\partial y^2}
+\end{bmatrix}$$
+
+Note that $H$ can contain $x$ and $y$, so $H$ would be different for different points. For each critical point $\vec{a}$, 
+\begin{itemize}
+    \item if $\det(H(\vec{a})) > 0$, look at the top left entry
+    
+    \begin{itemize}
+        \item if $\frac{\partial^2 f}{\partial x^2}(\vec{a}) > 0$,  then it is a \term{local minimum}\index{Local Minimum}.
+        \item if $\frac{\partial^2 f}{\partial x^2}(\vec{a}) < 0$,  then it is a \term{local maximum}\index{Local Maximum}.
+    \end{itemize}
+
+    \item if $\det(H(\vec{a})) < 0$, it is a \term{saddle point}\index{Saddle Point}. 
+
+    \item if $\det(H(\vec{a})) = 0$, it is inconclusive. 
+\end{itemize}
+
+To find the (absolute) maximum and minimum of $f$ in a region $D$, 
+\begin{enumerate}
+    \item Find all local extrema inside $D$ using critical points
+    \item Find all extrema on the \bred{boundary} of $D$ 
+    \item Compare all the function values to attain the absolute extrema
+\end{enumerate}
+
+\begin{exercise}
+    Find and classify all critical points.
+
+    \begin{enumerate}
+        \item $f(x,y) = 3x^2 + 2xy + 5y^2$
+        \item $f(x,y) = x^2 + 3y^4 + 4y^3 - 12y^2$
+        \item $f(x,y) = (x - 1)(x^2 + y^2)$
+        \item $f(x,y) = (x^2 + 2y^2)e^{-x^2 - y^2}$
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Let $f(x,y) = x^2 + y^2 - 4x$
+
+    Find the max and min indide the triangle $D$ defined by $(0, -3)$, $(0, 3)$, and $(3, 0)$. 
+\end{exercise}
+
+\section{Lagrange Multiplier}
+
+Sometimes, we want to maximim/minimize a function on some specific curve, or there are some constraints on the variables that the function takes in. 
+
+\begin{itemize}
+    \item Take the function we want to maximize/minimize to be $f$.
+
+    \item Take the equation that describes the constraint to be $g = 0$ (perhaps we have more than 1 constraint, so the second constraint is $h = 0$).
+
+    \item The \term{Lagrange Multiplier Formula}\index{Lagrange Multiplier Formula} is $$\Delta f = \lambda \Delta g(+\mu \Delta h + \cdots)$$
+\end{itemize}
+
+Each constraint will create an extra $\Delta$ term on the right side with some constant in front (we need every $\Delta$ term on the right to be non-zero). 
+
+$\lambda$ and $\mu$ are constants that you need to solve for, along with $n$ variables of $f$. The equation is an equation for vectors, so each of the components are equal. So, there are $n$ equations in the formula since $\Delta f$ has $n$ components. For each constant like $\lambda$ or $\mu$, there is a equation of constraint for each. So if there are 2 constraints, there are $n + 2$ variables that you need to solve, and you have $n + 2$ equations to do it.
+
+You are \bred{not allowed to divide by zero} when you cancel terms. When attempting to divide a quantity $x$, you need to split into 2 cases:
+\begin{itemize}
+    \item When $x \neq 0$, you can divide
+    \item when $x = 0$, you cannot
+\end{itemize}
+
+\begin{exercise}
+    Find the max and min of the function $f(x, y)$ subject to constraints given.
+
+    $f(x,y) = 2x - 6y$ with constraint $4x^2 + 2y^2 = 25$. 
+\end{exercise}
+
+\begin{exercise}
+    Consider the curve in $\mathbb{R}^2$, $C: y = x^2$. 
+
+    Find the point $p$ on $C$ so that the distance between $p$ and $(0, -1)$ is smallest.
+
+    \textbf{Strategy}: We minimize $f(x, y) = \text{distance}^2 = (x - 0)^2 + (y -(-1))^2$.
+\end{exercise}
+
+\begin{exercise}
+    Consider 2 curves in $\mathbb{R}^2$, $C_1: y = x^2$ and $C_2: y = x - 1$
+
+    Find points $p$ on $C_1$ and $q$ on $C_2$ so that the distance between them is smallest.
+\end{exercise}
+
 %----------------------------------------------------------------------------------------
 %	APPENDICES
 %----------------------------------------------------------------------------------------
