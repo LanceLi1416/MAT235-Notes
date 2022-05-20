@@ -730,75 +730,95 @@ Some useful facts:
 
 \section{Differentiation}
 
-% TODO: reformat this section
-In first year, we used the equation $y - f(a) = f'(a) (x-a)$ to estimate the function $y = f(x)$ at the point $a$. We want the error to decrease the fastest when we approach $x = a$. 
+In first year, we defined the tangent line to be $\frac{\text{rise}}{\text{run}}$, and we calculate the limit as the \textit{run} approaches $0$, where the {\color{DarkGreen}secant line} becomes the {\color{orange}tangent line}. This gives the slope of the tangent line of the function at $x = a$. 
 
-    \begin{center}
-        \begin{tikzpicture}
-            \draw[->] (-2.7,0) -- (2.7,0) node[right] {$x$};
-            \draw[->] (0,-2.7) -- (0,2.7) node[above] {$y$};
-                
-            \draw[thick,blue,domain=1.6:-1.6] plot (\x, {(\x)*(\x)}) node[below left] {$f(x)$};
-            
-            \draw[thick,red,domain=-1:2.2] plot (\x,{1.5*(\x)-0.5625}) node[below right] {$L(x)$};
-            \draw[thick,DarkGreen,domain=-0.25:1.5] plot(\x,{3*\x-1.6875}) node[below left] {$g(x)$};
-            
-            \draw[thick,dashed] (0.75,0.5625) -- (0.75,0) node[below] {$a$};
-        \end{tikzpicture}
-    \end{center}
-    
-    Here the equation to the tangent line, $L(x) = f(a) + f'(a) \cdot (x-a)$. We want the error ($f(x) - L(x)$ at $x$) for the tangent line to approache $0$ the fastest. In particular, it is faster than $x$. That is, $\lim_{x\to{a}} \frac{f(x) - L(x)}{x - a} = 0$. 
-    
-    Take $x = a + h$, we obtain 
-    $\begin{aligned}[t]
-        \lim_{h\to0} \frac{f(a+h) - \left[ f(a) + f'(a) \cdot \cancelto{h}{(a - x)} ~~~ \right]}{h} 
-        &= 0 \\
-        \lim_{h\to0} \frac{f(a+h) - f(a) - f'(a) \cdot h}{h} 
-        &= 0 \\
-        \lim_{h\to0} \frac{f(a+h) - f(a)}{h} - \frac{f'(a) \cdot \cancel{h}}{\cancel{h}} 
-        &= 0 \\ 
-        \lim_{h\to0} \frac{f(a+h) - f(a)}{h}
-        &= f'(a)
-    \end{aligned}$
-    
-    This is the equation we are familiar with. 
-    
-    Applying the same idea to 2D functions, we want the error for the tangent plane $L(x,y)$, $f(x,y) - L(x,y)$, to approach $0$ the fastest. In particular, we want $\lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} = 0$. 
-    
-    {~~~}
-
-    The tangent plane, $L(x,y)$ at $\vec{a} = (x_0, y_0)$. $L(x,y)$ intersects $f(\vec{a})$ at $(x_0, y_0, f(\vec{a}))$. 
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (-2.7,0) -- (2.7,0) node[right] {$x$};
+        \draw[->] (-1.5,-0.7) -- (-1.5,3.2) node[above] {$y$};
         
-    We have the curve $z = f(x,y)$, which can be thought of as the level set of $D(x,y,z) = f(x,y) - z$ at $k = 0$. At any given point $\vec{a}$, the normal vector of the tangent plane $\vec{n} = \nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right)$. 
-    
-    $\begin{aligned}[t]
-        \text{For the tangent plane}, \vec{n} \cdot \vec{r}
-        &= \vec{n} \cdot \vec{r}_0 \\
-        \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right) \cdot \vec{r} 
-        &= \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right) \cdot \left( x_0, y_0, f(\vec{a}) \right) \\
-        \frac{\partial f}{\partial x} x + \frac{\partial f}{\partial y} y - z 
-        &= \frac{\partial f}{\partial x} x_0 + \frac{\partial f}{\partial y} - f(\vec{a}) \\
-        z
-        &= \frac{\partial f}{\partial x} (x - x_0) + \frac{\partial f}{\partial y} (y - y_0) + f(\vec{a}) \\
-        &= f(\vec{a}) + \nabla f(\vec{a}) \cdot (x-x_0, y-y_0)
-    \end{aligned}$
-    
-    This gives the equation of the tangent plane, $L(x,y)$. 
-    
-    {~~~}
-    
-    Take $(x,y) = \vec{x} = \vec{a} + \vec{h}$. Then, $\vec{h} = \vec{x} - \vec{a} = (x - x_0, y - y_0)$. 
-    
-    Then, we have $L(x,y) = f(\vec{a}) + \nabla f(\vec{a}) \cdot \vec{h}$. 
-    
-    $\begin{aligned}[t]
-    \text{Thus, we obtain the equation}
-        \lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} &= 0 \\
-        \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \left[ f(\vec{a}) + \nabla f(\vec{a}) \cdot \vec{h} \right]}{| \vec{h} |} &= 0 \\
-        \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \nabla f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} &= 0
-    \end{aligned}$
+        \draw[thick,blue,domain=-2.2:2.7] plot (\x, {(\x/3)^2+(\x/2)+1});
+        
+        \draw[thick,orange,domain=-2.2:2.7] plot (\x, {\x/2+1});
+        \draw[thick,DarkGreen,domain=-2.2:2.7] plot (\x, {3*\x/4+1});
+        
+        \draw[orange,fill=orange] (0,1) circle (0.075cm);
+        \draw[DarkGreen,fill=DarkGreen] (0,1) circle (0.045cm);
+        \draw[DarkGreen,fill=DarkGreen] (2.25,2.6875) circle (0.045cm);
+        
+        \draw[red,dashed] (0,1) -- (0,0) node[below] {$a$};
+        \draw[DarkGreen,dashed] (2.25,2.6875) -- (2.25,0) node[below] {$a+h$};
+        \draw[red,dashed] (0,1) -- (-1.5,1) node[left] {$f(a)$};
+        \draw[DarkGreen,dashed] (2.25,2.6875) -- (-1.5,2.6875) node[left] {$f(a+h)$};
+        
+        \node[blue] at (-2.25,0.125) {$f(x)$};
+    \end{tikzpicture}
+\end{center}
 
-%TODO: end of reformatting section
+There is another way to interpret the tangent line, however. It is the \itblue{best approximation of the function} using a line. Let $L(x)$ be the equation of the tangent line, and $g(x)$ be the equation of a random line that passes through $(a, f(a))$. Why is $\color{orange} L(x)$ the tangent line and not $\color{DarkGreen}g(x)$?
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (-2.7,0) -- (2.7,0) node[right] {$x$};
+        \draw[->] (-1.5,-0.7) -- (-1.5,3.2) node[above] {$y$};
+        
+        \draw[thick,blue,domain=-2.2:2.7] plot (\x, {(\x/3)^2+(\x/2)+1});
+        
+        \draw[thick,orange,domain=-2.2:2.7] plot (\x, {\x/2+1});
+        \draw[thick,DarkGreen,domain=-1:1.25] plot (\x, {2*\x+1});
+        
+        \draw[red,dashed] (0,1) -- (-0,0) node[below] {$a$};
+        
+        \draw[red,fill=red] (0,1) circle (0.05cm) node[above left] {$(a, f(a))$};
+        
+        \node[blue] at (-2.25,0.125) {$f(x)$};
+        \node[orange] at (2,1.5) {$L(x)$};
+        \node[DarkGreen] at (-0.25,-0.75) {$g(x)$};
+    \end{tikzpicture}
+\end{center}
+
+Clearly, the error made from $L(x)$, $f(x) - L(x)$ goes to $0$ as $x \to a$. However, $\lim_{x\to{a}}g(x)$ is also $0$. It is not sufficient to say that the error goes to $0$, but we also want to check the rate at which the error goes to $0$. So what makes $\color{orange}L(x)$ better than $\color{DarkGreen}g(x)$? While both are approaching $0$, the error for $\color{orange} L(x)$ approaches $0$ \bred{faster} than that of $\color{DarkGreen} g(x)$ \footnote{To denote ``$F(x)$ goes to $0$ faster than $G(x)$'', we use $\lim_{x\to0} \frac{F(x)}{G(x)} = 0$. }. For the tangent line, we want $L(x)$ to approach $f(a)$ the fastest, in particular, faster than how $x$ approached $a$. Thus, we have $\lim_{x\to{a}} \frac{f(x) - L(x)}{x} = 0$. 
+
+Recall that the equation of the tangent line is $y - f(a) = f'(a)(x - a)$, so $L(x) = f(a) + f'(a)(x - a)$ \footnote{This is in fact the first order Taylor expansion of $f(x)$ at $a$. }, where $f'(a) = \lim_{h\to0} \frac{f(a+h) - f(a)}{h}$ as before. Take $x = a + h$, we have alternatively
+\begin{align*}
+    \lim_{h\to0} \frac{f(a + h) - L(a + h)}{h - a} &= 0 \\
+    \lim_{h\to0} \frac{f(a + h) - \left[ f(a) + f'(a)(\cancelto{h}{x - a})~~ \right]}{a} &= 0 \\
+    \lim_{h\to0} \frac{f(a + h) - f(a)}{h} - \frac{f'(a) \cdot \cancel{h}}{\cancel{h}} &= 0 \\
+    \lim_{h\to0} \frac{f(a + h) - f(a)}{h} &= f'(a)
+\end{align*}
+
+This happens to be the equation we have before. 
+
+{~~~}
+
+We can expand this result to higher dimensions. If we have a 2D function, we should have a \term{tangent plane} that allows the error between the function and the tangent plane to approach $0$ faster than any other planes. 
+
+Given the tangent plane $w = L(x,y)$, we want $\lim_{\vec{x}\to\vec{a}} f(x,y) - L(x,y) = 0$, and approaches $0$ the fastest. That is, $\lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} = 0$ \footnote{Similar as before, this means we want the error to approach $0$ faster than $\vec{x}$ approaches $\vec{a}$. }. 
+
+To get the equation of the tangent plane, we can think of the original function, $f(x,y)$, as the level set of the 3D function $F(x,y,z) = f(x,y) - z$ at $k = 0$. Then, by the result from the previous section, $\nabla F(x_0,y_0,z_0)$ is the normal vector to the tangent plane at the given point $(x_0,y_0,z_0)$. That is, $\vec{n} = \nabla F = \left( \frac{\partial F}{\partial x}, \frac{\partial F}{\partial y}, \frac{\partial F}{\partial z} \right) = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right)$. 
+
+Note that at $\vec{a} = (x_0, y_0)$, we obtain the point $(x_0, y_0, f(\vec{a}))$ on the graph of $f(x,y)$. Denote this point $\vec{r}_0$, and this allows us to get the formula for the tangent plane. 
+\begin{align*}
+    \vec{n} \cdot \vec{r}
+    &= \vec{n} \cdot \vec{r}_0 \\
+    \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right) \cdot \vec{r} 
+    &= \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right) \cdot \left( x_0, y_0, f(\vec{a}) \right) \\
+    \frac{\partial f}{\partial x} \cdot x + \frac{\partial f}{\partial y} \cdot y - z 
+    &= \frac{\partial f}{\partial x} \cdot x_0 + \frac{\partial f}{\partial y} \cdot y_0 - f(\vec{a}) \\
+    z
+    &= f(\vec{a}) + \frac{\partial f}{\partial x} (x - x_0) + \frac{\partial f}{\partial y} (y - y_0) \\
+    z
+    &= f(\vec{a}) + \nabla f(\vec{a}) \cdot (x-x_0, y-y_0)
+\end{align*}
+
+To further simplify this equation, take $(x,y) = \vec{x} = \vec{a} + \vec{h}$. Then, $\vec{h} = \vec{x} - \vec{a} = (x - x_0, y - y_0)$. Now, $z = f(\vec{a}) + \nabla f(\vec{a}) \cdot \vec{h}$. 
+
+Substitute the equation for $L(x,y)$ back into $\lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} = 0$, we obtain 
+\begin{align*}
+    \lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} &= 0 \\
+    \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \left( f(\vec{a}) + \nabla f(\vec{a}) \cdot \vec{h} \right)}{| \vec{h} |} &= 0 \\
+    \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \nabla f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} &= 0
+\end{align*}
 
 \begin{definition}[Differentiable]\index{Differentiable}
     $f$ is \term{differentiable} if the gradient vector $\nabla f(\vec{a})$ satisfies $$\lim_{\vec{h} \to \vec{0}} = \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \nabla f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} = 0$$
