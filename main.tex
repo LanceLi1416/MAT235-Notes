@@ -730,27 +730,27 @@ Some useful facts:
 
 \section{Differentiation}
 
-In first year, we defined the tangent line to be $\frac{\text{rise}}{\text{run}}$, and we calculate the limit as the \textit{run} approaches $0$, where the {\color{DarkGreen}secant line} becomes the {\color{orange}tangent line}. This gives the slope of the tangent line of the function at $x = a$. 
+In first year, we defined the tangent line to be $\frac{\text{rise}}{\text{run}}$, and we calculate the limit as the \textit{run} approaches $0$, where the {\color{DarkGreen}secant line} becomes the {\color{orange}tangent line}. This gives the slope of the tangent line of the function at $x = a$.
 
 \begin{center}
     \begin{tikzpicture}
         \draw[->] (-2.7,0) -- (2.7,0) node[right] {$x$};
         \draw[->] (-1.5,-0.7) -- (-1.5,3.2) node[above] {$y$};
-        
+
         \draw[thick,blue,domain=-2.2:2.7] plot (\x, {(\x/3)^2+(\x/2)+1});
-        
+
         \draw[thick,orange,domain=-2.2:2.7] plot (\x, {\x/2+1});
         \draw[thick,DarkGreen,domain=-2.2:2.7] plot (\x, {3*\x/4+1});
-        
+
         \draw[orange,fill=orange] (0,1) circle (0.075cm);
         \draw[DarkGreen,fill=DarkGreen] (0,1) circle (0.045cm);
         \draw[DarkGreen,fill=DarkGreen] (2.25,2.6875) circle (0.045cm);
-        
+
         \draw[red,dashed] (0,1) -- (0,0) node[below] {$a$};
         \draw[DarkGreen,dashed] (2.25,2.6875) -- (2.25,0) node[below] {$a+h$};
         \draw[red,dashed] (0,1) -- (-1.5,1) node[left] {$f(a)$};
         \draw[DarkGreen,dashed] (2.25,2.6875) -- (-1.5,2.6875) node[left] {$f(a+h)$};
-        
+
         \node[blue] at (-2.25,0.125) {$f(x)$};
     \end{tikzpicture}
 \end{center}
@@ -761,63 +761,66 @@ There is another way to interpret the tangent line, however. It is the \itblue{b
     \begin{tikzpicture}
         \draw[->] (-2.7,0) -- (2.7,0) node[right] {$x$};
         \draw[->] (-1.5,-0.7) -- (-1.5,3.2) node[above] {$y$};
-        
+
         \draw[thick,blue,domain=-2.2:2.7] plot (\x, {(\x/3)^2+(\x/2)+1});
-        
+
         \draw[thick,orange,domain=-2.2:2.7] plot (\x, {\x/2+1});
         \draw[thick,DarkGreen,domain=-1:1.25] plot (\x, {2*\x+1});
-        
+
         \draw[red,dashed] (0,1) -- (-0,0) node[below] {$a$};
-        
+
         \draw[red,fill=red] (0,1) circle (0.05cm) node[above left] {$(a, f(a))$};
-        
+
         \node[blue] at (-2.25,0.125) {$f(x)$};
         \node[orange] at (2,1.5) {$L(x)$};
         \node[DarkGreen] at (-0.25,-0.75) {$g(x)$};
     \end{tikzpicture}
 \end{center}
 
-Clearly, the error made from $L(x)$, $f(x) - L(x)$ goes to $0$ as $x \to a$. However, $\lim_{x\to{a}}g(x)$ is also $0$. It is not sufficient to say that the error goes to $0$, but we also want to check the rate at which the error goes to $0$. So what makes $\color{orange}L(x)$ better than $\color{DarkGreen}g(x)$? While both are approaching $0$, the error for $\color{orange} L(x)$ approaches $0$ \bred{faster} than that of $\color{DarkGreen} g(x)$ \footnote{To denote ``$F(x)$ goes to $0$ faster than $G(x)$'', we use $\lim_{x\to0} \frac{F(x)}{G(x)} = 0$. }. For the tangent line, we want $L(x)$ to approach $f(a)$ the fastest, in particular, faster than how $x$ approached $a$. Thus, we have $\lim_{x\to{a}} \frac{f(x) - L(x)}{x} = 0$. 
+Clearly, the error made from $L(x)$, $f(x) - L(x)$ goes to $0$ as $x \to a$. However, $\lim_{x\to{a}}g(x)$ is also $0$. It is not sufficient to say that the error goes to $0$, but we also want to check the rate at which the error goes to $0$. So what makes $\color{orange}L(x)$ better than $\color{DarkGreen}g(x)$? While both are approaching $0$, the error for $\color{orange} L(x)$ approaches $0$ \bred{faster} than that of $\color{DarkGreen} g(x)$ \footnote{To denote ``$F(x)$ goes to $0$ faster than $G(x)$'', we use $\lim_{x\to0} \frac{F(x)}{G(x)} = 0$. }. For the tangent line, we want $L(x)$ to approach $f(a)$ the fastest, in particular, faster than how $x$ approached $a$. Thus, we have $\lim_{x\to{a}} \frac{f(x) - L(x)}{x} = 0$.
 
 Recall that the equation of the tangent line is $y - f(a) = f'(a)(x - a)$, so $L(x) = f(a) + f'(a)(x - a)$ \footnote{This is in fact the first order Taylor expansion of $f(x)$ at $a$. }, where $f'(a) = \lim_{h\to0} \frac{f(a+h) - f(a)}{h}$ as before. Take $x = a + h$, we have alternatively
 \begin{align*}
-    \lim_{h\to0} \frac{f(a + h) - L(a + h)}{h - a} &= 0 \\
-    \lim_{h\to0} \frac{f(a + h) - \left[ f(a) + f'(a)(\cancelto{h}{x - a})~~ \right]}{a} &= 0 \\
-    \lim_{h\to0} \frac{f(a + h) - f(a)}{h} - \frac{f'(a) \cdot \cancel{h}}{\cancel{h}} &= 0 \\
-    \lim_{h\to0} \frac{f(a + h) - f(a)}{h} &= f'(a)
+    \lim_{h\to0} \frac{f(a + h) - L(a + h)}{h - a}                                       & = 0     \\
+    \lim_{h\to0} \frac{f(a + h) - \left[ f(a) + f'(a)(\cancelto{h}{x - a})~~ \right]}{a} & = 0     \\
+    \lim_{h\to0} \frac{f(a + h) - f(a)}{h} - \frac{f'(a) \cdot \cancel{h}}{\cancel{h}}   & = 0     \\
+    \lim_{h\to0} \frac{f(a + h) - f(a)}{h}                                               & = f'(a)
 \end{align*}
 
-This happens to be the equation we have before. 
+This happens to be the equation we have before.
 
-{~~~}
+    {~~~}
 
-We can expand this result to higher dimensions. If we have a 2D function, we should have a \term{tangent plane} that allows the error between the function and the tangent plane to approach $0$ faster than any other planes. 
+We can expand this result to higher dimensions. If we have a 2D function, we should have a \term{tangent plane} that allows the error between the function and the tangent plane to approach $0$ faster than any other planes.
 
-Given the tangent plane $w = L(x,y)$, we want $\lim_{\vec{x}\to\vec{a}} f(x,y) - L(x,y) = 0$, and approaches $0$ the fastest. That is, $\lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} = 0$ \footnote{Similar as before, this means we want the error to approach $0$ faster than $\vec{x}$ approaches $\vec{a}$. }. 
+Given the tangent plane $w = L(x,y)$, we want $\lim_{\vec{x}\to\vec{a}} f(x,y) - L(x,y) = 0$, and approaches $0$ the fastest. That is, $\lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} = 0$ \footnote{Similar as before, this means we want the error to approach $0$ faster than $\vec{x}$ approaches $\vec{a}$. }.
 
-To get the equation of the tangent plane, we can think of the original function, $f(x,y)$, as the level set of the 3D function $F(x,y,z) = f(x,y) - z$ at $k = 0$. Then, by the result from the previous section, $\nabla F(x_0,y_0,z_0)$ is the normal vector to the tangent plane at the given point $(x_0,y_0,z_0)$. That is, $\vec{n} = \nabla F = \left( \frac{\partial F}{\partial x}, \frac{\partial F}{\partial y}, \frac{\partial F}{\partial z} \right) = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right)$. 
+To get the equation of the tangent plane, we can think of the original function, $f(x,y)$, as the level set of the 3D function $F(x,y,z) = f(x,y) - z$ at $k = 0$. Then, by the result from the previous section, $\nabla F(x_0,y_0,z_0)$ is the normal vector to the tangent plane at the given point $(x_0,y_0,z_0)$. That is, $\vec{n} = \nabla F = \left( \frac{\partial F}{\partial x}, \frac{\partial F}{\partial y}, \frac{\partial F}{\partial z} \right) = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right)$.
 
-Note that at $\vec{a} = (x_0, y_0)$, we obtain the point $(x_0, y_0, f(\vec{a}))$ on the graph of $f(x,y)$. Denote this point $\vec{r}_0$, and this allows us to get the formula for the tangent plane. 
+Note that at $\vec{a} = (x_0, y_0)$, we obtain the point $(x_0, y_0, f(\vec{a}))$ on the graph of $f(x,y)$. Denote this point $\vec{r}_0$, and this allows us to get the formula for the tangent plane.
 \begin{align*}
     \vec{n} \cdot \vec{r}
-    &= \vec{n} \cdot \vec{r}_0 \\
-    \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right) \cdot \vec{r} 
-    &= \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right) \cdot \left( x_0, y_0, f(\vec{a}) \right) \\
-    \frac{\partial f}{\partial x} \cdot x + \frac{\partial f}{\partial y} \cdot y - z 
-    &= \frac{\partial f}{\partial x} \cdot x_0 + \frac{\partial f}{\partial y} \cdot y_0 - f(\vec{a}) \\
+     & = \vec{n} \cdot \vec{r}_0 \\
+    \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right) \cdot \vec{r}
+     & = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right) \cdot \left( x_0, y_0, f(\vec{a}) \right) \\
+    \frac{\partial f}{\partial x} \cdot x + \frac{\partial f}{\partial y} \cdot y - z
+     & = \frac{\partial f}{\partial x} \cdot x_0 + \frac{\partial f}{\partial y} \cdot y_0 - f(\vec{a}) \\
     z
-    &= f(\vec{a}) + \frac{\partial f}{\partial x} (x - x_0) + \frac{\partial f}{\partial y} (y - y_0) \\
+     & = f(\vec{a}) + \frac{\partial f}{\partial x} (x - x_0) + \frac{\partial f}{\partial y} (y - y_0) \\
     z
-    &= f(\vec{a}) + \nabla f(\vec{a}) \cdot (x-x_0, y-y_0)
+     & = f(\vec{a}) + \nabla f(\vec{a}) \cdot (x-x_0, y-y_0)
 \end{align*}
 
-To further simplify this equation, take $(x,y) = \vec{x} = \vec{a} + \vec{h}$. Then, $\vec{h} = \vec{x} - \vec{a} = (x - x_0, y - y_0)$. Now, $z = f(\vec{a}) + \nabla f(\vec{a}) \cdot \vec{h}$. 
+To further simplify this equation, take $(x,y) = \vec{x} = \vec{a} + \vec{h}$. Then, $\vec{h} = \vec{x} - \vec{a} = (x - x_0, y - y_0)$. Now, $z = f(\vec{a}) + \nabla f(\vec{a}) \cdot \vec{h}$.
 
-Substitute the equation for $L(x,y)$ back into $\lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} = 0$, we obtain 
+Substitute the equation for $L(x,y)$ back into $\lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} = 0$, we obtain
 \begin{align*}
-    \lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} &= 0 \\
-    \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \left( f(\vec{a}) + \nabla f(\vec{a}) \cdot \vec{h} \right)}{| \vec{h} |} &= 0 \\
-    \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \nabla f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} &= 0
+    \lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |}
+     & = 0 \\
+    \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \left( f(\vec{a}) + \nabla f(\vec{a}) \cdot \vec{h} \right)}{| \vec{h} |}
+     & = 0 \\
+    \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \nabla f(\vec{a}) \cdot \vec{h}}{| \vec{h} |}
+     & = 0
 \end{align*}
 
 \begin{definition}[Differentiable]\index{Differentiable}
@@ -1729,7 +1732,7 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
     So $\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = (yze^{xz}, e^{xz}, xye^{xz})$. 
 \end{enumerate}
 
-\section*{Exercise 3.6}
+\subsection*{Exercise 3.6}
 
 \begin{minipage}[t]{0.3\linewidth}
     $\begin{aligned}[t]
@@ -1761,7 +1764,7 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
     \end{aligned}$
 \end{minipage}
 
-\section*{Exercise 3.7}
+\subsection*{Exercise 3.7}
 
 $\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = \begin{bmatrix} 2xy \\ x^2 \\ 1 \end{bmatrix}$. 
 
@@ -1771,7 +1774,7 @@ The maximum rate of change is $| \nabla f(2, 2, 1) | = \sqrt{8^2 + 4^2 + 1} = 9$
 
 Thus, the maximum rate of change at $(2, 2, 1)$ is $9$ in the $\begin{bmatrix} 8 \\ 4 \\ 1 \end{bmatrix}$ direction. 
 
-\section*{Exercise 3.8}
+\subsection*{Exercise 3.8}
 
 $\nabla f  = \left( \frac{\partial f}{\partial x} \\ \frac{\partial f}{\partial y} \\ \frac{\partial f}{\partial z} \right) = \left( y^2e^z, 2xye^z, xy^2e^z \right)$
 
@@ -1790,7 +1793,7 @@ $\begin{aligned}[t]
      & = 4
 \end{aligned}$
 
-\section*{Exercise 3.9}
+\subsection*{Exercise 3.9}
 
 \begin{enumerate}[label=\alph*)]
     \item Let $\vec{u} = (a,b)$ such that $a^2 + b^2 = 0$ (that is, $\vec{u}$ is a unit vector). 
@@ -1852,7 +1855,9 @@ $\begin{aligned}[t]
         Since there is no division by $0$, this function is continuous. 
 \end{enumerate}
 
-\section*{Exercise 3.10}
+\subsection*{Exercise 3.10}
+
+\subsubsection*{Solution 1}
 
 Let $\vec{u} = (a,b)$. 
 
@@ -1866,7 +1871,7 @@ $\begin{aligned}[t]
                            & = \lim_{h\to0} \frac{1}{h} \cdot \frac{h^3 \cdot ab}{h^2(h^2a^4 + b^2)}   \\
                            & = \lim_{h\to0} \frac{a^2b}{h^2a^4 + b^2}                                  \\
                            & = \begin{cases}
-                                   0             & b = 0 (\vec{u} = (1,0)) \\
+                                   0             & b = 0 ~ (\vec{u} = (1,0)) \\
                                    \frac{a^2}{b} & \text{otherwise}
                                \end{cases}
 \end{aligned}$
@@ -1904,11 +1909,121 @@ $\begin{aligned}[t]
 
 Thus, $\lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \nabla f(\vec{a}) \cdot \vec{h}}{| \vec{h} |}$ does not exist. $f$ is not differentiable. 
 
-\section*{Exercise 3.11}
+{~~~}
 
-\section*{Exercise 3.12}
+\begin{center} \line(1,0) {250} \end{center}
 
-\section*{Exercise 3.13}
+\subsubsection*{Solution 2}
+% TODO: finish solution 2
+Take $\vec{a} = (0,0)$ and $\vec{u} = (a,b)$ \footnote{Here $\vec{u}$ is a always unit vector, so we have $a^2 + b^2 = 1$. },
+$\begin{aligned}[t]
+    D_{\vec{u}} f
+     & = \lim_{h\to0} \frac{f(\vec{a} + h\vec{u}) - f\vec(a)}{h}                 \\
+     & = \lim_{h\to0} \frac{f(ha, hb) - \cancelto{0}{f(0, 0)}}{h}                \\
+     & = \lim_{h\to0} \frac{1}{h} \cdot \frac{(ha)^2 \cdot hb}{(ha)^4 + (hb)^2}  \\
+     & = \lim_{h\to0} \frac{1}{h} \cdot \frac{h^3 \cdot ab}{h^2 (a^4 + h^2 b^2)} \\
+     & = \lim_{h\to0} \frac{ab}{a^4 + h^2 b^2}                                   \\
+     & = \begin{cases}
+            0             & a = 0 ~ (\vec{u} = (0,1)) \\
+            \frac{b}{a^3} & \text{otherwise}
+         \end{cases}
+\end{aligned}$
+
+Assume $f$ is differentiable at $(0,0)$. Then, $D_{\vec{u}}f = \nabla f \cdot \vec{u}$. 
+
+Let $\vec{u} = (a,b)$, $\nabla f(\vec{a}) = (c,d)$. 
+\begin{itemize}
+    \item When $a = 1$, $b = 0$,  $D_{\vec{u}} f = a|b| = 1 \cdot 0 = 0$, and $\nabla f \cdot \vec{u} = (c, d) \cdot (1, 0) = c$. Thus, $c = 0$. 
+    \item When $a = 0$, $b = 1$,  $D_{\vec{u}} f = a|b| = 0 \cdot 1 = 0$, and $\nabla f \cdot \vec{u} = (c, d) \cdot (0, 1) = d$. Thus, $d = 0$. 
+    \item When $a = \frac{1}{\sqrt{2}}$, $b = \frac{1}{\sqrt{2}}$, $D_{\vec{u}} f = \frac{b}{a^3} = \frac{0}{0^3}$ DNE. % TODO: check this part
+\end{itemize}
+
+\subsection*{Exercise 3.11}
+
+\begin{enumerate}[label=\alph*)]
+    \item Take $\vec{a} = (0,0)$ and $\vec{u} = (a,b)$,
+    $\begin{aligned}[t]
+        D_{\vec{u}} f
+         & = \lim_{h\to0} \frac{f(\vec{a} + h\vec{u}) - f\vec(a)}{h}                                                \\
+         & = \lim_{h\to0} \frac{f(ha, hb) - \cancelto{0}{f(0, 0)}}{h}                                               \\
+         & = \lim_{h\to0} \frac{1}{\cancel{h}} \cdot \frac{\cancel{h} \cdot a \cdot | hb |}{\sqrt{(ha)^2 + (hb)^2}} \\
+         & = \lim_{h\to0} \frac{a | hb |}{\sqrt{h^2(\cancelto{-1}{a^2 + b^2})}}                                     \\
+         & = \lim_{h\to0} \frac{a | hb |}{| h |}                                                                    \\
+         & = \lim_{h\to0} \frac{a \cdot \cancel{| h |}}{\cancel{| h |}}                                             \\
+         & = \lim_{h\to0} a | b |                                                                                   \\
+         & = a | b |
+    \end{aligned}$
+
+    Assume $f$ is differentiable at $(0,0)$. Then, $D_{\vec{u}} f = \nabla f \cdot \vec{u}$. 
+
+    Let $\vec{u} = (a, b)$, $\nabla f(\vec{a}) = (c, d)$. 
+
+    \begin{itemize}
+        \item When $a = 1$, $b = 0$,  $D_{\vec{u}} f = a|b| = 1 \cdot 0 = 0$, and $\nabla f \cdot \vec{u} = (c, d) \cdot (1, 0) = c$. Thus, $c = 0$. 
+        \item When $a = 0$, $b = 1$,  $D_{\vec{u}} f = a|b| = 0 \cdot 1 = 0$, and $\nabla f \cdot \vec{u} = (c, d) \cdot (0, 1) = d$. Thus, $d = 0$. 
+        \item When $a = \frac{1}{\sqrt{2}}$, $b = \frac{1}{\sqrt{2}}$, $D_{\vec{u}} f = a|b| = \frac{1}{\sqrt{2}} \cdot \frac{1}{\sqrt{2}} = \frac{1}{2}$, but $\nabla f \cdot \vec{u} = (c, d) \cdot \left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right) = (0,0) \cdot \left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right) = 0$
+    \end{itemize}
+
+    This is a contradiction. Thus, $f$ must not be differentiable at $(0,0)$. 
+
+    {~~~}
+
+    \item Take $\vec{a} = (0,0)$ and $\vec{u} = (a,b)$,
+    $\begin{aligned}[t]
+        D_{\vec{u}} f
+         & = \lim_{h\to0} \frac{f(\vec{a} + h\vec{u} - f(\vec{a}))}{h}                          \\
+         & = \lim_{h\to0} \frac{f(ha, hb) - \cancelto{0}{f(0,0)}}{h}                            \\
+         & = \lim_{h\to0} \frac{1}{h} \cdot \frac{(ha)^4 + (hb)^4}{(ha)^2 + (hb)^2}             \\
+         & = \lim_{h\to0} \frac{1}{h} \cdot \frac{h^4(a^4 + b^4)}{h^2\cancelto{1}{(a^2 + b^2)}} \\
+         & = \lim_{h\to0} h(a^4 + b^4)                                                          \\
+         & = 0
+    \end{aligned}$
+
+    {~~~}
+
+    To show $f$ is differentiable, we want $\lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \cancelto{0}{f(\vec{a})} - \nabla f(\vec{a}) \cdot \vec{h}}{|h|} = 0$. 
+
+    Take $(x, y) = \vec{x} = \vec{a} + \vec{h}$. Since $\vec{a} = \vec{0}$, $\vec{h} = \vec{x} = (x, y)$.
+
+    Then, $\frac{\partial f}{\partial x} = D_{(1,0)} f(\vec{a}) = 0$ and $\frac{\partial f}{\partial x} = D_{(0,1)} f(\vec{a}) = 0$. Thus, $\nabla f(\vec{a}) = (0,0)$. 
+
+    Thus, $\lim_{(x,y)\to(0,0)} \frac{f(\vec{a} + \vec{h}) - \cancelto{0}{\nabla f(\vec{a}) \cdot \vec{h}}}{|h|} = \lim_{(x,y)\to(0,0)} \frac{f(x,y)}{\sqrt{x^2+y^2}} = \lim_{(x,y)\to(0,0)}\frac{1}{\sqrt{x^2 + y^2}} \cdot \frac{x^4 + y^4}{x^2 + y^2}$.
+
+    \begin{align*}
+        \left| \frac{1}{\sqrt{x^2+y^2}} \cdot \frac{x^4 + y^4}{x^2 + y^2} \right|
+         & \le \left| \frac{x^4}{\sqrt{x^2 + \cancel{y^2}}(x^2 + \cancel{y^2})} \right| + \left| \frac{y^4}{\sqrt{\cancel{x^2} + y^2} (\cancel{x^2} + y^2)} \right| \\
+         & =   \left| \frac{x^4}{\sqrt{x^2} \cdot x^2} \right| + \left| \frac{y^4}{\sqrt{y^2}\cdot y^2} \right| \\
+         & =   | x | + | y | \to 0
+    \end{align*}
+
+    Thus, by the Squeeze Theorem, $\lim_{(x,y)\to(0,0)} \frac{f(x,y)}{|\vec{h}|} = 0$. That is, $f$ is differentiable at $(0,0)$.
+\end{enumerate}
+
+\subsection*{Exercise 3.12}
+
+{~~~}
+
+\subsection*{Exercise 3.13}
+
+{~~~}
+
+\subsection*{Exercise 3.14}
+
+{~~~}
+
+\subsection*{Exercise 3.15}
+
+{~~~}
+
+\subsection*{Exercise 3.16}
+
+{~~~}
+
+\subsection*{Exercise 3.17}
+
+{~~~}
+
+\subsection*{Exercise 3.18}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
