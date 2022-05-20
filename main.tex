@@ -577,14 +577,14 @@ Consider multivariable function $f(x, y)$ or $f(x, y, z)$.
 
 Define the \term{derivative}\index{Derivative} to be:
 $$\begin{aligned}[t]
-    & \text{For } f(x, y)    &  & \Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right)                                \\
-    & \text{For } f(x, y, z) &  & \Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right)
+    & \text{For } f(x, y)    &  & \nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right)                                \\
+    & \text{For } f(x, y, z) &  & \nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right)
 \end{aligned}$$
-where $\Delta f$ is called \term{`del' $f$}\index{`del'}, or \term{gradient}\index{Gradient} of $f$.
+where $\nabla f$ is called \term{`del' $f$}\index{`del'}, or \term{gradient}\index{Gradient} of $f$.
 
-We can interpret $\Delta f$ as a vector, even though $f(x, y)$ or $f(x, y, z)$ is a scalar.
+We can interpret $\nabla f$ as a vector, even though $f(x, y)$ or $f(x, y, z)$ is a scalar.
 
-The quantities in $\Delta f$ such as $\frac{\partial f}{\partial x}$ are called \term{partial derivatives}\index{Partial Derivative}. When taking partial derivatives with respect to a variable, we regard \bred{all other variables} as \itblue{constants} and take the derivative as usual. Sometimes, we use the notations $$\frac{\partial f}{\partial x} = f_x \qquad \frac{\partial f}{\partial y} = f_y \qquad \frac{\partial f}{\partial z} = f_z$$
+The quantities in $\nabla f$ such as $\frac{\partial f}{\partial x}$ are called \term{partial derivatives}\index{Partial Derivative}. When taking partial derivatives with respect to a variable, we regard \bred{all other variables} as \itblue{constants} and take the derivative as usual. Sometimes, we use the notations $$\frac{\partial f}{\partial x} = f_x \qquad \frac{\partial f}{\partial y} = f_y \qquad \frac{\partial f}{\partial z} = f_z$$
 
 \begin{example}
     Let $f(x, y) = x^2 y^3 + x$. 
@@ -604,7 +604,7 @@ The quantities in $\Delta f$ such as $\frac{\partial f}{\partial x}$ are called 
 \end{example}
 
 \begin{exercise}
-    Computer $\Delta f$. 
+    Computer $\nabla f$. 
 
     \begin{minipage}[t]{0.45\linewidth} \setstretch{2}
         \begin{enumerate}
@@ -656,27 +656,27 @@ Some useful facts:
 
     {~~~}
 
-    \item If $f$ is \bred{differentiable}, then all directional derivative exist and $$D_{\vec{u}} f = \Delta f \dot \vec{u}$$ where $\vec{u}$ is a \bred{unit vector}. 
+    \item If $f$ is \bred{differentiable}, then all directional derivative exist and $$D_{\vec{u}} f = \nabla f \dot \vec{u}$$ where $\vec{u}$ is a \bred{unit vector}. 
     
     This formula gives an easy way to calculate directional derivative.
 
     {~~~}
 
-    \item We can interpret $\Delta f(\vec{a})$ as a vector. 
+    \item We can interpret $\nabla f(\vec{a})$ as a vector. 
     
-    If we evaluate $\Delta f$ at a point $\vec{a}$, and if we interpret the vector $\Delta f(\vec{a})$ as a direction, then the directional derivative in the direction of $\Delta f(\vec{a})$ at the point $\vec{a}$ is the largest, and the value of this maximum directional derivative is equal to $| \Delta f(\vec{a}) |$. 
+    If we evaluate $\nabla f$ at a point $\vec{a}$, and if we interpret the vector $\nabla f(\vec{a})$ as a direction, then the directional derivative in the direction of $\nabla f(\vec{a})$ at the point $\vec{a}$ is the largest, and the value of this maximum directional derivative is equal to $| \nabla f(\vec{a}) |$. 
 
     {~~~}
 
     \item Recall equation of plane: $\vec{n} \cdot \vec{r} = \vec{n} \cdot \vec{r}_0$
     
-    For $f(x, y, z) = k$ for some constant $k$, gives a \term{level set} surface. Define the \term{tangent plane} at some fixed point $\vec{r}_0 = (x_0, y_0, z_0)$ by the \bred{normal vector} $\vec{n} = \Delta f(x_0, y_0, z_0)$.
+    For $f(x, y, z) = k$ for some constant $k$, gives a \term{level set} surface. Define the \term{tangent plane} at some fixed point $\vec{r}_0 = (x_0, y_0, z_0)$ by the \bred{normal vector} $\vec{n} = \nabla f(x_0, y_0, z_0)$.
 
     {~~~}
 
     For example, consider $f(x,y) = x^2 + y^2$. 
 
-    $\Delta f = (2x, 2y)$. At $(1,0)$, $\Delta f = (2,0)$. 
+    $\nabla f = (2x, 2y)$. At $(1,0)$, $\nabla f = (2,0)$. 
 
     \begin{center}
         \begin{tikzpicture}
@@ -687,7 +687,7 @@ Some useful facts:
                 \draw[thick,DarkGreen] (0,0) circle(2cm); 
                 
                 \draw[thick,pink,->] (1,0) -- (1,1) node[above] {Tangent to the level set};
-                \draw[thick,blue,->] (1,0) -- (3,0) node[below] {$\Delta f$, orthogonal to the level set};
+                \draw[thick,blue,->] (1,0) -- (3,0) node[below] {$\nabla f$, orthogonal to the level set};
                 
                 \node[orange] at (-1,1) {$k=1$};
                 \node[DarkGreen] at (-1.5,2) {$k=2$};
@@ -700,7 +700,7 @@ Some useful facts:
 \end{exercise}
 
 \begin{exercise}
-    $f(x, y, z) = x^2y + z$. At the point $(2, 2, 1)$, find the maximum rate of change, and the direction with the maximum (the direction with maximum rate of change is $\Delta f$, and the value of this maximum rate of change is $| \Delta f |$). 
+    $f(x, y, z) = x^2y + z$. At the point $(2, 2, 1)$, find the maximum rate of change, and the direction with the maximum (the direction with maximum rate of change is $\nabla f$, and the value of this maximum rate of change is $| \nabla f |$). 
 \end{exercise}
 
 \begin{exercise}
@@ -725,7 +725,7 @@ Some useful facts:
 
     \textbf{Strategy:}
 
-    When the function has division by $0$, or some other problems at the origin (such as absolute value or square root), we must use the definition of directional derivative, because $f$ \bred{may not be differentiable} at $(0, 0)$ so the formula $\Delta f \cdot \vec{u}$ does not work. Set $\vec{a} = (0, 0)$ and $\vec{u} = (a, b)$ where $a^2 + b^2 = 1$. 
+    When the function has division by $0$, or some other problems at the origin (such as absolute value or square root), we must use the definition of directional derivative, because $f$ \bred{may not be differentiable} at $(0, 0)$ so the formula $\nabla f \cdot \vec{u}$ does not work. Set $\vec{a} = (0, 0)$ and $\vec{u} = (a, b)$ where $a^2 + b^2 = 1$. 
 \end{exercise}
 
 \section{Differentiation}
@@ -769,7 +769,7 @@ In first year, we used the equation $y - f(a) = f'(a) (x-a)$ to estimate the fun
 
     The tangent plane, $L(x,y)$ at $\vec{a} = (x_0, y_0)$. $L(x,y)$ intersects $f(\vec{a})$ at $(x_0, y_0, f(\vec{a}))$. 
         
-    We have the curve $z = f(x,y)$, which can be thought of as the level set of $D(x,y,z) = f(x,y) - z$ at $k = 0$. At any given point $\vec{a}$, the normal vector of the tangent plane $\vec{n} = \Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right)$. 
+    We have the curve $z = f(x,y)$, which can be thought of as the level set of $D(x,y,z) = f(x,y) - z$ at $k = 0$. At any given point $\vec{a}$, the normal vector of the tangent plane $\vec{n} = \nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, -1 \right)$. 
     
     $\begin{aligned}[t]
         \text{For the tangent plane}, \vec{n} \cdot \vec{r}
@@ -780,7 +780,7 @@ In first year, we used the equation $y - f(a) = f'(a) (x-a)$ to estimate the fun
         &= \frac{\partial f}{\partial x} x_0 + \frac{\partial f}{\partial y} - f(\vec{a}) \\
         z
         &= \frac{\partial f}{\partial x} (x - x_0) + \frac{\partial f}{\partial y} (y - y_0) + f(\vec{a}) \\
-        &= f(\vec{a}) + \Delta f(\vec{a}) \cdot (x-x_0, y-y_0)
+        &= f(\vec{a}) + \nabla f(\vec{a}) \cdot (x-x_0, y-y_0)
     \end{aligned}$
     
     This gives the equation of the tangent plane, $L(x,y)$. 
@@ -789,19 +789,19 @@ In first year, we used the equation $y - f(a) = f'(a) (x-a)$ to estimate the fun
     
     Take $(x,y) = \vec{x} = \vec{a} + \vec{h}$. Then, $\vec{h} = \vec{x} - \vec{a} = (x - x_0, y - y_0)$. 
     
-    Then, we have $L(x,y) = f(\vec{a}) + \Delta f(\vec{a}) \cdot \vec{h}$. 
+    Then, we have $L(x,y) = f(\vec{a}) + \nabla f(\vec{a}) \cdot \vec{h}$. 
     
     $\begin{aligned}[t]
     \text{Thus, we obtain the equation}
         \lim_{\vec{x}\to\vec{a}} \frac{f(x,y) - L(x,y)}{| \vec{x} - \vec{a} |} &= 0 \\
-        \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \left[ f(\vec{a}) + \Delta f(\vec{a}) \cdot \vec{h} \right]}{| \vec{h} |} &= 0 \\
-        \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \Delta f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} &= 0
+        \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \left[ f(\vec{a}) + \nabla f(\vec{a}) \cdot \vec{h} \right]}{| \vec{h} |} &= 0 \\
+        \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \nabla f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} &= 0
     \end{aligned}$
 
 %TODO: end of reformatting section
 
 \begin{definition}[Differentiable]\index{Differentiable}
-    $f$ is \term{differentiable} if the gradient vector $\Delta f(\vec{a})$ satisfies $$\lim_{\vec{h} \to \vec{0}} = \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \Delta f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} = 0$$
+    $f$ is \term{differentiable} if the gradient vector $\nabla f(\vec{a})$ satisfies $$\lim_{\vec{h} \to \vec{0}} = \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \nabla f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} = 0$$
 \end{definition}
 
 Note that this is a \itblue{2D limit}. This limit is typically used when $\vec{a} = (0, 0)$, so we may set $\vec{h} = (x, y)$ and show the limit is zero using Squeeze Theorem.
@@ -811,9 +811,9 @@ Note that this is a \itblue{2D limit}. This limit is typically used when $\vec{a
 Some useful facts:
 
 \begin{enumerate}
-    \item If $f$ is $C^1$ at $\vec{a}$ \footnote{This means all partial derivatives exist near $\vec{a}$ and at $\vec{a}$, and the partial derivatives are \bred{continuous} (as functions) at $\vec{a}$. }, then $f$ is differentiable at $\vec{a}$ ($\Delta f$ exists). 
+    \item If $f$ is $C^1$ at $\vec{a}$ \footnote{This means all partial derivatives exist near $\vec{a}$ and at $\vec{a}$, and the partial derivatives are \bred{continuous} (as functions) at $\vec{a}$. }, then $f$ is differentiable at $\vec{a}$ ($\nabla f$ exists). 
 
-    \item Being differentiable is a stronger condition than having directional derivative. If $f$ is differentiable, then all directional derivative is given by $D_{\vec{u}} f = \Delta f \cdot \vec{u}$. 
+    \item Being differentiable is a stronger condition than having directional derivative. If $f$ is differentiable, then all directional derivative is given by $D_{\vec{u}} f = \nabla f \cdot \vec{u}$. 
 
     \item If a function $f$ is differentiable at $\vec{a}$, then $f$ is continuous at $\vec{a}$.
 \end{enumerate}
@@ -837,7 +837,7 @@ Some useful facts:
     \begin{enumerate}
         \item If the function is \textbf{not continuous} at $(0, 0)$, then it is \textbf{not differentiable} at $(0, 0)$. So we may try to show it is not continuous at $(0, 0)$. However, some functions \textbf{are continuous} at $(0, 0)$, so we can attain no conclusion in such cases.
 
-        \item Compute all the directional derivatives. If $f$ is differentiable, then every directional derivative should satisfy $D_{\vec{u}} = \Delta f \cdot \vec{u}$. 
+        \item Compute all the directional derivatives. If $f$ is differentiable, then every directional derivative should satisfy $D_{\vec{u}} = \nabla f \cdot \vec{u}$. 
         
         Check this equation for $\vec{u} = (1, 0)$, $\vec{u} = (0, 1)$, and $\vec{u} = \left( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right)$ (easy unit vectors). 
     \end{enumerate}
@@ -924,7 +924,7 @@ In first year, we found critical points of functions by setting the derivative t
 
 Let $f(x, y)$ be a 2D function (which is $C^2$).
 
-We set $\Delta f(\vec{x}) = \vec{0}$. Solve $\vec{x}$, these are the \term{critical points}\index{Crtitial Point}.
+We set $\nabla f(\vec{x}) = \vec{0}$. Solve $\vec{x}$, these are the \term{critical points}\index{Crtitial Point}.
 
 Then we check second derivatives: \bred{the Hessian Matrix}.
 $$H = \begin{bmatrix}
@@ -979,12 +979,12 @@ Sometimes, we want to maximim/minimize a function on some specific curve, or the
 
     \item Take the equation that describes the constraint to be $g = 0$ (perhaps we have more than 1 constraint, so the second constraint is $h = 0$).
 
-    \item The \term{Lagrange Multiplier Formula}\index{Lagrange Multiplier Formula} is $$\Delta f = \lambda \Delta g(+\mu \Delta h + \cdots)$$
+    \item The \term{Lagrange Multiplier Formula}\index{Lagrange Multiplier Formula} is $$\nabla f = \lambda \nabla g(+\mu \nabla h + \cdots)$$
 \end{itemize}
 
-Each constraint will create an extra $\Delta$ term on the right side with some constant in front (we need every $\Delta$ term on the right to be non-zero). 
+Each constraint will create an extra $\nabla$ term on the right side with some constant in front (we need every $\nabla$ term on the right to be non-zero). 
 
-$\lambda$ and $\mu$ are constants that you need to solve for, along with $n$ variables of $f$. The equation is an equation for vectors, so each of the components are equal. So, there are $n$ equations in the formula since $\Delta f$ has $n$ components. For each constant like $\lambda$ or $\mu$, there is a equation of constraint for each. So if there are 2 constraints, there are $n + 2$ variables that you need to solve, and you have $n + 2$ equations to do it.
+$\lambda$ and $\mu$ are constants that you need to solve for, along with $n$ variables of $f$. The equation is an equation for vectors, so each of the components are equal. So, there are $n$ equations in the formula since $\nabla f$ has $n$ components. For each constant like $\lambda$ or $\mu$, there is a equation of constraint for each. So if there are 2 constraints, there are $n + 2$ variables that you need to solve, and you have $n + 2$ equations to do it.
 
 You are \bred{not allowed to divide by zero} when you cancel terms. When attempting to divide a quantity $x$, you need to split into 2 cases:
 \begin{itemize}
@@ -1664,7 +1664,7 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
     $\frac{\partial f}{\partial x} = 2x(y + 1)$ and 
     $\frac{\partial f}{\partial y} = x^2 - 1$. 
     
-    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = (2x(y + 1), x^2 - 1)$. 
+    So $\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = (2x(y + 1), x^2 - 1)$. 
 
     {~~~}
 
@@ -1672,7 +1672,7 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
     $\frac{\partial f}{\partial x} = 2{\color{red}y}(xy - 2)$ and 
     $\frac{\partial f}{\partial y} = 2{\color{red}x}(xy - 2)$. 
     
-    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = (2y(xy - 2), 2x(xy - 2))$. 
+    So $\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = (2y(xy - 2), 2x(xy - 2))$. 
 
     {~~~}
 
@@ -1680,7 +1680,7 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
     $\frac{\partial f}{\partial x} = \frac{-2}{(x + 3y)^2}$ and 
     $\frac{\partial f}{\partial y} = \frac{-6}{(x + 3y)^2}$. 
     
-    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = \left( \frac{-2}{(x + 3y)^2}, \frac{-6}{(x + 3y)^2} \right)$. 
+    So $\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = \left( \frac{-2}{(x + 3y)^2}, \frac{-6}{(x + 3y)^2} \right)$. 
 
     {~~~}
 
@@ -1688,7 +1688,7 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
     $\frac{\partial f}{\partial x} = e^{x + 4y}$ and 
     $\frac{\partial f}{\partial y} = 4e^{x + 4y}$. 
     
-    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = (e^{x + 4y}, 4e^{x + 4y})$. 
+    So $\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = (e^{x + 4y}, 4e^{x + 4y})$. 
 
     {~~~}
 
@@ -1697,7 +1697,7 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
     $\frac{\partial f}{\partial y} = 0$, and
     $\frac{\partial f}{\partial z} = 2$. 
     
-    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = (2x, 0, 2)$. 
+    So $\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = (2x, 0, 2)$. 
 
     {~~~}
 
@@ -1706,7 +1706,7 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
     $\frac{\partial f}{\partial y} = e^{xy}$, and
     $\frac{\partial f}{\partial z} = {\color{red}x}ye^{xz}$. 
     
-    So $\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = (yze^{xz}, e^{xz}, xye^{xz})$. 
+    So $\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = (yze^{xz}, e^{xz}, xye^{xz})$. 
 \end{enumerate}
 
 \section*{Exercise 3.6}
@@ -1720,10 +1720,10 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
 \end{minipage}
 \begin{minipage}[t]{0.3\linewidth}
     $\begin{aligned}[t]
-        \Delta f 
+        \nabla f 
         & = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) \\
         & = \begin{bmatrix} 2ye^{2x} \\ e^{2x} + 2y \end{bmatrix} \\
-        \Delta f(0, 0) 
+        \nabla f(0, 0) 
         & = \begin{bmatrix}
             2 \cdot 0 \cdot e^{2 \cdot 0} \\
             e^{2 \cdot 0} + 2 \cdot 0
@@ -1735,7 +1735,7 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
 \begin{minipage}[t]{0.3\linewidth}
     So $\begin{aligned}[t]
         D_{\vec{u}} f 
-        & = \Delta f \cdot \vec{u} \\
+        & = \nabla f \cdot \vec{u} \\
         & = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \cdot \frac{1}{\sqrt{10}} \begin{bmatrix} 1 \\ 3 \end{bmatrix} \\
         & = \frac{3}{\sqrt{10}}
     \end{aligned}$
@@ -1743,19 +1743,19 @@ Then, by the Squeeze Theorem, $\lim_{(x,y) \to (0,0)} \frac{x^2 \sin^2{y}}{2x^4 
 
 \section*{Exercise 3.7}
 
-$\Delta f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = \begin{bmatrix} 2xy \\ x^2 \\ 1 \end{bmatrix}$. 
+$\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z} \right) = \begin{bmatrix} 2xy \\ x^2 \\ 1 \end{bmatrix}$. 
 
-The directional vector, $\Delta f(2, 2, 1) = \begin{bmatrix} 2 \cdot 2 \cdot 2 \\ 2^2 \\ 1 \end{bmatrix} = \begin{bmatrix} 8 \\ 4 \\ 1 \end{bmatrix}$. 
+The directional vector, $\nabla f(2, 2, 1) = \begin{bmatrix} 2 \cdot 2 \cdot 2 \\ 2^2 \\ 1 \end{bmatrix} = \begin{bmatrix} 8 \\ 4 \\ 1 \end{bmatrix}$. 
 
-The maximum rate of change is $| \Delta f(2, 2, 1) | = \sqrt{8^2 + 4^2 + 1} = 9$. 
+The maximum rate of change is $| \nabla f(2, 2, 1) | = \sqrt{8^2 + 4^2 + 1} = 9$. 
 
 Thus, the maximum rate of change at $(2, 2, 1)$ is $9$ in the $\begin{bmatrix} 8 \\ 4 \\ 1 \end{bmatrix}$ direction. 
 
 \section*{Exercise 3.8}
 
-$\Delta f  = \left( \frac{\partial f}{\partial x} \\ \frac{\partial f}{\partial y} \\ \frac{\partial f}{\partial z} \right) = \left( y^2e^z, 2xye^z, xy^2e^z \right)$
+$\nabla f  = \left( \frac{\partial f}{\partial x} \\ \frac{\partial f}{\partial y} \\ \frac{\partial f}{\partial z} \right) = \left( y^2e^z, 2xye^z, xy^2e^z \right)$
 
-So $\vec{n} = \Delta f(1,1,1) = \begin{bmatrix} 1^2 \cdot e^1 \\ 2 \cdot 1 \cdot 1 \cdot e^1 \\ 1 \cdot 1^2 \cdot e^1 \end{bmatrix} = \begin{bmatrix} e \\ 2e \\ e \end{bmatrix}$.
+So $\vec{n} = \nabla f(1,1,1) = \begin{bmatrix} 1^2 \cdot e^1 \\ 2 \cdot 1 \cdot 1 \cdot e^1 \\ 1 \cdot 1^2 \cdot e^1 \end{bmatrix} = \begin{bmatrix} e \\ 2e \\ e \end{bmatrix}$.
 
 $\begin{aligned}[t]
     \text{For the equation of the tangent plane, }
@@ -1855,15 +1855,15 @@ Thus, the directional derivatives exist at $(0,0)$.
 
 {~~~}
 
-For $f$ to be differentiable, we need $\lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \Delta f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} = 0$. 
+For $f$ to be differentiable, we need $\lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \nabla f(\vec{a}) \cdot \vec{h}}{| \vec{h} |} = 0$. 
 
-Note that $\Delta f(\vec{a}) = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = \begin{bmatrix} D_{(1,0)} f(\vec{a}) \\ D_{(0,1)} f(\vec{a}) \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}$.
+Note that $\nabla f(\vec{a}) = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = \begin{bmatrix} D_{(1,0)} f(\vec{a}) \\ D_{(0,1)} f(\vec{a}) \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}$.
 
 Let $(x,y) = \vec{x} = \vec{a} + \vec{h} = \vec{h}$ since $\vec{a} = (0,0)$. 
 
 Thus, 
 $\begin{aligned}[t]
-    \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \cancelto{0}{f(\vec{a})} - \cancelto{0}{\Delta f(\vec{a})} \cdot \vec{h}}{| \vec{h} |}
+    \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \cancelto{0}{f(\vec{a})} - \cancelto{0}{\nabla f(\vec{a})} \cdot \vec{h}}{| \vec{h} |}
      & = \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h})}{| \vec{h} |}          \\
      & = \lim_{(x,y)\to(0,0)} \frac{f(x,y)}{\sqrt{x^2 + y^2}}                       \\
      & = \lim_{(x,y)\to(0,0)} \frac{1}{\sqrt{x^2+y^2}} \cdot \frac{x^2y}{x^4 + y^2} 
@@ -1873,7 +1873,7 @@ $\begin{aligned}[t]
     \item For $x = 0$, $\lim_{(x,y)\to(0,0)} \frac{1}{\sqrt{x^2+y^2}} \cdot \frac{x^2y}{x^4 + y^2} = \lim_{y\to0} \frac{1}{\sqrt{0^2+y^2}} \cdot \frac{0^2 \cdot y}{0^4 + y^2} = 0$. 
     \item For $y = 0$, $\lim_{(x,y)\to(0,0)} \frac{1}{\sqrt{x^2+y^2}} \cdot \frac{x^2y}{x^4 + y^2} = \lim_{x\to0} \frac{1}{\sqrt{x^2+0^2}} \cdot \frac{x^2 \cdot 0}{x^4 + 0^2} = 0$. 
     \item For $y = x$, $\begin{aligned}[t]
-        \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \cancelto{0}{f(\vec{a})} - \cancelto{0}{\Delta f(\vec{a})} \cdot \vec{h}}{| \vec{h} |}
+        \lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - \cancelto{0}{f(\vec{a})} - \cancelto{0}{\nabla f(\vec{a})} \cdot \vec{h}}{| \vec{h} |}
          & = \lim_{(x,y)\to(0,0)} \frac{1}{\sqrt{x^2+y^2}} \cdot \frac{x^2y}{x^4 + y^2}                   \\
          & = \lim_{x\to0} \frac{1}{\sqrt{x^2 + x^2}} \cdot \frac{x^2 \cdot x}{x^4 + x^2}                  \\
          & = \lim_{x\to0} \frac{1}{\sqrt{2x^2}} \cdot \frac{\cancel{x^2} \cdot x}{\cancel{x^2} (x^2 + 1)} \\
@@ -1882,7 +1882,7 @@ $\begin{aligned}[t]
     \end{aligned}$
 \end{itemize}
 
-Thus, $\lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \Delta f(\vec{a}) \cdot \vec{h}}{| \vec{h} |}$ does not exist. $f$ is not differentiable. 
+Thus, $\lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \nabla f(\vec{a}) \cdot \vec{h}}{| \vec{h} |}$ does not exist. $f$ is not differentiable. 
 
 \section*{Exercise 3.11}
 
