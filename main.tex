@@ -1914,19 +1914,18 @@ Thus, $\lim_{\vec{h}\to\vec{0}} \frac{f(\vec{a} + \vec{h}) - f(\vec{a}) - \nabla
 \begin{center} \line(1,0) {250} \end{center}
 
 \subsubsection*{Solution 2}
-% TODO: finish solution 2
+
 Take $\vec{a} = (0,0)$ and $\vec{u} = (a,b)$ \footnote{Here $\vec{u}$ is a always unit vector, so we have $a^2 + b^2 = 1$. },
 $\begin{aligned}[t]
-    D_{\vec{u}} f
-     & = \lim_{h\to0} \frac{f(\vec{a} + h\vec{u}) - f\vec(a)}{h}                 \\
-     & = \lim_{h\to0} \frac{f(ha, hb) - \cancelto{0}{f(0, 0)}}{h}                \\
-     & = \lim_{h\to0} \frac{1}{h} \cdot \frac{(ha)^2 \cdot hb}{(ha)^4 + (hb)^2}  \\
-     & = \lim_{h\to0} \frac{1}{h} \cdot \frac{h^3 \cdot ab}{h^2 (a^4 + h^2 b^2)} \\
-     & = \lim_{h\to0} \frac{ab}{a^4 + h^2 b^2}                                   \\
-     & = \begin{cases}
-            0             & a = 0 ~ (\vec{u} = (0,1)) \\
-            \frac{b}{a^3} & \text{otherwise}
-         \end{cases}
+    D_{\vec{u}} f(\vec{a}) & = \lim_{h\to0} \frac{f(\vec{a} + h\vec{u}) - \cancelto{0}{f(\vec{a}})}{h} \\
+                           & = \lim_{h\to0} \frac{f(ha, hb)}{h}                                        \\
+                           & = \lim_{h\to0} \frac{1}{h} \cdot \frac{(ha)^2 \cdot hb}{(ha)^4 + (hb)^2}  \\
+                           & = \lim_{h\to0} \frac{1}{h} \cdot \frac{h^3 \cdot ab}{h^2(h^2a^4 + b^2)}   \\
+                           & = \lim_{h\to0} \frac{a^2b}{h^2a^4 + b^2}                                  \\
+                           & = \begin{cases}
+                                   0             & b = 0 ~ (\vec{u} = (1,0)) \\
+                                   \frac{a^2}{b} & \text{otherwise}
+                               \end{cases}
 \end{aligned}$
 
 Assume $f$ is differentiable at $(0,0)$. Then, $D_{\vec{u}}f = \nabla f \cdot \vec{u}$. 
