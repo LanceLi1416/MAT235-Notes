@@ -1048,6 +1048,25 @@ You are \bred{not allowed to divide by zero} when you cancel terms. When attempt
     Find points $p$ on $C_1$ and $q$ on $C_2$ so that the distance between them is smallest.
 \end{exercise}
 
+\section{Chain Rule in 1D}
+
+We typically think of chain rule as a rule for computation: $$f(g(x))' = f'(g(x)) \cdot g'(x)$$ where we are given a function inside another function such as $y = \sin(e^x)$, and we take the derivative of the outside (not touching the inside), then multiply the derivative of the inside.
+
+Alternatively, we can define a \bred{variable dependence}. For example, define the variables as $y = y(t)$, and $t = t(x)$. (In the above example, we would set $y = \sin t$ and $t = e^x$.) Then we may express the chain rule (in 1D) as: $$\frac{dy}{dx} = \frac{dy}{dt} \frac{dt}{dx}$$
+
+Intuitively, $\frac{dy}{dx}$ asks how much would $y$ change, if there is a small change in $x$. Given the variable dependence above, a small change in $x$ would cause a small change in $t$, which in turn would cause a small change in $y$. Hence, we have the 2 ``fractions'' ($\frac{dy}{dt}$ and $\frac{dt}{dx}$) on the right.
+
+\subsection*{2nd Derivative}
+
+We may use the above form of the chain rule to calculate the 2nd derivative.
+
+We apply another differential operator $\frac{d}{dx}$ on top of $\frac{dy}{dx}$: $$\frac{d^2y}{dx^2} = \frac{d}{dx} \left( \frac{dy}{dx} \right)$$ Plug in the above form of the chain rule, $$= \frac{d}{dy} \left( \frac{dy}{dt} \frac{dt}{dx} \right)$$ We want to take the derivative of this product, so we need \term{product rule}\index{Product Rule (in 1D)}, $$= \frac{d}{dx}\left( \frac{dy}{dt} \right) \cdot \frac{dt}{dx} + \frac{dy}{dt} \cdot \frac{d}{dx} \left( \frac{dt}{dx} \right)$$ Notice that there are 2 types of derivatives here.
+
+{~~~}
+
+The 2nd term involves the expression $\frac{d}{dx} \left( \frac{dt}{dy} \right)$. Recall that we assumed $t = t(x)$ (such as $t = e^x$), so $\frac{dt}{dx}$ is also \bred{a function of $x$}. We want to take the derivative of such function \bred{against $x$}. This results in the 2nd derivative of $t = t(x)$ against $x$: $$\frac{d}{dx} \left( \frac{dt}{dx} \right) = \frac{d^2t}{dx^2}$$ The 1st term involves the expression $$\frac{d}{dx} \left( \frac{dy}{dt} \right)$$
+
+
 %----------------------------------------------------------------------------------------
 %	APPENDICES
 %----------------------------------------------------------------------------------------
