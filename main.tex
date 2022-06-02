@@ -1250,8 +1250,8 @@ In other words, the ``missing'' second solution from the repeated root of $n = 2
     \end{minipage}
     \begin{minipage}[t]{0.45\linewidth}
         \begin{center}
-            \tikzsetnextfilename{c01e01-03}%
-            \begin{tikzpicture}[baseline=(current bounding box.north west)]
+            % \tikzsetnextfilename{c01e01-03}%
+            \begin{tikzpicture}[baseline=(current bounding box.north)]
                 \draw[->] (-1.92, 0) -- (1.92, 0) node[right] {$x$};
                 \draw[->] (0, -1.44) -- (0, 1.44) node[above] {$y$};
 
@@ -2289,13 +2289,146 @@ Thus, $\lim_{(x,y)\to(0,0)} \frac{\partial f}{\partial y}$ DNE, $\frac{\partial 
 
 \subsection*{Exercise 3.14}
 
+% TODO: finish me
+\begin{enumerate}
+    \item $\nabla f = \left( 6x + 4y, 4x + 10y \right)$.
+    
+    For critical points, $\nabla f = \vec{0}$. That is, $\begin{cases} 6x + 4y = 0 \\ 4x + 10y = 0 \end{cases} \implies \begin{cases} x = 0 \\ y = 0 \end{cases}$. 
+
+    Thus, $(0,0)$ is the only critical point. 
+    
+    {~~~}
+
+    \item
+    
+    {~~~}
+    
+    \item
+    
+    {~~~}
+
+    \item
+    
+    {~~~}
+\end{enumerate}
+
 {~~~}
 
 \subsection*{Exercise 3.15}
 
+\begin{center}
+    \begin{tikzpicture}
+        \newcommand\A{(0,-3)};
+        \newcommand\B{(0, 3)};
+        \newcommand\C{(3, 0)};
+
+        \draw[->] (-1.2, 0) -- (4.2, 0) node[right] {$x$};
+        \draw[->] (0, -4.2) -- (0, 4.2) node[above] {$y$};
+
+        \draw[very thick] \A -- \B;
+        \draw[very thick,orange] \A -- \C;
+        \draw[very thick,DarkGreen] \C -- \B;
+
+        % \shade[red] \A -- \B -- \C -- cycle;
+
+        \draw[violet,fill=violet] \A circle (0.075cm) node[below] {$(0,-3)$};
+        \draw[violet,fill=violet] \B circle (0.075cm) node[above] {$(0, 3)$};
+        \draw[violet,fill=violet] \C circle (0.075cm) node[above right] {$(3, 0)$};
+
+        \node at (-2,2) {Domain of $f$};
+    \end{tikzpicture}
+\end{center}
+
+\subsubsection*{Critical Points}
+
+$\nabla f = (2x - 4, 2y)$. 
+
+For critical points, $\nabla f = \vec{0}$. That is, $\begin{cases} 2x - 4 = 0 \\ 2y = 0 \end{cases} \implies \begin{cases} x = 2 \\ y = 0 \end{cases}$
+
+Thus, $(2, 0)$ is the only critical point. 
+
+$H = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}$, and $\det H = 4 > 0$. 
+
+Since $H_{00} = 2 > 0$, $(2, 0)$ is a local minimum. 
+
+\subsubsection*{Boundary Points}
+
+Boundary points: $\begin{cases} (0, -3) \\ (-3, 0) \\ (3, 0) \end{cases}$
+
+\subsubsection*{Boundary Curves}
+
+\begin{itemize}
+    \item 
+    
+    The curve is $x = 0$. 
+
+    Then, $f(x, y) = f(0, y) = y^2$. That is, $f(y) = y^2$. 
+
+    $f'(y) = 2y$. 
+        
+    For critical points on this curve, $f'(y) = 0 \implies y = 0$. 
+
+    Thus, $(0,0)$ is a possible point for absolute minimum / maximum for the function. 
+
+    \item {\color{orange}
+    
+    The curve is $y = x - 3$. 
+
+    Then, $f(x, y) = f(x, x-3) = 2x^2 - 10x + 9$. That is, $f(x) = 2x^2 - 10x + 9$.
+
+    $f'(x) = 4x - 10$.
+
+    For critical points on this curve, $f'(x) = 0 \implies x = \frac{5}{2}$. 
+
+    Now, $y = x - 3 = -\frac{1}{2}$.
+
+    Thus, $(\frac{5}{2}, -\frac{1}{2})$ is a possible point for absolute minimum / maximum for the function. 
+
+    } \item \color{DarkGreen}
+    
+    The curve is $y = -x + 3$. 
+
+    Then, $f(x, y) = f(x, -x+3) = 2x^2 - 10x + 9$. That is, $f(x) = 2x^2 - 10x + 9$.
+
+    $f'(x) = 4x - 10$.
+
+    For critical points on this curve, $f'(x) = 0 \implies x = \frac{5}{2}$. 
+
+    Now, $y = x - 3 = \frac{1}{2}$.
+
+    Thus, $(\frac{5}{2}, \frac{1}{2})$ is a possible point for absolute minimum / maximum for the function. 
+\end{itemize}
+
+\begin{center}
+    \begin{tabular}{r | r r}
+        $(x,_y)$                      & $f(x, y)$                   \\
+        \hline
+        $(2,~0)$                      & $-4$           & \text{min} \\
+        $(0,~0)$                      & $0$                         \\
+        $(3,~0)$                      & $-3$                        \\
+        $(0,~3)$                      & $9$            & \text{max} \\
+        $(0,~-3)$                     & $9$            & \text{max} \\
+        \rule{0pt}{0.25cm}
+        $(\frac{5}{2},~\frac{1}{2})$  & $-\frac{7}{2}$              \\
+        \rule{0pt}{0.75cm}
+        $(\frac{5}{2},~-\frac{1}{2})$ & $-\frac{7}{2}$              \\
+    \end{tabular}
+\end{center}
+
 {~~~}
 
 \subsection*{Exercise 3.16}
+
+Consider the level set 
+$\begin{aligned}[t]
+    f(x, y) & = k                            \\
+    3x - 6y & = k                            \\
+    y       & = \frac{1}{2} x - \frac{1}{6}k
+\end{aligned}$
+
+Set $g(x, y) = 4x^2 + 2y - 25$. Consider the level set $g(x, y) = 0$. 
+
+Then, $\nabla g(x, y) = (8x, 4y)$. 
 
 {~~~}
 
