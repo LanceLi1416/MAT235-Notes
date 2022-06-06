@@ -1182,6 +1182,147 @@ In other words, the ``missing'' second solution from the repeated root of $n = 2
     \end{enumerate}
 \end{exercise}
 
+\section{Chain Rule in 2D and 3D}
+
+Consider an example: $\begin{cases}z = z(x, y) \\ x = x(s, t) \\ y = y(s, t) \end{cases}$. We can construct the tree diagram of variable dependence.
+
+\begin{center}
+    \begin{tikzpicture}[
+        level 1/.style = {sibling distance = 2.5cm},
+        level 2/.style = {sibling distance = 1.5cm}
+    ]
+    
+    \node {$z$} 
+        child {
+            node {$x$}
+            child {
+                node [black] {$s$}
+                edge from parent [magenta] node [left,black] {{$\frac{\partial x}{\partial s}$}}
+            }
+            child {
+                node [black] {$t$}
+                edge from parent [LightBlue] node [right,black] {{$\frac{\partial x}{\partial t}$}}
+            }
+            edge from parent [DarkGreen] node [left,black] {{$\frac{\partial f}{\partial x}$}}
+        }
+        child {
+            node {$y$}
+            child {
+                node [black] {$s$}
+                edge from parent [magenta] node [left,black] {{$\frac{\partial y}{\partial s}$}}
+            }
+            child {
+                node [black] {$t$}
+                edge from parent [LightBlue] node [right,black] {{$\frac{\partial y}{\partial t}$}}
+            }
+            edge from parent [DarkGreen] node [right,black] {$\frac{\partial f}{\partial y}$}
+        };
+    \end{tikzpicture}
+\end{center}
+
+We start with the variable $z$ on the top, and for each variable that $z$ depends on, we get an extra branch below. In this case, $z = z(x, y)$ and we get 2 branches for $x$ and $y$. The 2 branches correspond to the partial derivatives $\frac{\partial z}{\partial x}$ and $\frac{\partial f}{\partial z}$ as we will see. 
+
+Similarly, we create branches for x and y, and get 4 branches for $s$ and $t$. The branches correspond to the partial derivatives $\frac{\partial x}{\partial s}$, $\frac{\partial x}{\partial t}$, $\frac{\partial y}{\partial s}$ and $\frac{\partial y}{\partial t}$. 
+
+To compute $\frac{\partial z}{\partial s}$, using the diagram, we start at $z$, and \bred{consider all possible ways to reach $s$}. The first way is, start from $z$, go to $x$, then from $x$ to $s$. This gives (using multiply) $$\frac{\partial z}{\partial x} \cdot \frac{\partial x}{\partial s}$$ 
+
+The second way is, start from $z$, go to $y$, then from $y$ to $s$. This gives (using multiply) $$\frac{\partial z}{\partial y} \cdot \frac{\partial y}{\partial s}$$
+
+The answer is the 2 ways \bred{added together}, $$\frac{\partial z}{\partial s} = \frac{\partial z}{\partial x} \cdot \frac{\partial x}{\partial s} + \frac{\partial z}{\partial y} \cdot \frac{\partial y}{\partial s}$$
+
+Similarly, $$\frac{\partial z}{\partial t} = \frac{\partial z}{\partial x} \cdot \frac{\partial x}{\partial t} + \frac{\partial z}{\partial y} \cdot \frac{\partial y}{\partial t}$$
+
+Intuitively, $\frac{\partial z}{\partial s}$ asks how much would $z$ change, if there is a small change in $s$. Given the variable dependence above, a small change in $s$ would cause both a small change in $x$ and a small change in $y$. The small change in $x$ would in turn cause a small change in $z$, and the the small change in $y$ would also cause a small change in $z$. Thus the ``total'' small change in $z$ would be the sum of the 2 changes caused by $x$ and $y$. Hence, we get the sum of 2 pairs of ``fractions'' multiplied on the right.
+
+Of course, given the functions $z = z(x, y)$ and $x = x(s, t)$, $y = y(s, t)$, one does not need go through this long and complicated process just to take the derivative. It is much easier to just plug in the expression of $x$ and $y$ into $z$, and take the derivative using the computation rules.
+
+\begin{exercise}
+$\text{ }$
+
+    \begin{itemize}
+        \item $z = x - y$, $x = \sin(t)$, $y = 3t$. Find $\frac{\partial z}{\partial t}$.
+        \item $z = xy^2$, $x = s\cos(t)$, $y = s\sin(t)$. Find $\frac{\partial z}{\partial x}$ and $\frac{\partial z}{\partial t}$.
+        \item $u = xy + yz$, $x = s + t$, $y = s$, $z = 2t$. Find $\frac{\partial u}{\partial s}$ and $\frac{\partial u}{\partial t}$.
+    \end{itemize}
+\end{exercise}
+
+Similar to the Chain Rule in 1D, the chain rule formula shines when \bred{at least one of the function} is unknown.
+
+\begin{exercise}
+    Suppose that $z = f(x, y)$, $x = 2s + t$ and $y = s - 3t$. Assume $f(1,1) = 2$, $f(3,-2) = 1$, $z_x(1,1) = 2$, $z_x(3,-2) = 4$, $z_y(1,1) = 6$, and $z_y(3,-2) = 1$. Find $z_s$ and $z_t$ at $(s,t) = (1,1)$.
+\end{exercise}
+
+\subsection*{PDE - Partial Differential Equation}
+
+A \term{Partial Differential Equation (PDE)}\index{Partial Differential Equation (PDE)} is an equation, which implicitly defines a function $u(x, y)$ by mixing $u$, $x$, $y$, and \itblue{(partial) derivatives of $u$}.
+
+Similar to ODE, the function $u(x, y)$ defined by an PDE often can not be solved explicitly. Different from an ODE, the general solution of a PDE would involves some \itblue{unknown function}, instead of unknown constants.
+
+\subsection*{First Order Linear Equation with Constant Coefficients}
+
+Consider $u = u(x, y)$. Consider the example $$2u_x + 3u_y = 0$$
+
+We perform the change of variables $s = 2x + 3y$ and $t = 3x - 2y$. (This change of variable works in general: $a = 2$, and $b = 3$ in this case.) Using chain rule (where we think of $u$ as $u = u(s,t)$, $s = s(x,y)$, $t = t(x,y)$), 
+$$\begin{aligned}[t]
+    \frac{\partial u}{\partial x}
+     & = \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial x} + \frac{\partial u}{\partial t} \cdot \frac{\partial t}{\partial x} \\
+     & = \frac{\partial u}{\partial s}2 + \frac{\partial u}{\partial t}3 \\
+    \frac{\partial u}{\partial y}
+     & =  \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial y} + \frac{\partial u}{\partial t} \cdot \frac{\partial t}{\partial y} \\
+     & = \frac{\partial u}{\partial s}3 + \frac{\partial u}{\partial t}(-2)
+\end{aligned}$$
+
+Plugging into the PDE, we get 
+$$\begin{aligned}[t]
+    2u_x + 3u_y & = 0 \\
+    2 \left( \frac{\partial u}{\partial s}2 + \frac{\partial u}{\partial t}3 \right) + 3 \left( \frac{\partial u}{\partial s}3 + \frac{\partial u}{\partial t}(-2) \right) & = 0
+\end{aligned}$$
+
+Notice that the terms involving $\frac{\partial u}{\partial t}$ cancels. $$(2^2 + 3^2) \frac{\partial u}{\partial s} = 0$$ Thus the partial derivative of $u(s, t)$ against $s$ is $0$. 
+
+However, since we are in 2D, this does not mean $u$ is constant. For example, $u(s, t) = t^2$, would have $\frac{\partial u}{\partial s} = 0$, which implies that $u$ must \bred{not} depend on $s$, but can still depend on $t$. To signal this dependence, we get $$u(s, t) = f(t)$$ where $f$ is a 1D function only depending on $t$. 
+
+Since $t = 3x - 2y$, the \bred{general solution} of $u$ is given by $$u(x, y) = f(3x - 2y)$$ Notice that the general solution involves an \bred{unknown function} $f$.
+
+\subsection*{Initial Condition}
+
+Indeed, one may check that $u(x, y) = f (3x - 2y)$ satisfy the original PDE, without needing to know what the unknown function $f$ is.
+
+However, one may impose an \bred{initial condition} on $u$, which would allow one to solve for $f$. This is analogous to imposing an initial condition on an ODE, which would solve for the constants.
+
+Suppose in the above example, we impose the initial condition: $u(x, 0) = x^2$. Then since the general solution is $u(x, y) = f(3x - 2y)$: $$u(x,0) = f(3x) = x^2$$
+
+We may solve for $f$ by taking a substitution $w = 3x$, so $x = \frac{w}{3}$. $$f(w) = \frac{w^2}{9}$$ 
+
+Thus, the \bred{particular solution} is $$u(x,y) = f(3x-2y) = \frac{(3x-2y)^2}{9}$$
+
+\subsection*{General Case}
+
+For the equation $au_x +bu_y = 0$, set $s = ax + by$ and $t = bx - ay$. The \bred{general solution} is $u(x, y) = f (bx - ay)$.
+
+\begin{exercise}
+    Consider $u = u(x, y)$. Find the solution to the PDE (general or particular). 
+
+    \begin{itemize}
+        \item $-ux + uy = 0$ with $u(x, 0) = x$.
+        \item $au_x + bu_y = 0$.
+        \item $u_x + u_y = 1$.
+        \item $u_x - u_y + u = 0$.
+        \item $u_x + u_y + u = e^{x+2y}$ with $u(x, 0) = 0$. 
+        \item $u^x + 2u_y +(2x - y)u = 2x^2 +3xy - 2y^2$.
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Consider $2u_x + yu_y = 0$.
+
+    (First order linear equation with non-constant coefficients: $a = 2$, $b = y$) 
+
+    Find the solution with the change of variables $s = x$, $t = e^{-\frac{x}{2y}}$.
+
+    ($C = e^{-\frac{x}{2y}}$ is the solution to the ODE: $\frac{dy}{dx} = \frac{y}{2} = \frac{b}{a}$)
+\end{exercise}
+
 %----------------------------------------------------------------------------------------
 %	APPENDICES
 %----------------------------------------------------------------------------------------
