@@ -1239,11 +1239,11 @@ Of course, given the functions $z = z(x, y)$ and $x = x(s, t)$, $y = y(s, t)$, o
 \begin{exercise}
 $\text{ }$
 
-    \begin{itemize}
+    \begin{enumerate}
         \item $z = x - y$, $x = \sin(t)$, $y = 3t$. Find $\frac{\partial z}{\partial t}$.
         \item $z = xy^2$, $x = s\cos(t)$, $y = s\sin(t)$. Find $\frac{\partial z}{\partial x}$ and $\frac{\partial z}{\partial t}$.
         \item $u = xy + yz$, $x = s + t$, $y = s$, $z = 2t$. Find $\frac{\partial u}{\partial s}$ and $\frac{\partial u}{\partial t}$.
-    \end{itemize}
+    \end{enumerate}
 \end{exercise}
 
 Similar to the Chain Rule in 1D, the chain rule formula shines when \bred{at least one of the function} is unknown.
@@ -1262,20 +1262,20 @@ Similar to ODE, the function $u(x, y)$ defined by an PDE often can not be solved
 
 Consider $u = u(x, y)$. Consider the example $$2u_x + 3u_y = 0$$
 
-We perform the change of variables $s = 2x + 3y$ and $t = 3x - 2y$. (This change of variable works in general: $a = 2$, and $b = 3$ in this case.) Using chain rule (where we think of $u$ as $u = u(s,t)$, $s = s(x,y)$, $t = t(x,y)$), 
+We perform the change of variables $s = 2x + 3y$ and $t = 3x - 2y$. (This change of variable works in general: $a = 2$, and $b = 3$ in this case \footnote{In general, for $au_x + bu_y$, we would set $s = ax + by$ and $t = bx - ay$. }.) Using chain rule (where we think of $u$ as $u = u(s,t)$, $s = s(x,y)$, $t = t(x,y)$), 
 $$\begin{aligned}[t]
     \frac{\partial u}{\partial x}
      & = \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial x} + \frac{\partial u}{\partial t} \cdot \frac{\partial t}{\partial x} \\
-     & = \frac{\partial u}{\partial s}2 + \frac{\partial u}{\partial t}3 \\
+     & = \frac{\partial u}{\partial s} \cdot 2 + \frac{\partial u}{\partial t} \cdot 3 \\
     \frac{\partial u}{\partial y}
      & =  \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial y} + \frac{\partial u}{\partial t} \cdot \frac{\partial t}{\partial y} \\
-     & = \frac{\partial u}{\partial s}3 + \frac{\partial u}{\partial t}(-2)
+     & = \frac{\partial u}{\partial s} \cdot 3 + \frac{\partial u}{\partial t} \cdot (-2)
 \end{aligned}$$
 
 Plugging into the PDE, we get 
 $$\begin{aligned}[t]
     2u_x + 3u_y & = 0 \\
-    2 \left( \frac{\partial u}{\partial s}2 + \frac{\partial u}{\partial t}3 \right) + 3 \left( \frac{\partial u}{\partial s}3 + \frac{\partial u}{\partial t}(-2) \right) & = 0
+    2 \left( \frac{\partial u}{\partial s} \cdot 2 + \frac{\partial u}{\partial t} \cdot 3 \right) + 3 \left( \frac{\partial u}{\partial s} \cdot 3 + \frac{\partial u}{\partial t} \cdot (-2) \right) & = 0
 \end{aligned}$$
 
 Notice that the terms involving $\frac{\partial u}{\partial t}$ cancels. $$(2^2 + 3^2) \frac{\partial u}{\partial s} = 0$$ Thus the partial derivative of $u(s, t)$ against $s$ is $0$. 
@@ -1303,14 +1303,14 @@ For the equation $au_x +bu_y = 0$, set $s = ax + by$ and $t = bx - ay$. The \bre
 \begin{exercise}
     Consider $u = u(x, y)$. Find the solution to the PDE (general or particular). 
 
-    \begin{itemize}
+    \begin{enumerate}
         \item $-ux + uy = 0$ with $u(x, 0) = x$.
         \item $au_x + bu_y = 0$.
         \item $u_x + u_y = 1$.
         \item $u_x - u_y + u = 0$.
         \item $u_x + u_y + u = e^{x+2y}$ with $u(x, 0) = 0$. 
         \item $u^x + 2u_y +(2x - y)u = 2x^2 +3xy - 2y^2$.
-    \end{itemize}
+    \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
