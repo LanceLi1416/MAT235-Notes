@@ -2630,7 +2630,7 @@ Boundary points: $\begin{cases} (0, -3) \\ (-3, 0) \\ (3, 0) \end{cases}$
 
 \begin{center}
     \begin{tabular}{r | r r}
-        $(x,_y)$                      & $f(x, y)$                   \\
+        $(x, y)$                      & $f(x, y)$                   \\
         \hline
         $(2,~0)$                      & $-4$           & \text{min} \\
         $(0,~0)$                      & $0$                         \\
@@ -2655,9 +2655,55 @@ $\begin{aligned}[t]
     y       & = \frac{1}{2} x - \frac{1}{6}k
 \end{aligned}$
 
-Set $g(x, y) = 4x^2 + 2y - 25$. Consider the level set $g(x, y) = 0$. 
+Set $g(x, y) = 4x^2 + 2y - 25$, then $\nabla g(x, y) = (8x, 4y)$. 
 
-Then, $\nabla g(x, y) = (8x, 4y)$. 
+Consider the level set $g(x, y) = 0$, we have $4x^2 + 2y^2 = 25$.
+\begin{align*}
+    \nabla f & = \lambda \nabla g \\
+    (3, -6)  & = \lambda (8x, 4y)
+\end{align*}
+
+This gives the system of equations $\begin{cases} 3 = \lambda 8x \\ -6 = \lambda 4x \\ 4x^2 + 2y^2 = 25 \end{cases}$. 
+
+Normally, we would solve for $\lambda$ first. 
+
+\subsubsection*{Case 1: $x \neq 0$}
+
+Now, $\lambda = \frac{3}{8x}$. 
+
+Plugging into the second equation, $\begin{aligned}[t]
+    -6  & = \frac{3}{8x} \cdot 4y \\
+    -4x & = y
+\end{aligned}$
+
+Plugging into the third equation, $\begin{aligned}[t]
+    4x^2 + 2(-4x)^2 & = 25              \\
+    x^2             & = \frac{25}{36}   \\
+    x               & = \pm \frac{5}{6}
+\end{aligned}$
+
+Thus, we have $\begin{cases} x = -\frac{5}{6} \\ y = \frac{10}{3} \\ \lambda = -\frac{9}{20} \end{cases}$ and $\begin{cases} x = \frac{5}{6} \\ y = -\frac{10}{3} \\ \lambda = \frac{9}{20} \end{cases}$ as the solutions. 
+
+\subsubsection*{Case 2: $x = 0$}
+
+$\begin{aligned}[t]
+    3 & = \lambda 8 x \\
+      & = \lambda \cdot 8 \cdot 0 \\
+      & = 0
+\end{aligned}$
+
+Contradiction, there is no solution. 
+
+{~~~}
+
+\begin{center}
+    \begin{tabular}{r | r r}
+        $(x, y)$                      & $f(x, y)$             \\
+        \hline
+        $(-\frac{5}{6},\frac{10}{5})$ & $-\frac{29}{2}$ & min \\
+        $(\frac{5}{6},-\frac{10}{5})$ & $\frac{29}{2}$  & max \\
+    \end{tabular}
+\end{center}
 
 {~~~}
 
