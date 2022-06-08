@@ -2430,27 +2430,115 @@ Thus, $\lim_{(x,y)\to(0,0)} \frac{\partial f}{\partial y}$ DNE, $\frac{\partial 
 
 \subsection*{Exercise 3.14}
 
-% TODO: finish me
 \begin{enumerate}
     \item $\nabla f = \left( 6x + 4y, 4x + 10y \right)$.
     
     For critical points, $\nabla f = \vec{0}$. That is, $\begin{cases} 6x + 4y = 0 \\ 4x + 10y = 0 \end{cases} \implies \begin{cases} x = 0 \\ y = 0 \end{cases}$. 
 
     Thus, $(0,0)$ is the only critical point. 
+
+    {~~~}
+
+    $H = \begin{bmatrix} 6 & 4 \\ 4 & 10 \end{bmatrix}$. 
+    
+    \begin{itemize}
+        \item At $(0, 0)$, $H = \begin{bmatrix} 6 & 4 \\ 4 & 10 \end{bmatrix}$. $\det H = 46 > 0$. $f_{xx} = 6 > 0$. 
+
+        Thus, $(0, 0)$ is a local minimum. 
+    \end{itemize}
     
     {~~~}
 
-    \item
+    \item $\nabla f = \left( 2x, 12y^3 + 12y^2 - 24y \right)$.
+
+    For critical points, $\nabla f = \vec{0}$. That is, $\begin{cases} 2x = 0 \\ 12y^3 + 21y^2 - 24y = 0 \end{cases} \implies \begin{cases} x = 0 \\ y = \begin{cases} -2 \\ 0 \\ 1 \end{cases} \end{cases}$. 
     
+    Thus, $(0, -2)$, $(0, 0)$ and $(0, 1)$ are the critical points. 
+
+    {~~~}
+
+    $H = \begin{bmatrix} 2 & 0 \\ 0 & 12(3y^2 + 2y - 2) \end{bmatrix}$. 
+
+    \begin{itemize}
+        \item At $(0, -2)$, $H = \begin{bmatrix} 2 & 0 \\ 0 & 72 \end{bmatrix}$. $\det H = 144 > 0$. $f_{xx} = 2 > 0$
+        
+        Thus, $(0, -2)$ is a local minimum. 
+
+        \item At $(0, 0)$, $H = \begin{bmatrix} 2 & 0 \\ 0 & -24 \end{bmatrix}$. $\det H = -24 < 0$.
+        
+        Thus, $(0, 0)$ is a saddle point. 
+
+        \item At $(0, 1)$, $H = \begin{bmatrix} 2 & 0 \\ 0 & 36 \end{bmatrix}$. $\det H = 72 > 0$. $f_{xx} = 2 > 0$. 
+        
+        Thus, $(0, 1)$ is a local minimum. 
+    \end{itemize}
+
     {~~~}
     
-    \item
+    \item $\nabla f = \left( 3x^2 - y^2 - 2x, 2y - 2xy \right)$
+
+    For critical points, $\nabla f = \vec{0}$. That is. $\begin{cases} 3x^2 - y^2 - 2x = 0 \\ 2y - 2xy = 0 \end{cases} \implies \begin{cases} \begin{cases} \begin{cases} x = 0 \\ x = \frac{2}{3} \end{cases} \\ y = 0 \end{cases} \\ \begin{cases} x = 1 \\ \begin{cases} y = 1 \\ y = -1 \end{cases} \end{cases} \end{cases}$
+
+    Thus, $(0, 0)$, $(\frac{2}{3}, 0)$, $(1, -1)$ and $(1, 1)$ are the critical points.
     
     {~~~}
 
-    \item
-    
+    $H = \begin{bmatrix} 6x - 2 & -2y \\ -2y & 2 - 2x \end{bmatrix}$
+
+    \begin{itemize}
+        \item At $(0, 0)$, $H = \begin{bmatrix} -2 & 0 \\ 0 & 2 \end{bmatrix}$. $\det H = -4 < 0$. 
+        
+        Thus, $(0, 0)$ is a saddle point. 
+
+        \item At $(\frac{2}{3}, 0)$, $H = \begin{bmatrix} 2 & 0 \\ 0 & \frac{2}{3} \end{bmatrix}$. $\det H = \frac{4}{3} > 0$. $f_{xx} = 2 > 0$. 
+        
+        Thus, $(\frac{2}{3}, 0)$ is a local minimum. 
+
+        \item At $(1, -1)$, $H = \begin{bmatrix} 4 & 2 \\ 2 & 0 \end{bmatrix}$. $\det H = -4 < 0$. 
+        
+        Thus, $(1, -1)$ is a saddle point. 
+
+        \item At $(1, 1)$, $H = \begin{bmatrix} 4 & -2 \\ -2 & 0 \end{bmatrix}$. $\det H = -4 < 0$. 
+
+        Thus, $(1, 1)$ is a saddle point. 
+    \end{itemize}
+
     {~~~}
+
+    \item $\begin{aligned}[t]
+        \nabla f & = \left( 2xe^{-x^2-y^2} - 2x(x^2 + 2y^2)e^{-x^2-y^2}, 4ye^{-x^2-y^2} - 2y(x^2 + 2y^2)e^{-x^2-y^2} \right) \\
+                 & = \left( -2e^{-x^2-y^2} (x^2 + 2y^2 - 1), -2e^{-x^2-y^2} (x^2 + 2y^2 - 2) \right)
+    \end{aligned}$
+
+    For critical points, $\nabla f = \vec{0}$. That is, $\begin{cases} -2e^{-x^2-y^2} (x^2 + 2y^2 - 1) = 0 \\ -2e^{-x^2-y^2} (x^2 + 2y^2 - 2) = 0 \end{cases} \implies \begin{cases} \begin{cases} x = -1 \\ x = 1 \end{cases} \\ y = 0 \end{cases}$ and $\begin{cases} x = 0 \\ \begin{cases} y = -1 \\ y = 0 \\ y = 1 \end{cases} \end{cases}$.
+
+    Thus, $(-1, 0)$, $(0, -1)$, $(0, 0)$, $(0, 1)$ and $(1, 0)$ are the critical points. 
+
+    {~~~}
+
+    $H = \begin{bmatrix} e^{-x^2-y^2} (4x^4 - + 8x^2y^2 - 10x^2 - 4y^2 + 2) & 4xye^{-x^2-y^2}(x^2 + 2y^2 - 3) \\ 4xye^{-x^2-y^2} (x^2 + 2y^2 - 3) & e^{-x^2-y^2} (8y^4 + 4x^2y^2 - 2x^2 - 20y^2 + 4) \end{bmatrix}$. 
+
+    \begin{itemize}
+        \item At $(-1, 0)$, $H = \begin{bmatrix} -\frac{4}{e} & 0 \\ 0 & \frac{2}{e} \end{bmatrix}$. $\det H = -\frac{8}{e^2} < 0$. 
+        
+        Thus, $(-1, 0)$ is a saddle point. 
+
+        \item At $(0, -1)$, $H = \begin{bmatrix} -\frac{2}{e} & 0 \\ 0 & -\frac{8}{e} \end{bmatrix}$. $\det H = \frac{16}{e^2} > 0$. $f_{xx} = -\frac{2}{e} < 0$. 
+        
+        Thus, $(0, -1)$ is a local maximum. 
+
+        \item At $(0, 0)$, $H = \begin{bmatrix} 2 & 0 \\ 0 & 4 \end{bmatrix}$. $\det H = 8 > 0$. $f_{xx} = 2 > 0$. 
+        
+        Thus, $(0, 0)$ is a local minimum. 
+
+        \item At $(0, 1)$, $H = \begin{bmatrix} -\frac{2}{e} & 0 \\ 0 & -\frac{8}{e} \end{bmatrix}$. $\det H = \frac{16}{e^2} > 0$. $f_{xx} = -\frac{2}{e} < 0$. 
+        
+        Thus, $(0, 1)$ is a local maximum. 
+
+        \item At $(1, 0)$, $H = \begin{bmatrix} -\frac{4}{e} & 0 \\ 0 & \frac{2}{e} \end{bmatrix}$. $\det H = -\frac{8}{e^2} < 0$. 
+        
+        Thus, $(1, 0)$ is a saddle point. 
+    \end{itemize}
 \end{enumerate}
 
 {~~~}
