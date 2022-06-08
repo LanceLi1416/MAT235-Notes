@@ -18,6 +18,7 @@
 \usepackage{mathrsfs}
 \usepackage{tikz-3dplot}
 \usepackage{cancel}
+\usepackage{circledsteps}
 \tdplotsetmaincoords{60}{115}
 % Colors
 \definecolor{LightBlue}{rgb}{0.0, 0.64, 1.0}
@@ -2758,6 +2759,86 @@ Thus, we have $\begin{cases} x = 0 \\ y = 0 \\ \lambda = 2 \end{cases}$ as the s
 {~~~}
 
 \subsection*{Exercise 3.18}
+
+Take $f(x_1, y_1, x_2, y_2) = \text{distance}^2 = (x_2 - x_1)^2 + (y_2 - y_1)^2$. 
+
+Take $g(x_1, y_1, x_2, y_2) = y_1 - {x_1}^2$, and $h(x_1, y_2, x_2, y_2) = y_2 - x_2 + 1$. 
+
+Then, $\nabla f = \begin{pmatrix} -2(x_2 - x_2) \\ -2(y_2 - y_1) \\ 2(x_2 - x_1) \\ 2(y_2 - y_1) \end{pmatrix}$, $\nabla g = \begin{pmatrix} -2x \\ 1 \\ 0 \\ 0 \end{pmatrix}$ and $\nabla h = \begin{pmatrix} 0 \\ 0 \\ -1 \\ 1 \end{pmatrix}$. 
+$$\begin{aligned}[t]
+    \nabla f 
+     & = \lambda \nabla g + \mu \nabla h \\
+    \begin{pmatrix} -2(x_2 - x_2) \\ -2(y_2 - y_1) \\ 2(x_2 - x_1) \\ 2(y_2 - y_1) \end{pmatrix} 
+     & = \lambda \begin{pmatrix} -2x \\ 1 \\ 0 \\ 0 \end{pmatrix} + \mu \begin{pmatrix} 0 \\ 0 \\ -1 \\ 1 \end{pmatrix}
+\end{aligned}$$
+
+This gives the system of equations $\begin{cases}
+    -2(x_2 - x_1) = -2\lambda x_1 & \Circled{1} \\
+    -2(y_2 - y_1) = \lambda       & \Circled{2} \\
+    2(x_2 - x_1) = -\mu           & \Circled{3} \\
+    2(y_2 - y_1) = \mu            & \Circled{4} \\
+    y_1 - {x_1}^2 = 0             & \Circled{5} \\
+    y_2 - x_2 + 1 = 0             & \Circled{6}
+\end{cases}$
+
+From \Circled{2} and \Circled{4}, we have $\lambda = -\mu$. 
+
+From \Circled{1} and \Circled{3}, we have $\begin{aligned}[t]
+    2\lambda x_1 & = -\mu    \\
+                 & = \lambda
+\end{aligned}$.
+
+\subsubsection*{Case 1: $\lambda \neq 0$}
+
+Then, we have $\begin{aligned}[t]
+    2\lambda x_1 & = \lambda    \\
+    2x_1         & = 1          \\
+    x_1          & = \frac{1}{2}
+\end{aligned}$
+
+Substitute into \Circled{5}, we get $\begin{aligned}[t]
+    y_1 & = \left( \frac{1}{2} \right)^2 \\
+    y_1 & = \frac{1}{4}
+\end{aligned}$
+
+Now, we have $\begin{cases}
+    2(x_2 - x_1) = \lambda  & \Circled{7} \\
+    2(y_2 - y_1) = -\lambda & \Circled{8}  \\
+    y_2 - x_2 + 1 = 0       & \Circled{9} 
+\end{cases}$
+
+Substitute $x_1 = \frac{1}{2}$, $y_1 = \frac{1}{4}$ into \Circled{7} and \Circled{8}, we get 
+$\begin{aligned}[t]
+    2(y_2 - \frac{1}{4}) & = -2(x_2 - \frac{1}{2}) \\
+    2y_2 - \frac{1}{2}   & = -2x_2 + 1             \\
+    2y_2                 & = -2x_2 + \frac{3}{2}   \\
+    y_2                  & = -x_2 + \frac{3}{4}
+\end{aligned}$
+
+Substitute into \Circled{9}, we get $\begin{aligned}[t]
+    ( -x_2 + \frac{3}{4} ) - x_2 + 1 & = 0 \\
+    2x_2 = -\frac{7}{8}                    \\
+    x_2 = \frac{7}{8}
+\end{aligned}$
+
+Then, $\begin{aligned}[t]
+    y_2 & = -\frac{7}{8} + \frac{3}{4} \\
+        & = -\frac{1}{8}
+\end{aligned}$
+
+\subsubsection*{Case 2: $\lambda = 0$}
+
+From \Circled{3}, we get $x_1 = x_2$. 
+
+From \Circled{4}, we get $y_1 = y_2$. 
+
+Thus, $p = (x_1, y_1) = (x_2, y_2) = q$. 
+
+However, since $C_1$ and $C_2$ do not collide, there is no solution. 
+
+{~~~}
+
+Thus, $p = (\frac{1}{2}, \frac{1}{4})$ and $q = (\frac{7}{8}, -\frac{1}{8})$ is the solution. 
 
 {~~~}
 
