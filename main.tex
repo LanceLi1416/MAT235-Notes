@@ -2507,7 +2507,7 @@ Thus, $\lim_{(x,y)\to(0,0)} \frac{\partial f}{\partial y}$ DNE, $\frac{\partial 
 
     \item $\begin{aligned}[t]
         \nabla f & = \left( 2xe^{-x^2-y^2} - 2x(x^2 + 2y^2)e^{-x^2-y^2}, 4ye^{-x^2-y^2} - 2y(x^2 + 2y^2)e^{-x^2-y^2} \right) \\
-                 & = \left( -2e^{-x^2-y^2} (x^2 + 2y^2 - 1), -2e^{-x^2-y^2} (x^2 + 2y^2 - 2) \right)
+                 & = \left( -2xe^{-x^2-y^2} (x^2 + 2y^2 - 1), -2ye^{-x^2-y^2} (x^2 + 2y^2 - 2) \right)
     \end{aligned}$
 
     For critical points, $\nabla f = \vec{0}$. That is, $\begin{cases} -2e^{-x^2-y^2} (x^2 + 2y^2 - 1) = 0 \\ -2e^{-x^2-y^2} (x^2 + 2y^2 - 2) = 0 \end{cases} \implies \begin{cases} \begin{cases} x = -1 \\ x = 1 \end{cases} \\ y = 0 \end{cases}$ and $\begin{cases} x = 0 \\ \begin{cases} y = -1 \\ y = 0 \\ y = 1 \end{cases} \end{cases}$.
@@ -2546,6 +2546,7 @@ Thus, $\lim_{(x,y)\to(0,0)} \frac{\partial f}{\partial y}$ DNE, $\frac{\partial 
 \subsection*{Exercise 3.15}
 
 \begin{center}
+    \tikzsetnextfilename{c03e15-01}%
     \begin{tikzpicture}
         \newcommand\A{(0,-3)};
         \newcommand\B{(0, 3)};
@@ -2630,17 +2631,17 @@ Boundary points: $\begin{cases} (0, -3) \\ (-3, 0) \\ (3, 0) \end{cases}$
 
 \begin{center}
     \begin{tabular}{r | r r}
-        $(x, y)$                      & $f(x, y)$                   \\
+        $(x, y)$                      & $f(x, y)$            \\
         \hline
-        $(2,~0)$                      & $-4$           & \text{min} \\
-        $(0,~0)$                      & $0$                         \\
-        $(3,~0)$                      & $-3$                        \\
-        $(0,~3)$                      & $9$            & \text{max} \\
-        $(0,~-3)$                     & $9$            & \text{max} \\
+        $(2,~0)$                      & $-4$           & min \\
+        $(0,~0)$                      & $0$                  \\
+        $(3,~0)$                      & $-3$                 \\
+        $(0,~3)$                      & $9$            & max \\
+        $(0,~-3)$                     & $9$            & max \\
         \rule{0pt}{0.25cm}
-        $(\frac{5}{2},~\frac{1}{2})$  & $-\frac{7}{2}$              \\
+        $(\frac{5}{2},~\frac{1}{2})$  & $-\frac{7}{2}$       \\
         \rule{0pt}{0.75cm}
-        $(\frac{5}{2},~-\frac{1}{2})$ & $-\frac{7}{2}$              \\
+        $(\frac{5}{2},~-\frac{1}{2})$ & $-\frac{7}{2}$       \\
     \end{tabular}
 \end{center}
 
@@ -2658,11 +2659,10 @@ $\begin{aligned}[t]
 Set $g(x, y) = 4x^2 + 2y - 25$, then $\nabla g(x, y) = (8x, 4y)$. 
 
 Consider the level set $g(x, y) = 0$, we have $4x^2 + 2y^2 = 25$.
-\begin{align*}
+$$\begin{aligned}[t]
     \nabla f & = \lambda \nabla g \\
     (3, -6)  & = \lambda (8x, 4y)
-\end{align*}
-
+\end{aligned}$$
 This gives the system of equations $\begin{cases} 3 = \lambda 8x \\ -6 = \lambda 4x \\ 4x^2 + 2y^2 = 25 \end{cases}$. 
 
 Normally, we would solve for $\lambda$ first. 
@@ -2697,10 +2697,12 @@ Contradiction, there is no solution.
 {~~~}
 
 \begin{center}
-    \begin{tabular}{r | r r}
+    \begin{tabular}{c | r c}
         $(x, y)$                      & $f(x, y)$             \\
         \hline
+        \rule{0pt}{0.75cm}
         $(-\frac{5}{6},\frac{10}{5})$ & $-\frac{29}{2}$ & min \\
+        \rule{0pt}{0.75cm}
         $(\frac{5}{6},-\frac{10}{5})$ & $\frac{29}{2}$  & max \\
     \end{tabular}
 \end{center}
@@ -2709,9 +2711,71 @@ Contradiction, there is no solution.
 
 \subsection*{Exercise 3.17}
 
+Take $\begin{aligned}[t]
+    f(x, y) = \text{distance}^2 & = (x - 0)^2 + (y - (-1))^2 \\
+                                & = x^2 + (y + 1)^2
+\end{aligned}$
+
+Take $g(x, y) = x^2 - y$. 
+
+Then, $\nabla f = (2x, 2y +2)$, and $\nabla g = (2x, 1)$. 
+$$\begin{aligned}[t]
+    \nabla f   & = \lambda \nabla g \\
+    (2x, 2y+2) & = \lambda(2x, 1)
+\end{aligned}$$
+This gives the system of equations $\begin{cases}
+    2x     & = \lambda 2x \\
+    2y + 2 & = \lambda    \\
+    y = x^2
+\end{cases}$
+
+\subsubsection*{Case 1: $x \neq 0$}
+
+From the first equation, we get $\lambda = 1$. 
+
+Substitute into the second equation, we get $\begin{aligned}[t]
+    2y + 2 & = 1 \\ y = -\frac{1}{2}
+\end{aligned}$
+
+Substitute into the third equation, we get $-\frac{1}{2} = x^2$. 
+
+There is no solution. 
+
+\subsubsection*{Case 2: $x = 0$}
+
+Substitute into the third equation, we get $\begin{aligned}[t]
+    y & = 0^2 \\
+    y & = 0
+\end{aligned}$
+
+Substitute into the second equation, we get $\begin{aligned}[t]
+    2 \cdot 0 + 2 & = \lambda \\
+    \lambda       & = 2
+\end{aligned}$
+
+Thus, we have $\begin{cases} x = 0 \\ y = 0 \\ \lambda = 2 \end{cases}$ as the solution. 
+
 {~~~}
 
 \subsection*{Exercise 3.18}
+
+{~~~}
+
+\subsection*{Exercise 3.19}
+
+{~~~}
+
+\subsection*{Exercise 3.20}
+
+{~~~}
+
+\subsection*{Exercise 3.21}
+
+{~~~}
+
+\subsection*{Exercise 3.22}
+
+{~~~}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
