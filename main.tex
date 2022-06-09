@@ -1134,7 +1134,7 @@ However, notice that given an equation with different numbers, the quadratic we 
     \end{minipage}
     \begin{minipage}[t]{0.45\linewidth}
         \begin{align*}
-            y'' & = \frac{d^2y}{dt^2} \left( \frac{dt}{dx}^2 \right) + \frac{dy}{dt} \cdot \frac{d^2t}{dx^2} \\
+            y'' & = \frac{d^2y}{dt^2} \left( \frac{dt}{dx} \right)^2 + \frac{dy}{dt} \cdot \frac{d^2t}{dx^2} \\
                 & = \frac{d^2y}{dt^2} \left( \frac{1}{x} \right)^2 + \frac{dy}{dt} \cdot \frac{-1}{x^2}
         \end{align*}
     \end{minipage}
@@ -1188,6 +1188,7 @@ In other words, the ``missing'' second solution from the repeated root of $n = 2
 Consider an example: $\begin{cases}z = z(x, y) \\ x = x(s, t) \\ y = y(s, t) \end{cases}$. We can construct the tree diagram of variable dependence.
 
 \begin{center}
+    \tikzsetnextfilename{c03s10-f01}%
     \begin{tikzpicture}[
         level 1/.style = {sibling distance = 2.5cm},
         level 2/.style = {sibling distance = 1.5cm}
@@ -2843,6 +2844,72 @@ Thus, $p = (\frac{1}{2}, \frac{1}{4})$ and $q = (\frac{7}{8}, -\frac{1}{8})$ is 
 {~~~}
 
 \subsection*{Exercise 3.19}
+
+\begin{enumerate}
+    \item Take $y = x^n$, then $y' = nx^{n-1}$ and $y'' = n(n-1)x^{n-2}$. 
+    
+    Plugging into the ODE, we get $\begin{aligned}[t]
+        x^2n(n - 1)x^{n-2} - 3xnx^{n-1} + 4x^n & = 0 \\
+        n(n - 1)x^n - 3nx^n + 2x^n             & = 0 \\
+        n(n-1) - 3n + 2                        & = 0 \\
+        n^2 - 4n + 2                           & = 0 \\
+        (n - 2)^2                              & = 0
+    \end{aligned}$
+
+    Take $t = \ln x$, we get 
+    \begin{minipage}[t]{0.45\linewidth}
+        \begin{align*}
+            y' = \frac{dy}{dx} & = \frac{dy}{dt} \frac{dt}{dx} \\
+                               & = \frac{dy}{dt} \frac{1}{x}
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}[t]{0.45\linewidth}
+        \begin{align*}
+            y'' 
+            & = \frac{d^2y}{dt^2}\left( \frac{dt}{dx} \right)^2 + \frac{dy}{dt} \cdot \frac{d^2y}{dx^2} \\
+            &= \frac{d^2y}{dt^2} \left( \frac{1}{x} \right)^2 + \frac{dy}{dt} \cdot \frac{-1}{x^2}
+        \end{align*}
+    \end{minipage}
+
+    Plugging the above into the ODE, we get $$\begin{aligned}[t]
+        x^2y'' - 3xy' + 4y & = 0 \\
+        x^2 \left( \frac{d^2y}{dt^2} \left( \frac{1}{x} \right)^2 + \frac{dy}{dt} \cdot \frac{-1}{x^2} \right) - 3x \left( \frac{dy}{dt} \frac{1}{x} \right) + 34y & = 0 \\
+        \frac{d^2y}{dt^2} - \frac{dy}{dt} - 3\frac{dy}{dt} + 4y & = 0 \\
+        \frac{d^2y}{dt^2} - 4\frac{dy}{dt} + 4y & = 0 & \Circled{1}
+    \end{aligned}$$
+
+    Take $y(t) = e^{rt}$, then $\frac{dy}{dt} = re^{rt}$ and $\frac{d^2y}{dt^2} = r^2e^{rt}$. 
+
+    Plugging into \Circled{1}, we get $\begin{aligned}[t]
+        r^2e^{rt} - 4re^{rt} + 4e^{rt} & = 0 \\
+        r^2 - 4r + 4                   & = 0 \\
+        (r - 2)^2                      & = 0
+    \end{aligned}$
+
+    Thus, the general solution for $y(t)$ is given by $y(t) = c_1e^{2t} + c_2te^{2t}$. 
+
+    Since $t = \ln x$, the general solution for $y(x)$ is given by $\begin{aligned}[t]
+        y(x) & = c_1e^{2\ln{x}} + c_2 \ln{x} e^{2\ln{x}}                                  \\
+             & = c_1 \left( e^{\ln{x}} \right)^2 + c_2 \ln{x} \left( e^{\ln{x}} \right)^2 \\
+        y(x) & = c_1 x^2 + c_2 (\ln{x}) x^2
+    \end{aligned}$
+
+    {~~~}
+
+    \item Take $y = x^n$, then $y' = nx^{n-1}$ and $y'' = n(n - 1)x^{n-2}$.
+    
+    Plugging into the ODE, we get $\begin{aligned}[t]
+        2x^2n(n-1)x^{n-2} - 5xnx^{n-1} + 5x^n & = 0 \\
+        2n(n - 1)x^n - 5nx^n + 5x^n           & = 0 \\
+        2n(n - 1) - 5n + 5                    & = 0 \\
+        2n^2 - 7n + 5                         & = 0 \\
+        (n - 1)(2n - 5)                       & = 0
+    \end{aligned}$
+
+    Thus, the general solution is given by $y = c_1 x + c_2 x^{\frac{5}{2}}$. 
+
+    \item aa
+\end{enumerate}
 
 {~~~}
 
