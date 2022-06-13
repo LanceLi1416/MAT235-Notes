@@ -1306,7 +1306,7 @@ For the equation $au_x +bu_y = 0$, set $s = ax + by$ and $t = bx - ay$. The \bre
     Consider $u = u(x, y)$. Find the solution to the PDE (general or particular). 
 
     \begin{enumerate}
-        \item $-ux + uy = 0$ with $u(x, 0) = x$.
+        \item $-u_x + u_y = 0$ with $u(x, 0) = x$.
         \item $au_x + bu_y = 0$.
         \item $u_x + u_y = 1$.
         \item $u_x - u_y + u = 0$.
@@ -1324,6 +1324,202 @@ For the equation $au_x +bu_y = 0$, set $s = ax + by$ and $t = bx - ay$. The \bre
 
     ($C = e^{-\frac{x}{2y}}$ is the solution to the ODE: $\frac{dy}{dx} = \frac{y}{2} = \frac{b}{a}$)
 \end{exercise}
+
+\section{Higher Order Chain Rule}
+
+Chain rule with higher order derivatives are very complicated. 
+
+Consider a simple example, $u = u(x, y)$, $x = x(s, t)$ and $y = y(s, t)$. 
+
+Using the 1st order chain rule, $$\frac{\partial u}{\partial t} = \frac{\partial u}{\partial x} \cdot \frac{\partial x}{\partial t} + \frac{\partial u}{\partial y} \cdot \frac{\partial y}{\partial t}$$ then we can apply another differential operator to attain a second derivative, we use product rule, $$\begin{aligned}[t]
+    \frac{\partial}{\partial t}\left(\frac{\partial u}{\partial t}\right) & = \frac{\partial}{\partial t} \left( \frac{\partial u}{\partial x} \cdot \frac{\partial x}{\partial t} \right) + \frac{\partial}{\partial t}\left( \frac{\partial u}{\partial y} \cdot \frac{\partial y}{\partial t} \right) \\
+     & = \frac{\partial}{\partial t} \left( \frac{\partial u}{\partial x} \right) \cdot \frac{\partial x}{\partial t} + \frac{\partial u}{\partial x} \cdot \frac{\partial}{\partial t}\left( \frac{\partial x}{\partial t} \right) + \frac{\partial}{\partial t} \left( \frac{\partial u}{\partial y} \right) \cdot \frac{\partial y}{\partial t} + \frac{\partial u}{\partial y} \cdot \frac{\partial }{\partial t} \left( \frac{\partial y}{\partial t} \right)
+\end{aligned}$$
+
+% TODO: finish me
+
+\chapterimage{c3.png} %TODO: add a chapter image
+
+\chapter{Multiple Integrals}
+
+\section{Regular Integral in 2D}
+
+\subsection*{1 Dimensional Integration}
+
+In 1 dimensional integration, we have a function that depends only on $x$. We can plot the function in 2D, by letting the $y = f(x)$. This is called the graph of the function.
+
+When we integrate a function, the domain of integration needs to be an interval $[a, b]$. The interval can be interpreted as a 1 dimensional object. \bred{The dimension of the domain must match the dimension of the function}.
+
+The result of the integral represents the (2 dimensional) area under the curve $y = f(x)$ above the interval $[a, b]$ (if $f(x) > 0$).
+
+\subsection*{2 Dimensional Integration}
+
+In 2 dimensional integration, we have a function that depends on $x$ and $y$. For example, $f(x, y) = xy + x^2$ or $f(x, y) = e x \sin(xy + 1)$. 
+
+Similar to the case that $f(x) = 10$ can be considered as a 1D function, $f(x, y) = 2x$, $f(x, y) = e^y$ or $f(x, y) = 5$, can all be considered as a 2D function, even though they may only depend on one or none of the variables.
+
+If we were to calculate the 2D integral of these functions by considering them as 2D functions, the answer would be different than their 1D integral (where we consider them as 1D functions).
+
+To plot a 2D function, we can let $z = f(x, y)$. The value of the function will be the height of the point plotted in 3D space. This is the graph of a 2D function. It will be a 2D surface in 3D.
+
+% TODO: graph of z = sin(y) + 2x
+\begin{center} \includegraphics[width=0.275\linewidth]{Plots/s_4_1/sin(y)+2x.png} \end{center}
+
+When we integrate a 2D function $f(x, y)$, the domain of integration needs to be a patch of area on the $xy$-plane. Perhaps the domain is a square, or a circle, or some area that is irregularly shaped. Regardless, the domain must be a \bred{2 dimensional object} on the $xy$-plane. \bred{The dimension of the domain must match the dimension of the function}.
+
+The value of the integral over the domain corresponds to the \bred{3D volume} under the curved surface $f(x, y)$ \bred{above the domain of integration}.
+
+\begin{center} \includegraphics[width=0.75\linewidth]{Plots/s_4_1/Integral.png} \end{center}
+
+In the above case, the domain is the rectangle on the $xy$-plane, with $x$ between $[a, b]$ and $y$ between $[c, d]$. For the volume, the base is always flat, but the top will usually be curved, since the function $z = f(x, y)$ tends to create a curved surface in 3D. If the domain had been a triangle, then the value of the integral would be the volume of a triangular prism, except the top will be curved.
+
+Thus, when we try to integrate a 2D function $f(x, y)$ over any domain that is a 1D curve in the $xy$-plane, we would be trying to find the volume above the 1D curve. By agreeing that a curve is infinitely thin, we conclude that \itblue{the volume above the curve must be zero}. This is why our domain of integration for $f(x, y)$ \bred{must be a 2D area}.
+
+\subsection*{Compute 2D Integrals}
+
+A 2D integral typically will look like $$\iint_D f(x,y) = \int_D f(x, y) = \int_D f(x,y) \,dA$$ where $D$ is some 2D domain on the $xy$-plane.
+
+To compute a 2D integral, we do not plot the function in 3D space. We split the 2D integral into 2 components, with $dx$ and $dy$.
+
+\begin{enumerate}
+    \item Draw the domain in the $xy$-plane.
+
+    \item For all points inside the domain, determine the maximum and minimum values of $x$. These two values will be constant numbers $x_{min}$ and $x_{max}$.
+
+    \item Pick a random value of $x$ between the minimum and maximum. Consider the vertical line that passes through the point $x$. Consider the maximum and minimum values of $y$ on the vertical line.
+
+    \item Repeat step 3 several times. For different values of $x$ chosen, the max and min values of $y$ would be different. Typically, all the minimum values of $y$ would lie on a smooth curve, $y_{min} = m(x)$. Similarly, the maximum values would be the same, $y_{max} = M(x)$. In other words, the max and min of $y$ are \bred{functions of $x$}.
+
+    \item Thus the integral can be evaluated as $$\int_D f(x, y) = \int_{x=x_{min}}^{x=x_{max}} \left( \int_{y=M(x)}^{y=m(x)} \,dy \right) \,dx$$ where the \bred{1D integral} inside the bracket is evaluated first. When carrying out integration with $dy$, we pretend that the variable $x$ is constant in the integration. We use the results of the inner integral, to carry out the integral outside the brackets with $dx$ afterwards.
+\end{enumerate}
+
+In the above steps, we first \bred{fix} $x$, and let $y$ vary between the lower bound curve and the upper bound curve while integrating. Then we add (integrate) all possible values of $x$.
+
+We can also do the reverse by first attaining the min and max values of $y$ in the domain.
+
+\begin{enumerate}
+    \item Draw the domain in the $xy$-plane.
+
+    \item For all points inside the domain, determine the maximum and minimum values of $y$. These two values will be constant numbers $y_{min}$ and $y_{max}$.
+
+    \item Pick a random value of $y$ between the minimum and maximum. Consider the horizontal line that passes through the point $y$. Consider the maximum and minimum values of $x$ on the horizontal line. 
+
+    \item Repeat step 3 several times. For different values of y chosen, the max and min values of x would be different. Typically, all the minimum values of x would lie on a smooth curve, xmin = m(y). Similarly, the maximum values would be the same, $x_{max} = M(y)$. In other words, the max and min of $x$ are \bred{functions of $y$}.
+
+    \item Thus the integral can be evaluated as $$\int_D f(x, y) = \int_{y=y_{min}}^{y=y_{max}} \left( \int_{x=M(y)}^{x=m(y)} \,dx \right) \,dy$$ where the \bred{1D integral} inside the bracket is evaluated first. 
+    
+    Notice in the inner integral, $x$ is integrated first, and $y$ is regarded as constant. Here, $y$ is integrated after $x$, whereas in the previous way, $x$ is integrated after $y$. This is sometimes called \itblue{changing the order of integration}.
+
+    This is not a good name since, when the order is changed, the limits of integrating are almost \bred{never the same}. In fact, the outer integral would always have limits that are constant numbers.
+\end{enumerate}
+
+Fubini's Theorem tells us that the 2 results will always be the same regardless of the order we choose, so we are free to choose the order of integration to our convenience when calculating 2D integrals \footnote{Fubini's Theorem requires all relevant integrals to be integrable. Typically no division by zero will ensure the function is integrable. }. 
+
+Sometimes this may be used to our advantage, as some functions do not have 1D antiderivatives.
+
+\subsection*{Properties of Integrals}
+
+For integrals over some domain $D$ in $\mathbb{R}^n$ with integrable functions 
+
+{~~~}
+
+\begin{itemize}
+    \item $\int_D(f + g) = \int_D f + \int_D g$ and $\int_D cf = c \int_D f$.
+    
+    \item If $f \le g$ on all of $D$, then $\int_D f \le \int_D g$. 
+    
+    \item $|f|$ is integrable and $\left| \int_D f \right| = \int_D |f|$. 
+
+    \item If domain $C$ is contained in $D$ and $f \ge 0$, then $\int_C f \le \int_D f$. 
+    
+    \item For domain $C$ and $D$ (that we usually see), $\int_{C \cup D} f = \int_C f + \int_D f - \int_{C \cap D} f$. 
+\end{itemize}
+
+Notice that all properties of integral are shared with the integral in 1D.
+
+\subsection*{Sharp Points on the Boundary of Domain}
+
+In the case where the domain has a sharp point in the boundary, we can split up domain at the sharp point into 2 pieces, and integrate the 2 pieces separately, then add up the answers.
+
+\subsection*{$n$-dimensional Volume}
+
+For any set $D$ in $\mathbb{R}^n$, define the $n$-dimensional volume of $D$ $$V = \int_D 1$$ (Note: here $f = 1$, the constant function). 
+
+\begin{itemize}
+    \item If $n = 1$, then $V$ is the length of $D$ (1D interval with 1-dimensional volume). 
+    \item If $n = 2$, then $V$ is the area of $D$ (2D area with 2-dimensional volume). 
+    \item If $n = 3$, then $V$ is the volume of $D$ (3D volume with 3-dimensional volume). 
+\end{itemize}
+
+\begin{example}
+    Let $f(x, y) = 10$. Let $D$ be the unit square between $0$ and $1$. 
+    
+    By noticing that the function is constant, we can see that the plot in 3D space will be a flat surface. The integral will represent the \bred{volume of the rectangular prism}, which can be calculated as base area $\times$ height. Thus, the answer will be $10 \cdot 1 = 10$.
+
+    We can also evaluate the integral using the above steps.
+
+    Drawing the domain, we see that the min and max values of $x$ is $0$ and $1$. For any fixed value of $x$, we see that the min and max values of $y$ is $0$ and $1$.
+
+    % TODO: finish the graph
+    \begin{center}
+        \begin{tikzpicture}
+                \draw[->] (-0.7, 0) -- (1.7, 0) node[right] {$x$};
+                \draw[->] (0, -0.7) -- (0, 1.7) node[above] {$y$};
+
+                \draw[DarkGreen] (0,0) rectangle (1,1);
+        \end{tikzpicture}
+    \end{center}
+    \begin{align*}
+        \int_D f(x,y)   = \int_D 10
+                        = 10 \cdot \left( \int_D 1 \right)
+                        = 10 \cdot \int_{x=0}^{x=1} \left( \int_{y=0}^{y=1} 1 \,dy \right) \,dx
+                      & = 10 \cdot \int_{x=0}^{x=1} 1 \,dx                                      \\
+                      & = 10
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Let $f(x, y) = x$. Let $D$ be the triangle with vertices $(0, 0)$, $(1, 0)$, $(1, 2)$.
+
+    Drawing the domain, The min and max values of $x$ is $0$ and $1$. For any fixed value of $x$, the min value of $y$ is $0$.
+
+    However, the max value of $y$ changes. The max value of $y$ all lie on the curve $y = 2x = M(x)$.
+    
+    % TODO: finish the graph
+    \begin{center}
+        \begin{tikzpicture}
+                \draw[->] (-0.7, 0) -- (1.7, 0) node[right] {$x$};
+                \draw[->] (0, -0.7) -- (0, 2.7) node[above] {$y$};
+
+                \draw[thick,DarkGreen] (0,0) -- (1,0);
+                \draw[thick,DarkGreen] (1,0) -- (1,2);
+                \draw[thick,DarkGreen] (1,2) -- (0,0);
+
+                \draw[yellow] (0.33,-0.2) -- (0.33,2.2);
+                \draw[yellow] (0.67,-0.2) -- (0.67,2.2);
+        \end{tikzpicture}
+    \end{center}
+    \begin{align*}
+        \int_D f(x,y)   = \int_D x
+                        = \int_{x=0}^{x=1} \left( \int_{y=0}^{{\color{red}y=2x}} x \,dy \right) \,dx
+                      & = \int_{x=0}^{x=1} x \left( \int_{y=0}^{{\color{red}y=2x}} 1 \,dy \right) \,dx \\
+                      & = \int_{x=0}^{x=1} x \left( y \bigg|_{y=0}^{{\color{red}y=2x}} \right) \,dx    \\
+                      & = \int_{x=0}^{x=1} x \cdot 2x \,dx                                             \\
+                      & = \int_{x=0}^{x=1} 2x^2
+                        = \frac{2}{3} x^3 \bigg|_{x=0}^{x=1}
+                        = \frac{2}{3}
+    \end{align*}
+
+    Notice that the bound inside the inner integral is a function of $x$. Since we are integrating with $dy$, we regard $x$ as constant, and move it out of the integral.
+\end{example}
+
+\subsection*{Domain Defined Using Inequalities}
+
+When domains are defined using an inequality, we take the inequality and make it equality. This will create a curve in the $xy$-plane which we can draw. We start on the curve, and move a little bit to the right of the curve. This increased the value of $x$, so one side of the equality has become larger. Using this information, we can determine the area defined by the equality.
+
+\begin{example}
+    
+\end{example}
 
 %----------------------------------------------------------------------------------------
 %	APPENDICES
@@ -2960,6 +3156,8 @@ Thus, $p = (\frac{1}{2}, \frac{1}{4})$ and $q = (\frac{7}{8}, -\frac{1}{8})$ is 
          & = \cos(t) - 3
     \end{aligned}$
 
+    {~~~}
+
     \item $\begin{aligned}[t]
         \frac{\partial z}{\partial s} & = \frac{\partial z}{\partial x} \cdot \frac{\partial x}{\partial s} + \frac{\partial z}{\partial y} \cdot \frac{\partial y}{\partial s} \\
          & = y^2 \cdot \cos(t) + 2xy \cdot \sin(t) \\
@@ -2972,15 +3170,171 @@ Thus, $p = (\frac{1}{2}, \frac{1}{4})$ and $q = (\frac{7}{8}, -\frac{1}{8})$ is 
              & = -sy^2 \sin(t) + 2sxy \cos(t)
         \end{aligned}$
     \end{minipage}
+
+    {~~~}
+    
+    \item $\begin{aligned}[t]
+        \frac{\partial u}{\partial s} 
+         & = \frac{\partial u}{\partial x} \cdot \frac{\partial x}{\partial s} + \frac{\partial u}{\partial y} \cdot \frac{\partial y}{\partial s} \\
+         & = y \cdot 1 + (x + z) \cdot 1 \\
+         & = x + y + z
+    \end{aligned}$
+    \qquad\qquad
+    \begin{minipage}[t]{0.45\linewidth}
+        $\begin{aligned}[t]
+            \frac{\partial u}{\partial t} 
+             & = \frac{\partial u}{\partial x} \cdot \frac{\partial x}{\partial t} + \frac{\partial u}{\partial z} \cdot \frac{\partial u}{\partial z} \cdot \frac{\partial z} \cdot frac{\partial z}{\partial t} \\
+             & = y \cdot 1 + y \cdot 2 \\
+             & = 3y
+        \end{aligned}$
+    \end{minipage}
 \end{enumerate}
 
 {~~~}
 
 \subsection*{Exercise 3.21}
 
+$\begin{cases}
+    \frac{\partial x}{\partial s} = 2 \\ \\
+    \frac{\partial y}{\partial s} = 1
+\end{cases}$, and $\begin{cases}
+    \frac{\partial x}{\partial t} = 1 \\ \\
+    \frac{\partial y}{\partial t} = -3
+\end{cases}$. 
+
+At $(s, t) = (1, 1)$, $\begin{cases} x = 2 \cdot 1 + 1 = 1 \\ y = 1 - 3 \cdot 1 = -2 \end{cases}$, so $\begin{cases}
+    \frac{\partial z}{\partial x} = z_x(3, -2) = 4 \\ \\ 
+    \frac{\partial z}{\partial y} = z_y(3, -2) = 1 
+\end{cases}$
+
 {~~~}
 
+{~~~}
+
+So \begin{minipage}[t]{0.3\linewidth}
+    $\begin{aligned}[t]
+        \frac{\partial z}{\partial s} 
+         & = \frac{\partial z}{\partial x} \cdot \frac{\partial x}{\partial s} + \frac{\partial z}{\partial y} \cdot \frac{\partial z}{\partial s} \\
+         & = 4 \cdot 2 + 1 \cdot 1 \\
+         & = 9
+    \end{aligned}$
+\end{minipage} and \qquad\begin{minipage}[t]{0.33\linewidth}
+    $\begin{aligned}[t]
+        \frac{\partial z}{\partial t}
+         & = \frac{\partial z}{\partial x} \cdot \frac{\partial x}{\partial t} + \frac{\partial z}{\partial y} \cdot \frac{\partial z}{\partial y} \cdot \frac{\partial y}{\partial t} \\
+         & = 4 \cdot 1 + 1 \cdot (-3) \\
+         & = 1
+    \end{aligned}$
+\end{minipage}
+
+{~~~}
+
+% TODO: finish me
 \subsection*{Exercise 3.22}
+
+\begin{enumerate}
+    \item
+    
+    {~~~}
+
+    \item 
+    
+    {~~~}
+
+    \item $a = 1$ and $b = 1$, so $\begin{cases}
+        s = ax + by = x + y \\
+        t = bx - ay - x - y
+    \end{cases}$. 
+
+    {~~~}
+
+    \begin{minipage}[t]{0.45\linewidth}
+        $\begin{aligned}[t]
+            \frac{\partial u}{\partial x} 
+             & = \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial x} + \frac{\partial u}{\partial t} \cdot \frac{\partial t}{\partial x} \\
+             & = \frac{\partial u}{\partial s} + \frac{\partial u}{\partial t}
+        \end{aligned}$
+    \end{minipage}
+    \begin{minipage}[t]{0.45\linewidth}
+        $\begin{aligned}[t]
+            \frac{\partial u}{\partial y} 
+             & = \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial y} + \frac{\partial u}{\partial t}\cdot \frac{\partial t}{\partial u}  \\ 
+             & = \frac{\partial u}{\partial s} - \frac{\partial u}{\partial t}
+        \end{aligned}$
+    \end{minipage}
+
+    {~~~}
+
+    Plugging back into the PDE, we get $\begin{aligned}[t]
+        \left( \frac{\partial u}{\partial s} + \frac{\partial u}{\partial t} \right) + \left( \frac{\partial u}{\partial s} - \frac{\partial u}{\partial t} \right) & = 1 \\
+        \frac{\partial u}{\partial s} & = \frac{1}{2} \\
+        \int \frac{\partial u}{\partial s} \,ds & = \int \frac{1}{s} \,ds \\
+        u & = \frac{1}{2} s + f(t)
+    \end{aligned}$
+
+    Thus, $u(x, y) = \frac{1}{2}(x + y) + f(x - y)$. 
+
+    {~~~}
+
+    \item $a = 1$ and $b = -1$, so $\begin{cases}
+        s = ax + by = x - y \\
+        t = bx - ay = -x - y
+    \end{cases}$. 
+
+    {~~~}
+
+    Plugging back into the PDE, we get $\begin{aligned}[t]
+        (a^2 + b^2) \frac{\partial u}{\partial s} + u & = 0                            \\
+        (1^2 + (-1)^2) \frac{\partial u}{\partial s}  & = -u                           \\
+        \frac{\partial u}{\partial s}                 & = -\frac{u}{2}                 \\
+        (\text{guess: } u=e^{-\frac{1}{2}s})                                           \\
+        \int \frac{1}{u} \,du                         & = \int -\frac{1}{2} \,ds       \\
+        \ln u                                         & = -\frac{1}{2}s + f(t)         \\
+        u                                             & = e^{-\frac{1}{2}s + f(t)}     \\
+                                                      & = f(t) \cdot e^{-\frac{1}{2}s}
+    \end{aligned}$
+
+    Thus, $u(x, y) = f(-x - y) \cdot e^{-\frac{1}{2}(x - y)}$. 
+
+    {~~~}
+
+    \item
+    
+    {~~~}
+
+    \item 
+\end{enumerate}
+
+{~~~}
+
+% TODO: finish me
+\subsection*{Exercise 3.23}
+
+{~~~}
+
+\subsection*{Exercise 3.24}
+
+$\begin{cases}
+    \frac{\partial x}{\partial s} = t \\
+    \frac{\partial x}{\partial t} = x + 2t & \implies \frac{\partial^2 x}{\partial s \partial t} = 1 \\
+    \frac{\partial y}{\partial s} = e^t \\
+    \frac{\partial y}{\partial t} = se^t & \implies \frac{\partial ^2y}{\partial s \partial t} = e^t
+\end{cases}$
+
+$\begin{aligned}[t]
+    \frac{\partial u}{\partial t} 
+    =&~ \frac{\partial x}{\partial x} \cdot \frac{\partial x}{\partial s} + \frac{\partial u}{\partial y} \cdot \frac{\partial y}{\partial s} \\
+    \frac{\partial}{\partial s} \left( \frac{\partial u}{\partial t} \right) 
+    =&~ \frac{\partial}{\partial s} \left( \frac{\partial u}{\partial x} \cdot \frac{\partial x}{\partial t} \right) + \frac{\partial}{\partial s} \left( \frac{\partial u}{\partial y} \cdot \frac{\partial y}{\partial t} \right) \\
+    =&~ \frac{\partial}{\partial s} \left( \frac{\partial u}{\partial x} \right) \cdot \frac{\partial x}{\partial t} + \frac{\partial u}{\partial x} \cdot \frac{\partial}{\partial s} \left( \frac{\partial x}{\partial t} \right) + \frac{\partial}{\partial s} \left( \frac{\partial u}{\partial y} \right) \cdot \frac{\partial y}{\partial t} + \frac{\partial u}{\partial y} \cdot \frac{\partial}{\partial s} \left( \frac{\partial y}{\partial t} \right) \\
+    =&~ \left( \frac{\partial}{\partial x} \left( \frac{\partial u}{\partial x} \right) \frac{\partial x}{\partial s} + \frac{\partial}{\partial y} \left( \frac{\partial u}{\partial x} \right) \frac{\partial x}{\partial t} \right) \frac{\partial x}{\partial t} + \frac{\partial u}{\partial x} \cdot \frac{\partial^2 x}{\partial s \partial t} ~+ \\ &~ \left( \frac{\partial}{\partial x} \left( \frac{\partial u}{\partial y} \right) \frac{\partial x}{\partial s} + \frac{\partial}{\partial y} \left( \frac{\partial u}{\partial y} \right) \frac{\partial y}{\partial s} \right) \frac{\partial y}{\partial t} + \frac{\partial u}{\partial y} \cdot \frac{\partial^2 y}{\partial s \partial t} \\
+    =&~ \left( \frac{\partial^2 u}{\partial x^2} \cdot \frac{\partial x}{\partial s} + \frac{\partial ^2 u}{\partial y \partial x} \cdot \frac{\partial y}{\partial s} \right) \frac{\partial x}{\partial t} + \frac{\partial u}{\partial x} \cdot \frac{\partial^2 x}{\partial s \partial t} + \\ &~ \left( \frac{\partial^2 u}{\partial x \partial y} \cdot \frac{\partial x}{\partial s} + \frac{\partial^2 u}{\partial y^2} \cdot \frac{\partial y}{\partial s} \right) \frac{\partial y}{\partial t} + \frac{\partial u}{\partial y} \cdot \frac{\partial^2 y}{\partial s \partial t} \\
+    =&~ \left( \frac{\partial^2 u}{\partial x^2} \cdot t + \frac{\partial^2 u}{\partial y \partial x} \cdot e^t \right) (s + 2t) + \frac{\partial u}{\partial y} + \left( \frac{\partial^2 u}{\partial x \partial x} \cdot t + \frac{\partial^2 u}{\partial y^2} \cdot e^t \right) (se^t) + \frac{\partial u}{\partial y} \cdot e^t
+\end{aligned}$
+
+{~~~}
+
+\subsection*{Exercise 3.25}
 
 {~~~}
 
