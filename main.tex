@@ -3229,15 +3229,80 @@ So \begin{minipage}[t]{0.3\linewidth}
 
 {~~~}
 
-% TODO: finish me
 \subsection*{Exercise 3.22}
 
 \begin{enumerate}
-    \item
+    \item $a = -1$ and $b = 1$, so $\begin{cases}
+        s = ax + by = -x + y \\
+        t = bx - ay = x + y
+    \end{cases}$.
+
+    {~~~}
+
+    \begin{minipage}[t]{0.45\linewidth}
+        $\begin{aligned}[t]
+            \frac{\partial u}{\partial x} 
+             & = \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial x} + \frac{\partial u}{\partial t} \cdot \frac{\partial t}{\partial x} \\
+             & = -\frac{\partial u}{\partial s} + \frac{\partial u}{\partial t}
+        \end{aligned}$
+    \end{minipage}
+    \begin{minipage}[t]{0.45\linewidth}
+        $\begin{aligned}[t]
+            \frac{\partial u}{\partial y} 
+             & = \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial y} + \frac{\partial u}{\partial t}\cdot \frac{\partial t}{\partial u}  \\ 
+             & = \frac{\partial u}{\partial s} + \frac{\partial u}{\partial t}
+        \end{aligned}$
+    \end{minipage}
+
+    {~~~}
+
+    Plugging back into the PDE, we get $\begin{aligned}[t]
+        -\left( -\frac{\partial u}{\partial s} + \frac{\partial u}{\partial t} \right) + \left( \frac{\partial u}{\partial s} + \frac{\partial u}{\partial t} \right) & = 0 \\
+        \frac{\partial u}{\partial s} & = 0 \\
+        \int \frac{\partial u}{\partial s} \,ds & = \int 0 \,ds \\
+        u & = f(t)
+    \end{aligned}$
+
+    Thus, $u(x, y) = f(x + y)$. 
     
     {~~~}
 
-    \item 
+    \item Take $\begin{cases} s = ax + by \\ t = bx - ay \end{cases}$. 
+
+    {~~~}
+
+    {~~~}
+    
+    \begin{minipage}[t]{0.45\linewidth}
+        $\begin{aligned}[t]
+            \frac{\partial u}{\partial x}
+             & = \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial x} + \frac{\partial u}{\partial t} \cdot \frac{\partial t}{\partial x} \\
+             & = a \frac{\partial u}{\partial s} + b \frac{\partial u}{\partial t}
+        \end{aligned}$
+    \end{minipage}
+    \begin{minipage}[t]{0.45\linewidth}
+        $\begin{aligned}[t]
+            \frac{\partial u}{\partial y}
+             & = \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial y} + \frac{\partial u}{\partial t} \cdot \frac{\partial t}{\partial y} \\
+             & = b \frac{\partial u}{\partial s} - a \frac{\partial u}{\partial t}
+        \end{aligned}$
+    \end{minipage}
+
+    {~~~}
+
+    {~~~}
+
+    Plugging back into the PDE, we get $\begin{aligned}[t]
+        a \left( a \frac{\partial u}{\partial s} + b \frac{\partial u}{\partial t} \right) + b \left( b \frac{\partial u}{\partial s} - a \frac{\partial u}{\partial t} \right) & = 0 \\
+        a^2 \frac{\partial u}{\partial s} + ab \frac{\partial u}{\partial t} + b^2 \frac{\partial u}{\partial s} - ab \frac{\partial u}{\partial t} & = 0 \\
+        (a^2 + b^2) \frac{\partial u}{\partial s}           & = 0           \\
+        \int (a^2 + b^2) \frac{\partial u}{\partial s} \,ds & = \int 0 \,ds \\
+        (a^2 + b^2) \int \frac{\partial u}{\partial s} \,ds & = \int 0 \,ds \\
+        (a^2 + b^2) u                                       & = f(t)        \\
+        u                                                   & = f(t)
+    \end{aligned}$
+
+    Thus, $u(x, y) = f(bx - ay)$. 
     
     {~~~}
 
@@ -3248,28 +3313,12 @@ So \begin{minipage}[t]{0.3\linewidth}
 
     {~~~}
 
-    \begin{minipage}[t]{0.45\linewidth}
-        $\begin{aligned}[t]
-            \frac{\partial u}{\partial x} 
-             & = \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial x} + \frac{\partial u}{\partial t} \cdot \frac{\partial t}{\partial x} \\
-             & = \frac{\partial u}{\partial s} + \frac{\partial u}{\partial t}
-        \end{aligned}$
-    \end{minipage}
-    \begin{minipage}[t]{0.45\linewidth}
-        $\begin{aligned}[t]
-            \frac{\partial u}{\partial y} 
-             & = \frac{\partial u}{\partial s} \cdot \frac{\partial s}{\partial y} + \frac{\partial u}{\partial t}\cdot \frac{\partial t}{\partial u}  \\ 
-             & = \frac{\partial u}{\partial s} - \frac{\partial u}{\partial t}
-        \end{aligned}$
-    \end{minipage}
-
-    {~~~}
-
     Plugging back into the PDE, we get $\begin{aligned}[t]
-        \left( \frac{\partial u}{\partial s} + \frac{\partial u}{\partial t} \right) + \left( \frac{\partial u}{\partial s} - \frac{\partial u}{\partial t} \right) & = 1 \\
-        \frac{\partial u}{\partial s} & = \frac{1}{2} \\
-        \int \frac{\partial u}{\partial s} \,ds & = \int \frac{1}{s} \,ds \\
-        u & = \frac{1}{2} s + f(t)
+        (a^2 + b^2) \frac{\partial u}{\partial s} & = 1                     \\
+        (1^2 + 1^2) \frac{\partial u}{\partial s} & = 1                     \\
+        \frac{\partial u}{\partial s}             & = \frac{1}{2}           \\
+        \int \frac{\partial u}{\partial s} \,ds   & = \int \frac{1}{2} \,ds \\
+        u                                         & = \frac{1}{2} s + f(t)
     \end{aligned}$
 
     Thus, $u(x, y) = \frac{1}{2}(x + y) + f(x - y)$. 
@@ -3287,7 +3336,10 @@ So \begin{minipage}[t]{0.3\linewidth}
         (a^2 + b^2) \frac{\partial u}{\partial s} + u & = 0                            \\
         (1^2 + (-1)^2) \frac{\partial u}{\partial s}  & = -u                           \\
         \frac{\partial u}{\partial s}                 & = -\frac{u}{2}                 \\
-        (\text{guess: } u=e^{-\frac{1}{2}s})                                           \\
+    \end{aligned}$
+    
+    Now we can guess that $u=e^{-\frac{1}{2}s}$, indeed, 
+    $\begin{aligned}[t]
         \int \frac{1}{u} \,du                         & = \int -\frac{1}{2} \,ds       \\
         \ln u                                         & = -\frac{1}{2}s + f(t)         \\
         u                                             & = e^{-\frac{1}{2}s + f(t)}     \\
@@ -3298,7 +3350,19 @@ So \begin{minipage}[t]{0.3\linewidth}
 
     {~~~}
 
-    \item
+    \item $a = 1$ and $b = 1$, so $\begin{cases}
+        s = ax + by = x + y \\ 
+        t = bx - ay = x - y
+    \end{cases}$
+
+    Plugging back into the PDE, we get $\begin{aligned}[t]
+        (a^2 + b^2) \frac{\partial u}{\partial s} + u & = e^{x+2y} \\
+        (1^2 + 1^2) \frac{\partial u}{\partial s} + u & = e^{x+2y} \\
+        \frac{\partial u}{\partial s} & = \frac{e^{x+2y}{2} - \frac{u}{2} \\
+        \int \frac{\partial u}{\partial s} \,ds &= \int \frac{e^{x+2y}{2} - \frac{u}{2} \,ds \\
+        \int \frac{\partial u}{\partial s} \,ds &= \int \frac{e^{x+2y}{2} \,ds - \int \frac{u}{2} \,ds \\
+        u &= \frac{e^{x+2y}{2} u - \int \frac{u}{2} \,ds 
+    \end{aligned}$
     
     {~~~}
 
