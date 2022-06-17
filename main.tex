@@ -1448,7 +1448,7 @@ For integrals over some domain $D$ in $\mathbb{R}^n$ with integrable functions
     
     \item If $f \le g$ on all of $D$, then $\int_D f \le \int_D g$. 
     
-    \item $|f|$ is integrable and $\left| \int_D f \right| = \int_D |f|$. 
+    \item $|f|$ is integrable if $f$ is integrable, and $\left| \int_D f \right| = \int_D |f|$. 
 
     \item If domain $C$ is contained in $D$ and $f \ge 0$, then $\int_C f \le \int_D f$. 
     
@@ -1626,7 +1626,7 @@ To compute integral of $f(x,y,z)$ over a 3 dimensional domain $D$, it is similar
 
 When an equation involves only 2 variables (in 3D), it gives a curve in 2D which extends infinitely toward the 3rd dimension, giving a cylinder-like surface in 3D. With 2 such curves, we will get at least 2 intersection points. Connecting the intersection points with a ``smooth'' curve typically gives the picture of the domain in 3D.
 
-\begin{example}
+\begin{exercise}
     Let $D$ be bounded by the given equations, in first octant. 
 
     Compute the integral $\int_D f(x, y, z)$ in 6 ways (3 ways to project, 2 ways to compute the 2D integral of the projection). 
@@ -1645,7 +1645,7 @@ When an equation involves only 2 variables (in 3D), it gives a curve in 2D which
             \item $2x + y + 2z = 1$
         \end{enumerate}
     \end{minipage}
-\end{example}
+\end{exercise}
 
 %----------------------------------------------------------------------------------------
 %	APPENDICES
@@ -3355,7 +3355,6 @@ So \begin{minipage}[t]{0.3\linewidth}
 
 {~~~}
 
-% TODO: finish me
 \subsection*{Exercise 3.22}
 
 \begin{enumerate}
@@ -3477,25 +3476,11 @@ So \begin{minipage}[t]{0.3\linewidth}
 
     {~~~}
 
-    \item $a = 1$ and $b = 1$, so $\begin{cases}
-        s = ax + by = x + y \\ 
-        t = bx - ay = x - y
-    \end{cases}$
-
-    Plugging back into the PDE, we get $\begin{aligned}[t]
-        (a^2 + b^2) \frac{\partial u}{\partial s} + u & = e^{x+2y}     \\
-        (1^2 + 1^2) \frac{\partial u}{\partial s} + u & = e^{x+2y}     \\
-        2\frac{\partial u}{\partial s}                & = e^{x+2y} - u
-    \end{aligned}$
-
-    Note that $x + 2y = \frac{3s + t}{2}$, so we have $\begin{aligned}[t]
-        \frac{\partial u}{\partial s}& = \frac{e^{\frac{1}{2}(3s+t)} - u }{2} \\
-        \int 
-    \end{aligned}$
+    \item NOT COVERED
     
     {~~~}
 
-    \item 
+    \item NOT COVERED
 \end{enumerate}
 
 {~~~}
@@ -3569,11 +3554,77 @@ $\begin{aligned}[t]
 
     \item $\begin{aligned}[t]
         u_{tt} - c^2 u_{xx}
-         & =
+        = & \left[ \left( \frac{\partial}{\partial v} \left( \frac{\partial u}{\partial v} \right) \cancelto{\color{red}c}{\frac{\partial v}{\partial t}} + \frac{\partial}{\partial w} \left( \frac{\partial u}{\partial v} \right) \cancelto{\color{red}-c}{\frac{\partial w}{\partial t}} ~~~~~~~ \right) \cancelto{\color{red}c}{\frac{\partial v}{\partial t}} \right. ~+ \\ & ~~ \left. \left( \frac{\partial}{\partial v} \left( \frac{\partial u}{\partial w} \right) \cancelto{\color{red}c}{\frac{\partial v}{\partial t}} + \frac{\partial}{\partial w} \left( \frac{\partial u}{\partial w} \right) \cancelto{\color{red}-c}{\frac{\partial w}{\partial t}} ~~~~~~~ \right) \cancelto{\color{red}-c}{\frac{\partial w}{\partial t}} ~~~~~~~ \right] ~- \\ & c^2 \left[ \left( \frac{\partial}{\partial b} \left( \frac{\partial u}{\partial v} \right) \cancelto{\color{red}1}{\frac{\partial v}{\partial x}} + \frac{\partial}{\partial w} \left( \frac{\partial u}{\partial v} \right) \cancelto{\color{red}1}{\frac{\partial w}{\partial x}} ~~~~ \right) \cancelto{\color{red}1}{\frac{\partial v}{\partial x}} ~+ \right. \\ & ~~~~~ \left. \left( \frac{\partial}{\partial v} \left( \frac{\partial u}{\partial w} \right) \cancelto{\color{red}1}{\frac{\partial v}{\partial x}} + \frac{\partial}{\partial w} \left( \frac{\partial u}{\partial w} \right) \cancelto{\color{red}1} {\frac{\partial w}{\partial x}} ~~~~ \right) \cancelto{\color{red}1}{\frac{\partial w}{\partial x}} ~~~~ \right] \\
+        = & \left( \cancel{c^2 \frac{\partial^2 u}{\partial v^2}} - c^2 \frac{\partial^2 u}{\partial w \partial v} - c^2 \frac{\partial^2 u}{\partial v \partial w} + \cancel{c^2 \frac{\partial^2 u}{\partial w^2}} \right) ~- \\ & \left( \cancel{c^2 \frac{\partial^2 u}{\partial v^2}} + c^2 \frac{\partial^2 u}{\partial w \partial v} + c^2 \frac{\partial^2 u}{\partial v \partial w} + \cancel{c^2 \frac{\partial^2 u}{\partial w^2}} \right) \\
+        = & -2c^2 \left( \frac{\partial^2 u}{\partial w \partial v} + \frac{\partial^2 u}{\partial v \partial w} \right) \\
+        = & -4c^2 \frac{\partial^2 u}{\partial v \partial w}
+    \end{aligned}$
+    
+    Thus, $\begin{aligned}[t]
+        u_{tt} - c^2u_{xx} = 0 \implies
+        \frac{\partial^2 u}{\partial v \partial w}           & = 0                     \\
+        \int \frac{\partial^2 u}{\partial v \partial w} \,dv & = \int 0 \,dv           \\
+        \frac{\partial u}{\partial w}                        & = 0 + f(w)              \\
+        \int \frac{\partial u}{\partial w} \,dw              & = \int f(w) \,dw        \\
+        u                                                    & = F(w) + g(v)           \\
+                                                             & = F(x - ct) + g(x + ct)
     \end{aligned}$
 \end{enumerate}
 
 {~~~}
+
+\section*{Chapter 4}
+
+\subsection*{Exercise 4.1}    
+
+\begin{center}
+    \tikzsetexternalprefix{c04e01-01}%
+    \begin{tikzpicture}
+        \draw[->] (-1.2,0) -- (2.2,0) node[right] {$x$};
+        \draw[->] (0,-0.7) -- (0,2.2) node[above] {$y$};
+        
+        \draw[thick,blue] (-0.2,-0.2) -- (1.7,1.7) node[right] {$y=x$};
+        \draw[thick,red] (-0.5,2) -- (2,-0.5) node[left] {$y=-x+2$};
+        \draw[thick,orange] (2,0) -- (-1,0) node[above right] {$y=0$};
+    \end{tikzpicture}
+\end{center}
+
+{~~~}
+
+\subsection*{Exercise 4.2}    
+
+{~~~}
+
+\subsection*{Exercise 4.3}    
+
+{~~~}
+
+\subsection*{Exercise 4.4}    
+
+{~~~}
+
+\subsection*{Exercise 4.5}    
+
+\begin{center}
+    \tikzsetnextfilename{c04e05-01}%
+    \begin{tikzpicture}
+        \draw[->] (0,0) -- (0,3) node[above] {$z$};
+        \draw[->] (0,0) -- (3,0) node[right] {$y$};
+        \draw[->] (0,0) -- (-2,-2) node[below left] {$x$};
+        
+        \draw[purple,fill=purple] (0,0) -- (1,0) -- (1,1) -- (0,1);
+        \draw[orange,fill=orange] (0,0) -- (1,0) -- (0.33,-0.67) -- (-0.67,-0.67);
+        \draw[pink,fill=pink] (0,0) -- (0,1) -- (-0.67,-0.67);
+        
+        \draw[thick,DarkGreen] (-2,1) -- (2.5,1);
+        \draw[thick,DarkGreen] (-2,-0.66) -- (2.5,-0.66);
+        \draw[thick,blue] (1,2) -- (1,0) -- (-0.75,-1.75);
+        
+        \draw[thick,cyan] (0.33,-0.67) -- (1,1) -- (0,1) -- (-0.67,-0.67) -- (0.33,-0.67) -- (1,0) -- (1,1);
+        \draw[thick,cyan,dashed] (1,0) -- (0,0) -- (0,1);
+        \draw[thick,cyan,dashed] (0,0) -- (-0.67,-0.67);
+    \end{tikzpicture}
+\end{center}
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
