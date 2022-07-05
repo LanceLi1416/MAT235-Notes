@@ -1,0 +1,195 @@
+\section*{Chapter 2}
+
+\subsection*{Exercise 2.1}
+
+\begin{enumerate}
+    \item 
+    $\begin{aligned}[t]
+        \det \begin{pmatrix} 3 & -1 \\ 2 & 5 \end{pmatrix} 
+        & = 3 \times 5 - 2 \times (-1) \\
+        & = 15 + 2                     \\
+        & = 17
+    \end{aligned}$
+
+    {~~~}
+
+    \item 
+    $\begin{aligned}[t]
+        \det \begin{pmatrix} 1 & 3 & -3 \\ -3 & -5 & 2 \\ -4 & 4 & -6 \end{pmatrix}
+        & = 1 \cdot \det \begin{pmatrix} -5 & 2 \\ 4 & -6 \end{pmatrix} - 3 \cdot \det \begin{pmatrix} -3 & 2 \\ -4 & -6 \end{pmatrix} + (-3) \cdot \det \begin{pmatrix} -3 & -5 \\ -4 & 4 \end{pmatrix} \\
+        & = 1 \cdot 22 - 3 \cdot 26 + (-3) \cdot (-32)                  \\
+        & = 22 - 78 + 96                                                \\
+        & = 40
+    \end{aligned}$
+
+    {~~~}
+
+    \item 
+    $\begin{aligned}[t]
+        \det \begin{pmatrix} 3 & 1 & 0 \\ 1 & 3 & 4 \\ 0 & 0 & 4 \end{pmatrix} & = 0 \cdot \det \begin{pmatrix} 1 & 0 \\ 3 & 4 \end{pmatrix} - 0 \cdot \det \begin{pmatrix} 3 & 0 \\ 1 & 4 \end{pmatrix} + 4 \cdot \det \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}
+        & \text{since }\begin{pmatrix} + & - & + \\ - & + & - \\ + & - & + \end{pmatrix}             \\
+                                                                               & = 0 - 0 + 4 \cdot 8 \\
+                                                                               & = 32
+    \end{aligned}$
+\end{enumerate}
+
+\subsection*{Exercise 2.2}
+
+\begin{minipage}[t]{0.45\linewidth}
+    \begin{enumerate}
+        \item 
+        $\begin{aligned}[t]
+            | \vec{a} |           & = \sqrt{\vec{a} \cdot \vec{a}}                          \\
+                                  & = \sqrt{4^2 + 3^2}                                      \\
+                                  & = 5
+            \\ \\
+            | \vec{b} |           & = \sqrt{\vec{b} \cdot \vec{b}}                          \\
+                                  & = \sqrt{2^2 + (-1)^2}                                   \\
+                                  & = \sqrt{5}
+            \\ \\
+            \vec{a} \cdot \vec{b} & = 4 \cdot 2 + 3 \cdot (-1)                              \\
+                                  & = 5
+            \\ \\
+            \vec{a} \cdot \vec{b} & = | \vec{a} | | \vec{b} | \cos(\theta)                  \\
+            \cos \theta           & = \frac{\vec{a} \cdot \vec{b}}{| \vec{a} | | \vec{b} |} \\
+                                  & = \frac{5}{5 \cdot \sqrt{5}}                            \\
+            \theta                & = \arccos \left( \frac{1}{\sqrt{5}} \right)
+        \end{aligned}$
+    \end{enumerate}
+\end{minipage}
+\begin{minipage}[t]{0.45\linewidth}
+    \begin{enumerate} \setcounter{enumi}{1}
+        \item 
+        $\begin{aligned}[t]
+            | \vec{a} |           & = \sqrt{\vec{a} \cdot \vec{a}}                          \\
+                                  & = \sqrt{4^2 + 0^2 + 2^2}                                \\
+                                  & = 2\sqrt{5}
+            \\ \\
+            | \vec{b} |           & = \sqrt{\vec{b} \cdot \vec{b}}                          \\
+                                  & = \sqrt{2^2 + (-1)^2 + 0^2}                             \\
+                                  & = \sqrt{5}
+            \\ \\
+            \vec{a} \cdot \vec{b} & = 4 \cdot 2 + 0 \cdot (-1) + 2 \cdot 0                  \\
+                                  & = 8
+            \\ \\
+            \vec{a} \cdot \vec{b} & = | \vec{a} | | \vec{b} | \cos(\theta)                  \\
+            \cos \theta           & = \frac{\vec{a} \cdot \vec{b}}{| \vec{a} | | \vec{b} |} \\
+                                  & = \frac{8}{2\sqrt{5} \cdot \sqrt{5}}                    \\
+            \theta                & = \arccos \left( \frac{4}{5} \right)
+        \end{aligned}$
+    \end{enumerate}
+\end{minipage}
+
+\vfill
+\subsection*{Exercise 2.3}
+
+$\begin{aligned}[t]
+    \vec{x} \times \vec{y} 
+    & = \det \begin{pmatrix} i & j & k \\ 3 & -2 & 1 \\ 1 & -1 & 1 \end{pmatrix} \\
+    & = i \cdot \det \begin{pmatrix} -2 & 1 \\ -1 & 1 \end{pmatrix} - j \cdot \det \begin{pmatrix} 3 & 1 \\ 1 & 1 \end{pmatrix} + k \cdot \begin{pmatrix} 3 & -2 \\ 1 & -1 \end{pmatrix} \\
+    & = (-1, -2, -1)
+\end{aligned}$
+
+\subsection*{Exercise 2.4}
+
+\begin{enumerate}
+    \item
+    $\begin{aligned}[t]
+        \vec{v} 
+        & =(3, -2, 4) - (-8, 0, 4)                                                                   \\
+        & = (11, -2, 0)
+        \\
+        \vec{r} 
+        & = t\begin{bmatrix} 11 \\ 2 \\ 0 \end{bmatrix} + \begin{bmatrix} -8 \\ 0 \\ 4 \end{bmatrix}
+    \end{aligned}$
+
+    {~~~}
+
+    \item
+    $\begin{cases}
+        \vec{r}_0 = (0, 0, 0) \\
+        \vec{n} = (1, 5, 2)
+    \end{cases}$
+
+    {~~~}
+
+    $\begin{aligned}[t]
+        \vec{n} \cdot \vec{r}                                   
+        & = \vec{n} \cdot \vec{r}_0                                                                   \\
+        \begin{bmatrix} 1 \\ 5 \\ 2 \end{bmatrix} \cdot \vec{r} 
+        & = \begin{bmatrix} 1 \\ 5 \\ 2 \end{bmatrix} \cdot \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix} \\
+        \begin{bmatrix} 1 \\ 5 \\ 2 \end{bmatrix} \cdot \vec{r} 
+        & = 0
+    \end{aligned}$
+
+    {~~~}
+
+    \item
+    $\begin{cases}
+        \vec{r}_0 = (2, 4, 6) \\
+        \vec{n} ~= (1, 1, -1)
+    \end{cases}$
+
+    {~~~}
+
+    $\begin{aligned}[t]
+        \vec{n} \cdot \vec{r}                                    
+        & = \vec{n} \cdot \vec{r}_0                                                                     \\
+        \begin{bmatrix} 1 \\ 1 \\ -1 \end{bmatrix} \cdot \vec{r} 
+        & = \begin{bmatrix} 1 \\ 1 \\ -1 \end{bmatrix} \cdot \begin{bmatrix} 2 \\ 4 \\ -6 \end{bmatrix} \\
+        \begin{bmatrix} 1 \\ 1 \\ -1 \end{bmatrix} \cdot \vec{r} & = 0
+    \end{aligned}$
+
+    {~~~}
+
+    \item
+    $\vec{x} = (1, 0, 1) - (0, 1, 1) = (1, -1, 0)$, and $\vec{y} = (1, 1, 0) - (0, 1, 1) = (1, 0, -1)$.
+
+    {~~~}
+
+    $\begin{aligned}[t]
+        \vec{n}
+        & = \vec{x} \times \vec{y}\\
+        & = \det \begin{pmatrix} i & j & k \\ 1 & -1 & 0 \\ 1 & 0 & -1 \end{pmatrix} \\
+        & = i \cdot \det \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} - j \cdot \det \begin{pmatrix} 1 & 0 \\ 1 & -1 \end{pmatrix} + k \cdot \det \begin{pmatrix} 1 & -1 \\ 1 & 0 \end{pmatrix} \\
+        & = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}
+    \end{aligned}$
+
+    $\begin{cases}
+        \vec{r}_0 = (0, 1, 1) \\
+        \vec{n} ~= (1, 1, 1)
+    \end{cases}$
+
+    {~~~}
+
+    $\begin{aligned}[t]
+        \vec{n} \cdot \vec{r}
+        & = \vec{n} \cdot \vec{r}_0                                                                   \\
+        \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \cdot \vec{r}
+        & = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \cdot \begin{bmatrix} 0 \\ 1 \\ 1 \end{bmatrix} \\
+        \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix} \cdot \vec{r}
+        & = 0
+    \end{aligned}$
+
+    {~~~}
+
+    \item 
+    $\begin{aligned}[t]
+        \vec{r}_0 & = \frac{(3, 1, 5) + (-2, 0, 0)}{2} \\
+                  & = \frac{1}{2} (1, 1, 5)
+        \\ \\
+        \vec{n}   & = (-2, 0, 0) - (3, 1, 5)           \\
+                  & = (-5, -1, -5)
+    \end{aligned}$
+
+    {~~~}
+
+    {~~~}
+
+    $\begin{aligned}[t]
+        \vec{n} \cdot \vec{r}     & = \vec{n} \cdot \vec{r}_0                \\
+        (-5, 1, -5) \cdot \vec{r} & = (-5, 1, -5) \cdot \frac{1}{2}(1, 1, 5) \\
+        -5x - y - 5z              & = \frac{1}{2}(-5 + 1 - 25)               \\
+                                  & = \frac{-31}{2}
+    \end{aligned}$
+\end{enumerate}
