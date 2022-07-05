@@ -1,0 +1,173 @@
+\section{Vector and Matrix}
+
+A point in 2D needs 2 coordinates. It is typically written as, for example: $$\vec{a} = (1, 2) \quad\text{or}\quad \vec{a} = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$$ This is the point $x = 1$ and $y = 2$ on the 2D $xy$-plane.
+
+A point in 3D needs 3 coordinates. It is typically written as, for example: $$\vec{b} = (0, 2, 1) \quad\text{or}\quad \vec{b} = \begin{bmatrix} 0 \\ 2 \\ 1 \end{bmatrix}$$ This is the point $x = 0$, $y = 2$, and $z = 1$ in 3D space.
+
+The point can also be interpreted as a \term{vector}\index{Vector}, written in the same way. We can also think of a vector as an \itblue{arrow} from the origin to the point.
+
+Typically, it doesn't matter if we write the vector horizontally or vertically.
+
+\begin{definition}[Matrix]\index{Matrix}
+    A \term{matrix} is a block of numbers written in a rectangle (or square) in a specific order.
+\end{definition}
+
+For example, A is a $2 \times 3$ (2 by 3) matrix, with 2 rows and 3 columns: $$A = \begin{bmatrix} a & b & c \\ d & e & f \end{bmatrix}$$
+
+We may think of vectors as $1 \times n$ or $n \times 1$ matrix (for $n = 2$ or $3$). We can add matrices, and multiply matrices by a scalar (number).
+
+{~~~}
+
+\begin{itemize}
+    \item $\begin{bmatrix} a & b \\ c & d \end{bmatrix} + \begin{bmatrix} e & f \\ g & h \end{bmatrix} = \begin{bmatrix} a + e & b + f \\ c + g & d + h \end{bmatrix}$
+    \item $r\begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} ra & rb & rc & rd \end{bmatrix}$
+\end{itemize}
+
+{~~~}
+
+Standard arithmetic rules apply. For matrices $A$, $B$, and scalar $c$:
+
+\begin{itemize}
+    \item $A + B = B + A$
+    \item $cA = Ac$
+    \item $c(A + B) = cA + cB$
+\end{itemize}
+
+\section{Determinant}\index{Determinant}
+
+The determinant of a \bred{square} matrix is a number.
+
+Starting at the first row, first position, write down this value, and remove this row and this column from the original matrix. Multiply this value by the determinant of the remaining matrix.
+
+$$\det \begin{bNiceMatrix} a & b & c \\ d & e & f \\ g & h & i \CodeAfter \tikz \draw (1-1) circle (1.8mm); \end{bNiceMatrix} = a \cdot \det \begin{bmatrix} e & f \\ h & i \end{bmatrix} \dots$$
+
+Now, move right, write down this value, and remove this row and this column from the original matrix. Multiply this value to the determinant of the remaining matrix with a \bred{minus sign}.
+
+$$\det \begin{bNiceMatrix} a & b & c \\ d & e & f \\ g & h & i \CodeAfter \tikz \draw (1-2) circle (1.8mm); \end{bNiceMatrix} = a \cdot \det \begin{bmatrix} e & f \\ h & i \end{bmatrix} {\color{red}-}~ b \cdot \det \begin{bmatrix} d & f \\ g & i \end{bmatrix}$$
+
+Now, move right again and repeat until we have reached the last column. The positive and negative signs need to \bred{alternate}.
+
+$$\det \begin{bNiceMatrix} a & b & c \\ d & e & f \\ g & h & i \CodeAfter \tikz \draw (1-3) circle (1.8mm); \end{bNiceMatrix} = a \cdot \det \begin{bmatrix} e & f \\ h & i \end{bmatrix} - b \cdot \det \begin{bmatrix} d & f \\ g & i \end{bmatrix} {\color{red}+}~ c \cdot \begin{bmatrix} d & e \\ g & h \end{bmatrix}$$
+
+Each time we apply the algorithm, we end up with several new determinants to calculate, but with matrices of \itblue{smaller sizes}.
+
+$$\det \begin{bmatrix} a & b \\ c & d \end{bmatrix} = ad = bc$$
+
+Determinant does not behave well with addition and scalar multiplication:
+$$\det(A + B) \neq \det(A) + \det(B) \qquad \det(cA) \neq c \cdot \det(A)$$
+
+\begin{exercise}
+    Find the determinant.
+
+    {~~~}
+
+    \begin{enumerate}
+        \item $\begin{bmatrix} 3 & -1 \\ 2 & 5 \end{bmatrix}$
+
+        {~~~}
+
+        \item $\begin{bmatrix} 3 & 3 & -3 \\ -3 & -5 & 2 \\ -4 & 4 & -6 \end{bmatrix}$
+
+        {~~~}
+
+        \item $\begin{bmatrix} 3 & 1 & 0 \\ 1 & 3 & 4 \\ 0 & 0 & 4 \end{bmatrix}$
+    \end{enumerate}
+\end{exercise}
+
+\section{Dot product}
+
+2 vectors can form a \term{dot product}\index{Dot Product}, and the result is a scalar (number).
+
+$$\vec{x} \cdot \vec{y} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \end{bmatrix} \cdot \begin{bmatrix} y_1 \\ y_2 \\ \vdots \end{bmatrix} = x_1y_1 + x_2y_2 + \cdots$$
+
+Note that this dot product is different from scalar multiplication, as we are multiplying 2 vectors together, not a scalar with a vector.
+
+The \term{length} (absolute value, or \term{norm})\index{length (of a Vector)}\index{Absolute Value (of a Vector)}\index{Norm} of a vector using the Pythagoras Theorem: $$| \vec{x} | = \sqrt{\vec{x} \cdot \vec{x}} = \sqrt{(x_1)^2 + (x_2)^2 + \cdots}$$
+
+Similarly, define the distance between two points using pythagoras Theorem: $$d(\vec{x}, \vec{y}) = | \vec{x} - \vec{y} | = \sqrt{(y_1 - x_1)^2 + (y_2 - x_2)^2 + \cdots}$$
+
+Going from a point a to point c, is always shorter than going to some other point b first and then back to c. This is called the \term{Triangle Inequality}\index{Triangle Inequality}: $$d(\vec{a},\vec{c}) \le d(\vec{a},\vec{b}) + d(\vec{b},\vec{c})$$ $$| \vec{x} + \vec{y} | \le | \vec{x} | + | \vec{y} |$$
+
+Let $\theta$ be the angle between $\vec{x}$ and $\vec{y}$, the dot product is also given by $$\vec{x} \cdot \vec{y} = | \vec{x} | | \vec{y} | \cos \theta$$
+
+Thus, 2 vectors are \term{orthogonal}\index{Orthogonal} (perpendicular\index{Perpendicular}) if the dot product is zero.
+
+The dot product have the usual properties of multiplication:
+
+\begin{itemize}
+    \item $\vec{a} \cdot \vec{b} = \vec{b} \cdot \vec{a}$
+    \item $\vec{a} \cdot (\vec{b} + \vec{c}) = \vec{a} \cdot \vec{b} + \vec{a} \cdot \vec{c}$
+    \item $c(\vec{a} \cdot \vec{b}) = (c\vec{a}) \cdot \vec{b} = a \cdot (c\vec{b})$
+\end{itemize}
+
+Note that since the dot product needs two vectors and produce a number, a quantity such as $\vec{a} \cdot \vec{b} \cdot \vec{c}$ is not well defined.
+
+\begin{exercise}
+    Find the length of the vectors. Find $\vec{a} \cdot \vec{b}$ and the angle between them.
+
+    {~~~}
+
+    \begin{enumerate}
+        \item $\vec{a} = (4, 3)$, $\vec{b} = (2, -1)$
+        \item $\vec{a} = (4, 0, 2)$, $\vec{b} = (2, -1, 0)$
+    \end{enumerate}
+\end{exercise}
+
+\section{Cross product}
+
+2 vectors (in 3D) can form a \term{cross product}\index{Cross Product}, and the result is a \itblue{vector} (in 3D).
+
+Let $\vec{x} = (x_1, x_2, x_3)$, $\vec{y} = (y_1, y_2, y_3)$ in 3D.
+
+We typically write the cross product using determinant:
+
+$$\vec{x} \times \vec{y} = \det \begin{bmatrix} i & i & k \\ x_1 & x_2 & x_3 \\ y_1 & y_2 & y_3 \end{bmatrix}$$ $$\vec{x} \times \vec{y} = i(x_2y_3 - x_3y_2) - j(x_1y_3 - x_3y_1) + k(x_1y_2 - x_2y_1)$$ $$\vec{x} \times \vec{y} = (x_2y_3 - x_3y_2, x_1y_3 - x_3y_1, x_1y_2 - x_2y_1)$$
+
+The notations $i = (1, 0, 0)$, $j = (0, 1, 0)$, $k = (0, 0, 1)$ are very easy to use, where the quantity attached to $i$ is the first component of the vector, and the quantity attached to $j$ would be the second, and $k$ would be the third.
+
+The vector produced by the cross product, $\vec{x} \times \vec{y}$, would be orthogonal to both vectors $\vec{x}$ and $\vec{y}$. Notice that in most cases, there would be 2 such vectors with this property. They are exactly $$\vec{x} \times \vec{y} \qquad\text{and}\qquad -\vec{x} \times \vec{y}$$
+
+In fact, we have $$\vec{x} \times \vec{y} = - \vec{y} \times \vec{x}$$
+
+Notice that the order of a dot product does not matter, but the order of cross product matters up to a negative sign.
+
+The other usual properties of multiplication hold:
+
+\begin{itemize}
+    \item $(a\vec{a} \times \vec{b}) = c(\vec{a} \times \vec{b}) = a \times (c\vec{b})$
+    \item $\vec{a} \times (\vec{b} + \vec{c}) = \vec{a} \times \vec{b} + \vec{a} \times \vec{c}$
+\end{itemize}
+
+Similar to the dot product, we can also relate the angle between the 2 vectors, $$| \vec{x} \times \vec{y} | = | \vec{x} | | \vec{y} | \sin \theta$$
+
+Note that since $\vec{x} \times \vec{y}$ is a vector, we need to take its absolute value. So 2 vectors are \itblue{parallel} if the cross product is zero.
+
+\begin{exercise}
+    Let $\vec{x} = (3, -2, 1)$, $\vec{y} = (1, -1, 1)$. Find $\vec{x} \times \vec{y}$.
+\end{exercise}
+
+\section{Lines and Planes}
+
+For a \term{line}\index{Line} to be defined, we need a direction $\vec{v}$ and a point on the line $\vec{r}_0$. $$\begin{bmatrix} x \\ y \\ z \end{bmatrix} := \vec{r} = t\vec{v} + \vec{r}_0$$
+
+The vector $\vec{r}$ and the value $t$ do not need to be determined \footnote{$\vec{v}$ and $\vec{r}_0$ are not unique, and any correct pair would give the right equation. }.
+
+For a \term{plane}\index{Plane} to be defined, we need a \bred{normal vector} $\vec{n} = (a, b, c)$ and a point on the plane $\vec{r}_0$. $$\vec{n} \cdot \vec{r} = \vec{n} \cdot \vec{r}_0$$ $$ax + by + cz = \vec{n} \cdot \vec{r}_0$$ where $\vec{r}$ is the same as above and does not need to be determined. The \term{normal vector}\index{Normal Vector (of a Plane)} $\vec{n}$ is orthogonal to the plane \footnote{Similar to lines, $\vec{v}$ and $\vec{r}_0$ are not unique. }.
+
+\subsubsection*{Plane Defined by 3 Points}
+
+Consider 3 points $\vec{u}$, $\vec{v}$, and $\vec{w}$. We can connect any 2 pairs of points together to create 2 direction vectors which are inside the plane. For example, we may take $\vec{x} = \vec{u} - \vec{v}$, and$ \vec{y} = \vec{w} - \vec{v}$. From there we can form the cross product to attain a vector that is orthogonal to both vectors inside the plane, so the cross product would be the normal vector, which is orthogonal to the plane.
+
+\begin{exercise}
+    Find the equation of the line or plane.
+
+    {~~~}
+
+    \begin{enumerate}
+        \item The line through $(-8, 0, 4)$ and $(3, -2, 4)$.
+        \item The plane through the origin and perpendicular to the vector $(1, 5, 2)$.
+        \item The plane through $(2, 4, 6)$ parallel to the plane $x + y - z = 5$.
+        \item The plane through $(0, 1, 1)$, $(1, 0, 1)$, and $(1, 1, 0)$.
+        \item The plane equidistant from point $(3, 1, 5)$ and $(-2, 0, 0)$.
+    \end{enumerate}
+\end{exercise}
