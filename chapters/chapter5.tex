@@ -184,8 +184,6 @@ of Df is the gradient of all the coordinate functions: $$D_f = \begin{bmatrix} -
     First, state the dimension of the vector $f$ takes in, and the dimension of the vector $f$ gives out. Then, compute $D_f$.
 \end{exercise}
 
-$f: \mathbb{R}^3 \to \mathbb{R}^3$. $D_f = \begin{bmatrix} 3 & 1 & 1 \\ 0 & e^yz & e^y \\ yz & xz & xy \end{bmatrix}$
-
 \section{Change of Variable Formula}
 
 Suppose you need to integrate $f$ over a domain $B$, but $B$ is very bad, You don't want to integrate over a bad domain. Suppose you can find a function $g$ such that $g$ takes another region a onto B. $$g: A \to B \qquad g(A) = B$$ and somehow $A$ is good domain. 
@@ -198,8 +196,7 @@ Need to integrate $f(x, y)$.
 $$g(r,\theta) = (r\cos{\theta},r\sin{\theta}) = (x,y)$$
 
 $f \circ g = f(g(r, \theta)) = f(r\cos{\theta}, r\sin{\theta}) = f(x, y)$ and $r^2 = x^2 + y^r$. 
-
-$\det(D_f) = r$. 
+$$\det(D_f) = r$$. 
 
 Useful when domain $B$ is (partly) of circular shape, or function given is already in polar coordinates.
 
@@ -207,4 +204,8 @@ Useful when domain $B$ is (partly) of circular shape, or function given is alrea
     Integrate $f(x,y) = x$ over $D = {1 \le x^2 + y^2 \le 4}$ in the 2nd quadrant.
 \end{exercise}
 
-$\int_B x = \int_A x \cdot r = \int_{r=1}^{r=2} \int_{\theta=\frac{\pi}{2}}^{\theta=\pi} r \cos{\theta} \cdot r \,d\theta \,dr = \int_{r=1}^{r=2} r^2 \left( \int_{\theta}$ %TODO: finish me
+\begin{exercise}
+    Show that $\int_{-\infty}^{+\infty} e^{-x^2} \,dx = \sqrt{\pi}$
+
+    \textbf{Strategy: } The normal distribution has no anti-derivative. Start with $\left( \int_{-\infty}^{+\infty} \right)^2$ and write it as a product of 2 same things. Then change the variable in one integral from $x$ to $y$, and use the polar coordinate transformation.
+\end{exercise}
