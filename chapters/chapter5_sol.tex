@@ -58,3 +58,27 @@ $\begin{aligned}[t]
 \end{aligned}$
 
 \subsection*{Exercise 5.3}
+
+\begin{proof}
+$\begin{aligned}[t]
+    \left( \int_{-\infty}^{\infty} e^{-x^2} \,dx \right)^2
+     & = \left( \int_{-\infty}^{\infty} e^{-x^2} \,dx \right) \cdot \left( \int_{-\infty}^{\infty} e^{-x^2} \,dx \right) \\
+     & = \left( \int_{-\infty}^{\infty} e^{-x^2} \,dx \right) \cdot \left( \int_{-\infty}^{\infty} e^{-y^2} \,dy \right) \\
+     & = \int_{x=-\infty}^{x=\infty} \left( \int_{y=-\infty}^{y=\infty} e^{-y^2} \,dy \right) e^{-x^2} \,dx              \\
+     & = \int_{x=-\infty}^{x=\infty} \int_{y=-\infty}^{y=\infty} e^{-x^2} \cdot e^{-y^2} \,dy \,dx                       \\
+     & = \int_{x=-\infty}^{x=\infty} \int_{y=-\infty}^{y=\infty} e^{{-(\color{red}x^2 + y^2})} \,dy \,dx                 \\
+     & = \int_{r=0}^{r=\infty} \int_{\theta=0}^{\theta=2\pi} e^{-r^2} \cdot r \,d\theta \,dr                             \\
+     & = 2\pi \int_{r=0}^{r=\infty} e^{-r^2} \cdot r \,dr
+\end{aligned}$
+
+Take $\begin{cases} u = -r^2 \\ du = -2r \,dr \end{cases}$, we have $\int e^{-r^2} \cdot r = -\frac{1}{2} \int e^u \,du = -\frac{1}{2} e^{-r^2}$. 
+
+Thus, $\begin{aligned}[t]
+    2\pi \int_{r=0}^{r=\infty} e^{-r^2} \cdot r \,dr
+     & = 2\pi \cdot \left( -\frac{1}{2} \right) \left( e^{-r^2} \bigg|_{0}^{\infty} \right) \\
+     & = -\pi \cdot (e^{-\infty} - e^{-0^2})                                                \\
+     & = \pi
+\end{aligned}$
+
+Thus, $\int_{-\infty}^\infty e^{-x^2} \,dx = \sqrt{\pi}$. 
+\end{proof}
