@@ -158,18 +158,18 @@
     \end{minipage}
     \begin{minipage}[t]{0.45\linewidth}
         \begin{center}
-            \tikzsetnextfilename{c01e01-06}%
+            % \tikzsetnextfilename{c01e01-06}%
             \begin{tikzpicture}[baseline=(current bounding box.north)]
                 \draw[->] (-2.2, 0) -- (3.2, 0) node[right] {$x$};
                 \draw[->] (0, -2.7) -- (0, 2.7) node[above] {$y$};
 
                 \clip(-3, -2.5) rectangle (3, 2);
 
-                \draw[thick,DarkGreen,domain=-0.99:0.99] plot ({( 1+(\x)^2)/(1-(\x)^2)}, {  2 *(\x)/(1-(\x)^2)});
-                \draw[thick,DarkGreen,domain=-0.99:0.99] plot ({(-1-(\x)^2)/(1-(\x)^2)}, {(-2)*(\x)/(1-(\x)^2)});
+                \draw[thick,DarkGreen,domain=-0.75:0.75] plot ({( 1+(\x)^2)/(1-(\x)^2)}, {  2 *(\x)/(1-(\x)^2)});
+                \draw[thick,DarkGreen,domain=-0.75:0.75] plot ({(-1-(\x)^2)/(1-(\x)^2)}, {(-2)*(\x)/(1-(\x)^2)});
 
-                \draw[thick,blue,domain=-0.99:0.99] plot ({( 1+(\x)^2)/(1-(\x)^2) + 1}, {  2 *(\x)/(1-(\x)^2) - 1});
-                \draw[thick,blue,domain=-0.99:0.99] plot ({(-1-(\x)^2)/(1-(\x)^2) + 1}, {(-2)*(\x)/(1-(\x)^2) - 1});
+                \draw[thick,blue,domain=-0.75:0.75] plot ({( 1+(\x)^2)/(1-(\x)^2) + 1}, {  2 *(\x)/(1-(\x)^2) - 1});
+                \draw[thick,blue,domain=-0.75:0.75] plot ({(-1-(\x)^2)/(1-(\x)^2) + 1}, {(-2)*(\x)/(1-(\x)^2) - 1});
 
                 \draw[thick,red,dashed] (2,-1) -- (0,-1) node[left] {$-2$};
                 \draw[thick,red,dashed] (2,-1) -- (2,0) node[below] {$4$};

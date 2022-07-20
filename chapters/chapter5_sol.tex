@@ -8,6 +8,7 @@ $f: \mathbb{R}^3 \to \mathbb{R}^3$. $D_f = \begin{bmatrix} 3 & 1 & 1 \\ 0 & e^yz
 
 \begin{minipage}{0.45\linewidth}
     \begin{center}
+        \tikzsetnextfilename{c05e02-01}%
         \begin{tikzpicture}
             \fill[LightBlue,fill opacity=0.2] (0,0) -- (180:2) arc (180:90:2) -- cycle;
             \fill[white,] (0,0) -- (180:1) arc (180:90:1) -- cycle;
@@ -30,6 +31,7 @@ $f: \mathbb{R}^3 \to \mathbb{R}^3$. $D_f = \begin{bmatrix} 3 & 1 & 1 \\ 0 & e^yz
 $\overset{g}{\longrightarrow}$
 \begin{minipage}{0.45\linewidth}
     \begin{center}
+        \tikzsetnextfilename{c05e02-02}%
         \begin{tikzpicture}
             \draw[->] (-0.7,0) -- (2.7,0) node[right] {$x$};
             \draw[->] (0,-0.7) -- (0,3.7) node[above] {$y$};
@@ -82,3 +84,24 @@ Thus, $\begin{aligned}[t]
 
 Thus, $\int_{-\infty}^\infty e^{-x^2} \,dx = \sqrt{\pi}$. 
 \end{proof}
+
+\subsection*{Exercise 5.4}
+
+\subsection*{Exercise 5.5}
+
+$\begin{aligned}[t]
+    V & = \int_{\theta=0}^{\theta=2\pi} \int_{r=0}^{r=1} \int_{z=0}^{{z=\color{red}a(r-1)^2}} 1 \cdot r \,dz \,dr \,d\theta \\
+      & = \int_{\theta=0}^{\theta=2\pi} 1 \,d\theta \cdot \int_{r=0}^{r=1}\int_{z=0}^{z=a(r-1)} r \,dz \,dr                 \\
+      & = 2\pi \int_{r=0}^{r=1} r(a(r-1)^2 - 0) \,dr                                                                        \\
+      & = 2\pi a \int_{r=0}^{r=1} r^3 - 2r^2 + r \,dr                                                                       \\
+      & = 2\pi a \left( \frac{r^4}{4} + \frac{2r^3}{2} + \frac{r^2}{2} \right) \bigg|_{r=0}^{r=1}                           \\
+      & = 2\pi a \left( \frac{1}{4} + \frac{2}{3} + \frac{1}{2} \right)                                                     \\
+      & = \frac{\pi}{6} \cdot a \color{LightBlue} = 1 \implies a = \frac{6}{\pi}
+\end{aligned}$
+
+\subsection*{Exercise 5.6}
+
+Set $x^2 + y^2 + z^2 = R^2$. Then, $\begin{aligned}[t]
+    V &= \int_B 1 \,dA \\
+    &= \int_{\theta=-\frac{\pi}{2}}^{\theta=\frac{\pi}{2}} {\color{DarkGreen} \int_{\rho=0}^{\rho=R} \int_{\phi=0}^{\phi=\pi}} 1 {\color{red} \cdot \rho^2 \sin(\phi) } \,d\phi \,d\rho \,d\theta
+\end{aligned}$

@@ -191,7 +191,7 @@ Suppose you need to integrate $f$ over a domain $B$, but $B$ is very bad, You do
 
 So, instead of integrating $f$ over the bad domain $B$, you can integrate over the good domain $A$ instead. $$\int_B f = \int_A f \circ g \cdot \left| \det(D_g) \right|$$ $f \circ g$ means replacing the old variables of $f$ in $B$ with the new ones in $A$ (we require that $g$ to be a one-to-one transformation, and $\det(D_g) \neq 0)$. The natural question is of course: How do I find such $g$?
 
-\subsection{Polar Coordinates}
+\subsection*{1. Polar Coordinates}
 
 Need to integrate $f(x, y)$. 
 
@@ -204,6 +204,7 @@ This is useful when domain $B$ is (partly) of circular shape, or function given 
 
 \begin{minipage}{0.45\linewidth}
     \begin{center}
+        \tikzsetnextfilename{c05s05-s01-f01-l}%
         \begin{tikzpicture}
             \draw[->] (-0.7,0) -- (2.2,0) node[right] {$r$};
             \draw[->] (0,-0.7) -- (0,3.7) node[above] {$\theta$};
@@ -219,10 +220,11 @@ This is useful when domain $B$ is (partly) of circular shape, or function given 
             \node[left] at(0,3.14) {$2\pi$};
         \end{tikzpicture}
     \end{center}
-    \end{minipage}
-    $\overset{g}{\longrightarrow}$
-    \begin{minipage}{0.45\linewidth}
+\end{minipage}
+$\overset{g}{\longrightarrow}$
+\begin{minipage}{0.45\linewidth}
     \begin{center}
+        \tikzsetnextfilename{c05s05-s01-f01-r}%
         \begin{tikzpicture}
             \draw[->] (-2.2,0) -- (2.2,0) node[right] {$u$};
             \draw[->] (0,-2.2) -- (0,2.2) node[above] {$v$};
@@ -254,6 +256,33 @@ $r$ represent the distance from the point $(x, y)$ to the origin, $\theta$ repre
 
 If $r$ is negative, it represent the point on the line with angle $\theta$ through the origin, except on the opposite side of the line, with radius being $|r|$.
 
+\begin{center}
+   \tikzsetnextfilename{c05s05-s01-f02}%
+    \begin{tikzpicture}
+        \draw[->] (-3.7,0) -- (3.7,0) node[right] {$x$};
+        \draw[->] (0,-2.2) -- (0,2.2) node[above] {$y$};
+        
+        \draw[thick,red] (2,2) -- (0,0);
+        \draw[thick,LightBlue,dashed] (0,0) -- (-2,-2);
+        \draw[orange] (0.25,0) arc(0:45:0.25) node[right] {$\theta$};
+        
+        \draw[thick,DarkGreen] (-3.46,2) -- (0,0);
+        \draw[thick,DarkGreen,dashed] (0,0) -- (3.46,-2);
+        \draw[purple] (0.75,0) arc(0:150:0.75) node[above right] {$\theta=\frac{5}{6}\pi$};
+        \draw[thick,pink,dashed] (-0.75,0) arc(180:150:0.75) node[below left] {$\theta=\frac{\pi}{6}$};
+        
+        \draw[red,fill=red] (2,2) circle(0.05) node[below right] {$(|r|, \theta)$};
+        \draw[LightBlue,fill=LightBlue] (-2,-2) circle(0.05) node[above left] {$(-|r|, \theta)$};
+        \draw[DarkGreen,fill=DarkGreen] (-3.46,2) circle(0.05) node[right] {$(r,\theta) = (1,\frac{5}{6}\pi)$};
+        \draw[DarkGreen,fill=DarkGreen] (3.46,-2) circle(0.05) node[above left] {$(r,\theta) = (-1,\frac{5}{6}\pi) = (1, -\frac{1}{6}\pi)$};
+        
+        \node[red,above,rotate=45] at (1.5,1.5) {$r>0$};
+        \node[LightBlue,above,rotate=45] at (-1.5,-1.5) {$r<0$};
+        \node[DarkGreen,below,rotate=-30] at (-1.73,1) {$r=1$};
+        \node[DarkGreen,above,rotate=-30] at (1.73,-1) {$r=-1$};
+    \end{tikzpicture}
+\end{center}
+
 \begin{example}
     The point $(r, \theta) = (1, \frac{3\pi}{4})$ in the polar coordinates represent $(x, y) = (-\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})$. 
 
@@ -266,6 +295,7 @@ Using the above convention, we can define polar curve: $r = h(\theta)$. To draw 
     \item $r = a$ gives the circle with radius $a$ centered at the origin.
 
     \begin{center}
+        \tikzsetnextfilename{c05s05-s01-f03-01}%
         \begin{tikzpicture}
             \draw[->] (-1.2,0) -- (1.2,0) node[right] {$x$};
             \draw[->] (0,-1.2) -- (0,1.2) node[above] {$y$};
@@ -288,9 +318,96 @@ Using the above convention, we can define polar curve: $r = h(\theta)$. To draw 
         \left(x - \frac{a}{2}\right)^2 + y^2                                     & = \left(\frac{1}{2}\right)^2
     \end{aligned}$
 
+    \begin{center}
+        \tikzsetnextfilename{c05s05-s01-f03-02}%
+        \begin{tikzpicture}
+            \draw[->] (-0.7,0) -- (2.2,0) node[right] {$x$};
+            \draw[->] (0,-1.2) -- (0,1.2) node[above] {$y$};
+            
+            \draw[DarkGreen] (1,0) circle(1.0) node[above] {$r=a\cos{\theta}$};
+            
+            \draw (2,0.125) -- (2,0) node[below] {$a$};
+        \end{tikzpicture}
+    \end{center}
+
+    \begin{minipage}{0.36\linewidth}
+        \begin{center}
+            \tikzsetnextfilename{c05s05-s01-f03-02-l}%
+            \begin{tikzpicture}
+                \draw[->] (-0.7,0) -- (3.3,0) node[right] {$\theta$};
+                \draw[->] (0,-2.2) -- (0,2.2) node[above] {$r$};
+
+                \draw[thick,DarkGreen,domain=0:1.57] plot(\x, {2*cos(deg(\x))});
+                \draw[thick,pink,domain=1.57:3.14] plot(\x, {2*cos(deg(\x))});
+
+                \draw (3.14,0.125) -- (3.14,0) node[below] {$\pi$};
+                \draw (0.125,2) -- (0,2) node[left] {$a$};
+
+                \draw[orange,fill=orange] (0,2) circle(0.05) node[below left] {$(0,a)$};
+                \draw[orange,fill=orange] (0.78,1.41) circle(0.05) node[right] {$(\frac{\pi}{4},0<r<a)$};
+                \draw[orange,fill=orange] (1.57,0) circle(0.05) node[below left] {$(\frac{\pi}{2},0)$};
+
+                \draw[purple,fill=purple] (2.36,-1.41) circle(0.05) node[left] {$(\frac{3\pi}{4},-a<r<0)$};
+                \draw[purple,fill=purple] (3.14,-2) circle(0.05) node[above] {$(\pi,-a)$};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+    \begin{minipage}{0.63\linewidth}
+        \begin{center}
+            \tikzsetnextfilename{c05s05-s01-f03-02-r}%
+            \begin{tikzpicture}
+                \draw[->] (-2.2,0) -- (2.2,0) node[right] {$x$};
+                \draw[->] (0,-2.2) -- (0,2.2) node[above] {$y$};
+
+                \draw[dashed,-stealth] (0,0) -- (2,2);
+
+                \draw[thick,red,dashed] (0,2) arc(90:-90:2) node[below] {$h(\theta)=a$};
+                \draw[thick,gray,-stealth] (2.13,0.57) arc(15:75:2.2);
+                \draw[thick,gray,-stealth,dashed] (-0.57,2.13) arc(105:165:2.2);
+                \draw[thick,gray,-stealth] (0.57,-2.13) arc(285:345:2.2);
+                \draw[gray,dashed] (-0.57,2.13) -- (0.57,-2.13);
+                \draw[gray,dashed] (-2.13,0.57) -- (2.13,-0.57);
+
+                %
+                \draw[orange,fill=orange] (2,0) circle(0.05) node[above] {$(\theta,r)=(0,a)$};
+                \draw[orange,fill=orange] (1,1) circle(0.05) node[above] {$\theta=\frac{\pi}{4},0<r<a$};
+                \draw[orange,fill=orange] (0,0) circle(0.05) node[below left] {$(\theta,r)=(\frac{\pi}{2},0)$};
+
+                \draw[thick,blue,dashed] (-2,0) -- (2,0);
+                \draw[purple,fill=purple] (-2,0) circle(0.05) node[above] {$(\theta,r)=(\pi,a)$};
+                \draw[purple,fill=purple] (2,0) circle(0.0125) node[below] {$(\theta,r)=(\pi,-a)$};
+
+                \draw[thick,blue,dashed] (-1,1) -- (1,-1);
+                \draw[purple,fill=purple] (-1,1) circle(0.05) node[above left] {$\theta=\frac{3\pi}{4},0<|r|<a$};
+                \draw[purple,fill=purple] (1,-1) circle(0.05) node[below] {$\theta=\frac{3\pi}{4},-a<r<0$};
+
+                %
+                \draw[thick,DarkGreen,-stealth] (2,0) arc(0:45:1);
+                \draw[thick,DarkGreen,-stealth] (1.71,0.71) arc(45:90:1);
+                \draw[thick,DarkGreen,-stealth] (1,1) arc(90:135:1);
+                \draw[thick,DarkGreen,-stealth] (0.29,0.71) arc(135:180:1);
+                \draw[thick,pink,-stealth] (0,0) arc(180:225:1);
+                \draw[thick,pink,-stealth] (0.29,-0.71,0) arc(225:270:1);
+                \draw[thick,pink,-stealth] (1,-1) arc(270:315:1);
+                \draw[thick,pink,-stealth] (1.71,-0.71) arc(315:360:1);
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}
+
     \item $r = b\sin{\theta}$ gives the circle to the top (if $b > 0$).
 
     The circle is between the points $(0, b)$ and the origin. The radius is $\frac{b}{2}$.
+    \begin{center}
+        \tikzsetnextfilename{c05s05-s01-f03-03}%
+        \begin{tikzpicture}
+            \draw[->] (-1.2,0) -- (1.2,0) node[right] {$x$};
+            \draw[->] (0,-0.7) -- (0,2.2) node[above] {$y$};
+            
+            \draw[DarkGreen] (0,1) circle(1.0) node {$r=b\sin{\theta}$};
+            
+            \draw (0.125,2) -- (0,2) node[left] {$b$};
+        \end{tikzpicture}
+    \end{center}
 \end{itemize}
 
 \begin{exercise}
@@ -305,4 +422,89 @@ $\text{ }$
 
         \textbf{Strategy: } this shape is complicated and it crosses itself. We can not apply the formula directly , we need to use symmetry and subtract the inner area.
     \end{enumerate}
+\end{exercise}
+
+\subsection*{2. Cylindrical Coordinates}
+
+We need to integrate $f(x, y, z)$. Take $g(r, \theta, z) = (r\cos(\theta), r\sin(\theta), z) = (x,y,z)$. 
+
+For any specific point $(x, y, z)$, it can be described as a radius, a height and an angle:
+
+\begin{center}
+    %TODO: finish graph
+    \begin{tikzpicture}
+        \draw[->] (0,0) -- (2.2,0) node[right] {$y$};
+        \draw[->] (0,0) -- (0,2.2) node[above] {$z$};
+        \draw[->] (0,0) -- (-1.41,-1.41) node[below left] {$x$};
+
+        \draw[dashed] (-0.71, -0.71) -- (0.29,-0.71);
+        \draw[dashed] (0.29, -0.71) -- (1,0);
+        \draw[dashed] (0.29, -0.71) -- (0.29,0.29);
+        \draw[dashed] (0.29,0.29) -- (0,1);
+        \draw[dashed] (0.29,-0.71) -- (0,0);
+    \end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+    \item $r$ is the distance between the point and the \bred{$z$-axis};
+    \item $\theta$ is the angle between the $x$-axis and the point $(x,y,0)$ \footnote{$(x,y,0)$ is the projection of the point onto the $xy$-plane. };
+    \item $z$ is the height.
+\end{itemize}
+
+$f \circ g = f(g(r, \theta, z)) = f(r\cos(\theta), r\sin(\theta), z)$ and $r^2 = x^2 + y^2$. 
+$$\det(D_g) = r$$
+
+This is useful when 
+\begin{itemize}
+    \item domain $B$ is partly of cylindrical shape or has circular projection, or
+    \item function given is already in cylindrical coordinates, or
+    \item the domain can be obtained through a rotation with the defining equations containing $x^2 + y^2$.
+\end{itemize}
+
+\textbf{Graphing Surfaces attained through rotation}
+
+When the variables $x$ and $y$ in the defining equations can be written \bred{completely} with $r^2 = x^2 + y^2$, this signals that the surface is attained through rotation. We graph the 2D curves involving $z$ and $r$ in the $rz$-plane. We revolve the curves around the $z$-acis to attain surfaces in 3D. To integrate the volume bounded by the surfaces, we need to use cylindrical coordinates and preform a \bred{2D integration} in the $rz$-plane, and then we add the $\theta$-integral to the outside. \bred{Don't forget to include the term $\det(D_g) = r$}. We only integrate the portion with $r > 0$. 
+
+\begin{exercise}
+    $z = h(x,y) = a \cdot \left( \sqrt{x^2 + y^2} - 1 \right)^2$, with $a > 0$. 
+
+    Consider the volume inside the cylinder $x^2 + y^2 = 1$, above $z = 0$, and below $z = h(x,y)$. 
+
+    Find $a$ so that the volume is $1$. 
+\end{exercise}
+
+\subsection*{3. Spherical Coordinates}
+
+We need to integrate $f(x, y, z)$. Take $g(\rho, \phi, \theta) = (\rho \sin(\phi) \cos(\theta), \rho \sin(\phi) \sin(\theta), \rho\cos(\phi)) = (x, y, z)$
+
+For any specific point $(x, y, z)$, it can be described by the radius and the 2 angles: 
+
+% TODO: add graph
+
+\begin{itemize}
+    \item $\rho$ is the distance from the point to the \bred{origin}, as the radius;
+    \item $\phi$ is the angle between the $z$-acis and the point $(x, y, z)$ \footnote{This is called \term{inclination angle}. };
+    \item $\theta$ is the angle between the $x$-axis and the point onto the $xy$-plane \footnote{This is called \term{azimuthal angle}. }.
+\end{itemize}
+
+Note that $r$ and $\rho$ both represents `radius' in Spherical and Cylindrical Coordinates, but they stand for \bred{different radii}. 
+
+$f \circ g = f(g(\rho, \theta, \phi)) = f(\rho \sin(\phi) \cos(\theta), \rho \sin(\phi) \sin(\theta), \rho \cos(\phi)) = f(x, y, z)$, and $\rho^2 = x^2 + y^2 + z^2$. 
+$$\det(D_g) = \rho^2 \sin(\phi)$$
+
+This is useful when the domain $B$ is (partly) of spherical shaper, or function given is already in spherical coordinates. 
+
+The maximum value of $\phi$ is $\pi$ (180$^\circ$), at most to the negative $z$-axis. For a full sphere of radius $R$, the range of the variables are 
+\begin{itemize}
+    \item $\rho: 0 \to R$
+    \item $\phi: 0 \to \pi$
+    \item $\theta: 0 \to 2\pi$
+\end{itemize}
+
+If the sphere is \bred{not} centred at the origin, spherical coordinates is usually \bred{not} the choice. 
+
+\begin{exercise}
+    Find the 3D-volume of a solid hemisphere in $\mathbb{R}^3$ with radius $R$ and $x > 0$. 
+
+    \textbf{Strategy}: recall integrating the function $f = 1$ gives the volume of the domain. 
 \end{exercise}
