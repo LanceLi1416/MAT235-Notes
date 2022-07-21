@@ -6,9 +6,9 @@ $$f(x, y, z): \mathbb{R}^3 \to \mathbb{R}$$
 
 We can also have \term{vector functions}\index{Vector Function}, which gives \bred{multiple outputs}. In general, we can have $$\begin{matrix} f: &\mathbb{R}^m &\to &\mathbb{R}^n \\ &\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_m \end{bmatrix} &\mapsto &\begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} \end{matrix}$$ It is called a vector function, since $f$ have many outputs, so the outputs as a whole can be regarded as a vector. $$f(\vec{x}) = \vec{y}$$
 
-Each output may depend on \bred{all of the inputs}, and so each output is a \term{coordinate function}\index{Coordinate Function} that depends on all of the input variables. In other words, a vector function is made up of many multi-variable functions. $$f\begin{pmatrix}
+Each output may depend on \bred{all of the inputs}, and so each output is a \term{coordinate function}\index{Coordinate Function} that depends on all of the input variables. In other words, a vector function is made up of many multi-variable functions. $$f\begin{bmatrix}
         x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_m
-    \end{pmatrix} = \begin{bmatrix}
+    \end{bmatrix} = \begin{bmatrix}
         f_1(x_1, x_2, x_3, \cdots, x_m) \\
         f_2(x_1, x_2, x_3, \cdots, x_m) \\
         \vdots                          \\
@@ -507,4 +507,113 @@ If the sphere is \bred{not} centred at the origin, spherical coordinates is usua
     Find the 3D-volume of a solid hemisphere in $\mathbb{R}^3$ with radius $R$ and $x > 0$. 
 
     \textbf{Strategy}: recall integrating the function $f = 1$ gives the volume of the domain. 
+\end{exercise}
+
+\begin{exercise}
+    Consider the surface $A$ characterized by $z = \sqrt{3} \sqrt{(x^2 + y^2)} = \sqrt{3} \cdot r$, where $r$ is the radius in \textbf{cylindrical coordinates}. Consider the surface $B$ as the sphere of radius $2$, $x^2 + y^2 + z^2 = 4$. Find the volume bounded by surface $A$ and $B$ in 2 ways:
+
+    \begin{enumerate}[label=\alph*)]
+        \item Use Spherical Coordinates.
+        
+        \textbf{Strategy}: Plot the curve in the $rz$-plane, and rotate to a 3D volume. The volume looks like an ice-cream cone. What is the maximum inclination angle $\phi$? Remember that $r$ in both coordinates are not the same.
+
+        \item Use Cylindrical Coordinates. Which method do you think is more suited?
+        
+        \textbf{Strategy}: Solve the intersection of the surfaces by plugging a quantity of one equation into the other. Perform a 2D integral in $rz$-plane, and add the $\theta$-integral on the outside.
+        
+        \item Now consider surface $C$ as the plane $z = \sqrt{3}$. What is the volume between surface $A$ and $C$? Which method should you use?
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Compute the volume above the cone $z = \sqrt{x^2 + y^2}$ and below the sphere $x^2 + y^2 + z^2 = 2z$. 
+
+    \begin{enumerate}[label=\alph*)]
+        \item Use Cylindrical Coordinates.
+        
+        \textbf{Strategy}: Why is it a sphere? Plot the curve on the $rz$-plane. For the sphere, complete the square in $z$. Find the intersection and perform a 2D integral in $rz$-plane.
+
+        \item Use Spherical Coordinates. Which way do you prefer?
+        
+        \textbf{Strategy}: Since the sphere is \bred{not} centered at the origin, the range of $\rho$ is \bred{not} $0$ to $1$. Use the defining equation $x^2 + y^2 + z^2 = 2z$ and switch variables to spherical coordinates to attain $\rho = 2\cos(\phi)$. Notice $\rho$ varies in terms of the value $\phi$ in 3D, similar to polar curves in 2D, so we \bred{must} put it as the innermost integral.
+    \end{enumerate}
+\end{exercise}
+
+\subsection*{Ellipse Transformation}
+
+To integrate over an ellipse, we write the equation of ellipse as $\left(\frac{x}{a}\right)^2 + \left(\frac{y}{b}\right)^2 = 1$.
+
+Similar to polar coordinates, we use $g(r, \theta) = (a \cdot r \cos{\theta}, b \cdot r \sin{\theta})$. Note that $\det(D_h) = abr$. 
+
+Since the stretching factors of the ellipse are included in function $g$, the range of radius is \bred{always} $r: 0 \to 1$.
+
+$\theta$ does not exactly represent the angle from polar coordinates anymore, though it still works as normal for these angles, $\theta = 0, \frac{\pi}{2}, \pi, \frac{3\pi}{2}, 2\pi, \dots$. A full ellipse is still $\theta: 0 \to 2\pi$. 
+
+This is useful when a 2D domain is an ellipse, or if the 3D projection of a volume is of ellipse shape.
+
+\begin{exercise}
+   Verify $\det(D_g) = abr$, Then find the area of the ellipse given by the standard equation above.
+\end{exercise}
+
+\begin{exercise}
+    Integrate $f(x, y) = \sin(2x^2 + 4y^2)$ over the region bounded by $2x^2 + 4y^2 = 4$.
+\end{exercise}
+
+\begin{exercise}
+    Compute the volume above $z = \sqrt{2x^2 + y^2}$ and below $z = 2$. 
+
+    \textbf{Strategy}: This surface is not given by a circular rotation, with $r^2 = x^2 + y^2$. However, it is similar. We may take the ``radius'' to be $r^2 = 2x^2 + y^2$, so we can still plot on the $rz$-plane and do an ellipse rotation. Taking the projection of the volume onto the $xy$-plane gives an ellipse. Instead of integrating the 2D projection integral directly, we first perform the inner $z$-integral, and use ellipse transformation onto the 2D integral.
+\end{exercise}
+
+\subsection*{Parallelogram Transformation}
+
+Given a parallelogram in $\mathbb{R}^2$ with one vertex being origin. It is generated by 2 points/vectors, $\vec{a}$ and $\vec{b}$. We can turn the unit square into parallelogram by requiring that $$g\begin{bmatrix} 1 \\ 0 \end{bmatrix} = \vec{a} \qquad g\begin{bmatrix} 0 \\ 1 \end{bmatrix} = \vec{b}$$ Since the parallelogram is linear, this is a linear transformation. It is characterized by a matrix. $$g\begin{bmatrix} u \\ v \end{bmatrix} = A \cdot \begin{bmatrix} u \\ v \end{bmatrix} = \begin{bmatrix} x \\ y \end{bmatrix}$$ Cue to the constraint on the unit vectors above, $A$ must be $$A = \begin{bmatrix} | & | \\ \vec{a} & \vec{b} \\ | & | \end{bmatrix}$$
+
+If the parallelogram does not have one vertex at origin, we can perform a shift of the parallelogram, by subtracting the coordinates of one point from all points of the parallelogram. We take note of $\vec{a}$ and $\vec{b}$ that generate the \bred{shifted} parallelogram. The transformation g would take 2 steps. First the transformation of the square to the shifted parallelogram, then from the shifted parallelogram to the original one.
+
+\begin{example}
+    Given the parallelogram $(1, 1)$, $(2, 1)$, $(2, 2)$, $(3, 2)$ which is a standard $45$ degrees parallelogram that is shifted \footnote{The standard 45 degrees parallelogram is defined by the vectors $\begin{bmatrix} 1 \\ 0 \end{bmatrix}$ and $\begin{bmatrix} 1 \\ 1 \end{bmatrix}$. }. We can use the above transformation, to turn the unit square into the standard parallelogram using $$h\begin{bmatrix} u \\ v \end{bmatrix} = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} u \\ v \end{bmatrix}$$  We then need to shift the parallelogram upward and right by 1 unit. Thus $$g\begin{bmatrix} u \\ v \end{bmatrix} = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} u \\ v \end{bmatrix} + \begin{bmatrix} 1 \\ 1 \end{bmatrix}$$ In both the shifted and the non-shifted case, $D_g = A$. 
+\end{example}
+
+\subsection*{Tetrahedron Transformation}
+
+Generalizing the idea of parallelogram, the tetrahedron transformation is much more useful in practice.
+
+Given a tetrahedron in $\mathbb{R}^3$ with one vertex being the origin, it is characterized by 3 points/vectors, $\vec{a}$, $\vec{b}$, $\vec{c}$. We can turn the \itblue{unit tetrahedron} into the tetrahedron given by requiring that $$ g\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} = \vec{a} \qquad g \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} = \vec{b} \qquad g \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} = \vec{c}$$ If we define the names of the variables of $g$ as $g(u, v, w)$, then our domain of integration is the unit tetrahedron, given by $$\int_{w=0}^{w=1} \int_{v=0}^{v=1-w}\int_{u=0}^{u=1-w-b} f \circ g  \cdot |\det(D_g)| \,du \,dv \,dw$$ Of course, $g$ is again a linear transformation, $$g \begin{bmatrix} u \\ v \\ w \end{bmatrix} = A \cdot \begin{bmatrix} u \\ v \\ w \end{bmatrix} = \begin{bmatrix} x \\ y \\ z \end{bmatrix}$$ where the matrix $A$, by the constraints above, is $$A = \begin{bmatrix} | & | & | \\ \vec{a} & \vec{b} & \vec{c} \\ | & | & | \end{bmatrix}$$ If the tetrahedron does not have one vertex at origin, we perform a shift similar to parallelogram. Same as the parallelogram transformation, in both the non-shifted and the shifted case, $D_g = A$. 
+
+\begin{exercise}
+    Find the volume bounded by $x + 2y + z = 2$, $x = 2y$, $x = 0$, $z = 0$.
+
+    \textbf{Strategy}: Take any 3 planes, they intersect at 1 point. 4 points form a tetrahedron. 
+\end{exercise}
+
+\begin{exercise}
+    Compute the integral $\int_D z - x - y$ where $D$ is the tetrahedron given by $D$ $(0,0,0)$, $(1,2,3)$, $(0,2,2)$, and $(-1,1,1)$.
+\end{exercise}
+
+\subsection*{Domain Bounded by 2 Expressions}
+
+Sometimes, a 2D domain $B$ is defined by the region bounded by some curves given by $f_1(x,y) = a$, $f_1(x,y) = b$, $f_2(x,y) = c$, and $f_2(x,y) = d$. If the curves only intersect at 4 points, we can transform the square onto the domain by using $$h\begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} f_1(x,y) \\ f_2(x,y) \end{bmatrix} = \begin{bmatrix} u \\ v \end{bmatrix}$$ and since $u = f_1(x,y)$ and $v = f_2(x,y)$, the bounds of $\begin{bmatrix} u \\ v \end{bmatrix}$ is exactly the square $A = \{ u \in (a, b)m v \in (c, d) \}$. 
+
+However, computing inverse is sometimes difficult. Since we need $\det(D_g)$ in the formula, and $g = h^{-1}$, we can instead use $$\det(D_g) = \det(D_{h^{-1}}) = \det(\left(D_h\right)^{-1}) = \det(D_h)^{-1} = \frac{1}{\det(D_h)}$$ Thus we can simply compute $D_h$ which is given, and use it in the change of variable formula without needing to compute the inverse \footnote{ Note we may still need to compute the inverse sometimes. }. 
+
+\begin{example}
+    Integrate $f(x,y) = y$ over the domain $B$ given by $xy = 1$, $xy = 2$, $xy^2 = 1$, $xy^2 = 2$. 
+    
+    Set $u = xy$, $v = xy^2$. $D_h = \begin{bmatrix} y & x \\ y^2 & 2xy \end{bmatrix} \implies \det(D_h) = 2xy^2 - xy^2 = xy^2 = v$, so $\det(D_g) = \det(D_h)^{-1} = \frac{1}{v}$
+
+    $\begin{aligned}[t]
+        f(x, y) = y = \frac{v}{u} \implies \int_B y \,dA
+         & = \int_A \frac{v}{u} \cdot \frac{1}{v} \,dA                \\
+         & = \int_{u=1}^{u=2} \int_{v=1}^{v=2} \frac{1}{u}  \,dv \,du \\
+    \end{aligned}$
+\end{example}
+
+\begin{exercise}
+$\text{ }$
+
+    \begin{enumerate}
+        \item $\int_D(x+y)(x-y)$ over $D$ bounded by $x - y = 0$, $x - y = 2$, $x + y = 1$, $x + y = 2$. 
+        \item $\int_D \sin\left( \frac{2x-y}{2x+y} \right)$ over $D$ bounded by $x = 0$, $y = 0$, $2x + y = 1$. 
+    \end{enumerate}
 \end{exercise}
